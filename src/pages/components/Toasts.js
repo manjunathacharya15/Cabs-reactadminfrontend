@@ -1,106 +1,206 @@
+import React,{Component} from "react"
+import axios from 'axios';
+// import moment from "moment-timezone";
+import DatePicker from 'react-datepicker'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
+import { Col, Row, Card, Form, Button} from '@themesberg/react-bootstrap';
+import 'react-datepicker/dist/react-datepicker.css';
+import moment from "moment-timezone";
+// import moment from "moment";
 
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBootstrap } from '@fortawesome/free-brands-svg-icons';
-import { Col, Row, Card, Toast, Button, Container } from '@themesberg/react-bootstrap';
+export default class Accordion extends Component{
+    constructor(props) {
+        super(props);
+    
+        
+        this.onChangewheelalignment = this.onChangewheelalignment.bind(this);
+        this.onChangeoilchange= this.onChangeoilchange.bind(this);
+        this.onChangecarinsurance = this.onChangecarinsurance.bind(this);
+        
+        
+        this.onChangechildrenbenefit = this.onChangechildrenbenefit.bind(this);
+        this.onChangefamilyinsurance = this.onChangefamilyinsurance.bind(this);
 
-import Documentation from "../../components/Documentation";
+       
+      
+       
+        
 
+       
 
-export default () => {
-  const [showDefault, setShowDefault] = useState(true);
-  const [showPrimary, setShowPrimary] = useState(true);
-  const [showTertiary, setShowTertiary] = useState(true);
-
-  const handleCloseDefault = () => setShowDefault(false);
-  const handleClosePrimary = () => setShowPrimary(false);
-  const handleCloseTertiary = () => setShowTertiary(false);
-
-  return (
-    <article>
-      <Container className="px-0">
-        <Row className="d-flex flex-wrap flex-md-nowrap align-items-center py-4">
-          <Col className="d-block mb-4 mb-md-0">
-            <h1 className="h2">Toasts</h1>
-            <p className="mb-0">
-              Use toasts to indicate messages.
-          </p>
-          </Col>
-        </Row>
-
-        <Documentation
-          title="Example"
-          description={
-            <>
-              <p>Use the <code>&#x3C;Toast&#x3E;</code> component to show messages and notifications to the user. The component is split into two main subcomponents: <code>&#x3C;Toast.Header&#x3E;</code> and <code>&#x3C;Toast.Body&#x3E;</code> where you can add the text that you want.</p>
-              <p>You can also use the <code>handleClose</code> function to handle the event of closing the component.</p>
-            </>
+        this.onSubmit = this.onSubmit.bind(this);
+        this.state = {
+          wheelalignment:'',
+          oilchange:'',
+          carinsurance:'',
+          childrenbenefit:'',
+          familyinsurance:'',
+         
+            trainer:[]
+            
+            
           }
-          scope={{ Card, Toast, Button, useState, FontAwesomeIcon, faBootstrap, showDefault, setShowDefault, handleCloseDefault }}
-          imports={`import React, { useState } from 'react';
-import { Card, Toast, Button } from '@themesberg/react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBootstrap } from '@fortawesome/free-brands-svg-icons';
-
-const [showDefault, setShowDefault] = useState(true);
-const toggleDefaultToast = () => setShowDefault(!showDefault);`}
-          example={`<Toast show={showDefault} onClose={handleCloseDefault} className="my-3">
-    <Toast.Header className="text-primary" closeButton={false}>
-        <FontAwesomeIcon icon={faBootstrap} />
-        <strong className="me-auto ms-2">Volt</strong>
-        <small>11 mins ago</small>
-        <Button variant="close" size="xs" onClick={handleCloseDefault} />
-    </Toast.Header>
-    <Toast.Body>
-        Hello, world! This is a toast message.
-    </Toast.Body>
-</Toast>`}
-        />
-
-        <Documentation
-          title="Colors"
-          description={
-            <p>If you'd like to customize the appearance of the <code>&#x3C;Toast&#x3E;</code> component, you can easily do so by adding a <code>bg-primary</code>, <code>bg-secondary</code>, and any other <code>bg-*</code> modifier class to the main <code>&#x3C;Toast&#x3E;</code> component.</p>
+        }
+        
+        onChangewheelalignment(e) {
+          this.setState({
+            wheelalignment: e.target.value
+          })
+        }
+          
+          onChangeoilchange(e) {
+            this.setState({
+              oilchange: e.target.value
+            })
           }
-          scope={{ Toast, Button, useState, FontAwesomeIcon, faBootstrap, showPrimary, setShowPrimary, handleClosePrimary, showTertiary, setShowTertiary, handleCloseTertiary }}
-          imports={`import React, { useState } from 'react';
-import { Toast, Button } from '@themesberg/react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBootstrap } from '@fortawesome/free-brands-svg-icons';
+          onChangecarinsurance(e) {
+            this.setState({
+              carinsurance: e.target.value
+            })
+          }
+          onChangechildrenbenefit(e) {
+            this.setState({
+              childrenbenefit: e.target.value
+            })
+          }
+          onChangefamilyinsurance(e) {
+            this.setState({
+            familyinsurance: e.target.value
+            })
+          }
+         
+      
+          
+        
+          
+          
+          
+          onback(){
+            window.location='/#/dashboard/overview'
+            }
+     
+          onSubmit(e) {
+            e.preventDefault();
 
-const [showPrimary, setShowPrimary] = useState(true);
-const [showTertiary, setShowTertiary] = useState(true);
+  
+ 
+    
+     
+  
+   
+  
 
-const handleClosePrimary = () => setShowPrimary(false);
-const handleCloseTertiary = () => setShowTertiary(false);`}
-          example={`<React.Fragment>
-  <Toast show={showPrimary} onClose={handleClosePrimary} className="bg-primary text-white my-3">
-      <Toast.Header className="text-primary" closeButton={false}>
-          <FontAwesomeIcon icon={faBootstrap} />
-          <strong className="me-auto ms-2">Themesberg</strong>
-          <small>11 mins ago</small>
-          <Button variant="close" size="xs" onClick={handleClosePrimary} />
-      </Toast.Header>
-      <Toast.Body>
-          Hello, world! This is a toast message.
-      </Toast.Body>
-  </Toast>
+            const trainer = {
+              name: this.state.wheelalignment,
+              password: this.state.oilchange,
+              email:this.state.carinsurance,
+              profilepicture:this.state.childrenbenefit,
+              role:this.state.familyinsurance,
+              
+             
 
-  <Toast show={showTertiary} onClose={handleCloseTertiary} className="bg-secondary text-white my-3">
-      <Toast.Header className="text-primary" closeButton={false}>
-          <FontAwesomeIcon icon={faBootstrap} />
-          <strong className="me-auto ms-2">Themesberg</strong>
-          <small>11 mins ago</small>
-          <Button variant="close" size="xs" onClick={handleCloseTertiary} />
-      </Toast.Header>
-      <Toast.Body>
-          Hello, world! This is a toast message.
-      </Toast.Body>
-  </Toast>
-</React.Fragment>`}
-        />
+        
+            }
+        
+            
+        
+            axios.post('https://acabnodejs.herokuapp.com/driverbenefitscheme/add', trainer)
+            .then(function(response){
+        
+              if(response.data ==='Subadmin added!'){
+                alert("Subadmin Added")
+                  window.location='/#/components/alerts'
+              }
+             }) 
+          }
+        
+    render(){
+        return(
+            <div style={{marginTop:"50px"}}>
+              <Card border="light" className="bg-white shadow-sm mb-4">
+      <Card.Body>
+        <h5 className="mb-4">Driver Benifit Scheme</h5>
+        <Form onSubmit={this.onSubmit}>
+          <Row>
+            <Col md={6} className="mb-3">
+              <Form.Group id="firstName">
+                <Form.Label> Wheel Alignment </Form.Label>
+                <Form.Control required type="number"  placeholder="" value={this.state.wheelalignment}
+              onChange={this.onChangewheelalignment}
+              
+             />
+              </Form.Group>
+            </Col>
+           
+            
 
-      </Container>
-    </article>
-  );
-};
+            
+            
+          </Row>
+          <Row className="align-items-center">
+          <Col md={6} className="mb-3">
+              <Form.Group id="firstName">
+                <Form.Label> Oil Change </Form.Label>
+                <Form.Control required type="number"  placeholder="" value={this.state.oilchange}
+              onChange={this.onChangeoilchange}
+              
+             />
+              </Form.Group>
+            </Col>
+            
+          </Row>
+          <Row>
+          <Col md={6} className="mb-3">
+              <Form.Group id="emal">
+                <Form.Label>Car Insurance</Form.Label>
+                <Form.Control required type="text" placeholder="" value={this.state.carinsurance}
+              onChange={this.onChangecarinsurance}
+              
+             />
+          
+              
+              </Form.Group>
+              </Col>
+         
+             
+            </Row>
+            <Row>
+            <Col md={6} className="mb-3">
+              <Form.Group id="phone">
+                <Form.Label>Children Benefit Scheme</Form.Label>
+                <Form.Control required type="text"  placeholder="" value={this.state.childrenbenefit }
+              onChange={this.onChangechildrenbenefit} />
+              </Form.Group>
+            </Col>
+            
+            
+            
+            </Row>
+            <Row>
+            <Col md={6} className="mb-3">
+              <Form.Group id="percenta">
+                <Form.Label>Family Insurance Scheme</Form.Label>
+                <Form.Control required type="text" placeholder="" value={this.state.familyinsurance}
+              onChange={this.onChangefamilyinsurance} max="100" />
+              </Form.Group>
+            </Col>
+            </Row>
+          
+          <div className="mt-3">
+            <Button variant="primary" type="submit">Save </Button>
+          
+          </div>
+        
+        </Form>
+        <div className="mt-3">
+            <Button variant="primary" type="submit" onClick={this.onback}>Back</Button>
+          
+          </div>
+      </Card.Body>
+    </Card>
+                
+            </div>
+        )
+    }
+}

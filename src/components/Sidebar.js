@@ -167,7 +167,7 @@ export default (props = {}) => {
                 
               </CollapsableNavItem>
               <CollapsableNavItem eventKey="examples/" title="Driver Benefit  Scheme" icon={faFileAlt}>
-                <NavItem title="Add " link={Routes.Signin.path} />
+                <NavItem title="Add " link={Routes.Toasts.path} />
                 <NavItem title="View " link={Routes.Signin.path} />
                 
                 
