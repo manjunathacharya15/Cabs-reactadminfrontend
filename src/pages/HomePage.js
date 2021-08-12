@@ -31,7 +31,9 @@ import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Preloader from "../components/Preloader";
-
+import Fleetowner from "../components/Fleetowner";
+import Enrolledit from "../components/enrolledit";
+import Editenroll from "../components/editenroll";
 import Accordion from "./components/Accordion";
 import Alerts from "./components/Alerts";
 import Badges from "./components/Badges";
@@ -118,6 +120,9 @@ export default () => (
 
     {/* components */}
     <RouteWithSidebar exact path={Routes.Accordions.path} component={Accordion} />
+    <RouteWithSidebar exact path={Routes.Fleetowner.path} component={Fleetowner} />
+    <RouteWithSidebar exact path={Routes.Enrolledit.path} component={Enrolledit} />
+    <RouteWithSidebar exact path={Routes.Editenroll.path} component={Editenroll} />
     <RouteWithSidebar exact path={Routes.Alerts.path} component={Alerts} />
     <RouteWithSidebar exact path={Routes.Badges.path} component={Badges} />
     <RouteWithSidebar exact path={Routes.Breadcrumbs.path} component={Breadcrumbs} />

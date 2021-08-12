@@ -87,7 +87,7 @@ export default class Adduser extends Component{
            ofirstname:'',
            omiddlename:'',
            olastname:'',
-           odateofbirth:new Date(),
+           odateofbirth:'',
            ogender:'',
            oemail:'',
            ophonenumber:'',
@@ -102,7 +102,6 @@ export default class Adduser extends Component{
            occity:'',
            oczipcode:'',
            oadharprooffront:'',
-           oadharprooffront:'',
            oadharproofback:'',
            opanproof:'',
            vvehiclemodel:'',
@@ -114,9 +113,9 @@ export default class Adduser extends Component{
            vrccardnumber:'',
            vinsurancenumber:'',
            vemmissiontest:'',
-           vrccardrenewaldate:new Date(),
-           vinsurancerenewaldate:new Date(),
-           vemmissiontestrenewaldate:new Date(),
+           vrccardrenewaldate:'',
+           vinsurancerenewaldate:'',
+           vemmissiontestrenewaldate:'',
            vtaxrenewal:'',
            vstatepermit:'',
            vnationalpermit:'',
@@ -124,7 +123,7 @@ export default class Adduser extends Component{
            vnationalpermitdocument:'',
            vinsurancedocument:'',
            vvehiclepicture:'',
-           vemmissiontestdocument:'',
+           vemissiontestdocument:'',
            vrccardproof:'',
            vtaxrenewalproof:'',
            ddrivername:'',
@@ -132,7 +131,7 @@ export default class Adduser extends Component{
            dgender:'',
            dpermanentaddress:'',
            dpresentaddress:'',
-           ddateofbirth:new Date(),
+           ddateofbirth:'',
            dmobilenumber:'',
            demergencycontactnumber:'',
            dadharcardnumber:'',
@@ -152,12 +151,103 @@ export default class Adduser extends Component{
            bpassbookphoto:'',
 
 
-
          
-            trainer:[]
+            customers:[]
             
             
           }
+        }
+        componentDidMount() {
+   
+            axios.get('https://acabnodejs.herokuapp.com/enrollfleetowner/' + this.props.match.params.id)
+          .then(response => {
+            console.log(response.data.ofirstname)
+            this.setState({ 
+                  id : response.data._id,
+                  ofirstname : response.data.ofirstname,
+                
+                  omiddlename:response.data.omiddlename,
+                  olastname:response.data.olastname,
+                  odateofbirth:response.data.odateofbirth,
+                  ogender:response.data.ogender,
+                  oemail:response.data.oemail,
+                  ophonenumber:response.data.ophonenumber,
+                  opermanentaddress:response.data.opermanentaddress,
+                  opcountry:response.data.opcountry,
+                  opstate:response.data.opstate,
+                  opcity:response.data.opcity,
+                  opzipcode:response.data.opzipcode,
+                  ocurrentaddress:response.data.ocurrentaddress,
+                  occountry:response.data.occountry,
+                  ocstate:response.data.ocstate,
+
+                  occity:response.data.occity,
+                  oczipcode:response.data.oczipcode,
+                  oadharprooffront:response.data.oadharprooffront,
+                  oadharproofback:response.data.oadharproofback,
+                  opanproof:response.data.opanproof,
+                  vvehiclemodel:response.data.vehicledetails[0].vvehiclemodel,
+                  vvehicletype:response.data.vehicledetails[0].vvehicletype,
+                  vvehiclecapacity:response.data.vehicledetails[0].vvehiclecapacity,
+                  vregistrationnumber:response.data.vehicledetails[0].vregistrationnumber,
+                  vchassisnumber:response.data.vehicledetails[0].vchassisnumber,
+                  venginenumber:response.data.vehicledetails[0].venginenumber,
+                  vrccardnumber:response.data.vehicledetails[0].vrccardnumber,
+                  vinsurancenumber:response.data.vehicledetails[0].vinsurancenumber,
+                  vemmissiontest:response.data.vehicledetails[0].vemmissiontest,
+                  vrccardrenewaldate:response.data.vehicledetails[0].vrccardrenewaldate,
+                  vinsurancerenewaldate:response.data.vehicledetails[0].vinsurancerenewaldate,
+                  vemmissiontestrenewaldate:response.data.vehicledetails[0].vemmissiontestrenewaldate,
+                  vtaxrenewal:response.data.vehicledetails[0].vtaxrenewal,
+                  vstatepermit:response.data.vehicledetails[0].vstatepermit,
+                  vnationalpermit:response.data.vehicledetails[0].vnationalpermit,
+
+                  vstatepermitdocument:response.data.vehicledetails[0].vstatepermitdocument,
+                  vnationalpermitdocument:response.data.vehicledetails[0].vnationalpermitdocument,
+                  vinsurancedocument:response.data.vehicledetails[0].vinsurancedocument,
+                  vvehiclepicture:response.data.vehicledetails[0].vvehiclepicture,
+                  vemissiontestdocument:response.data.vehicledetails[0].vemissiontestdocument,
+                  vrccardproof:response.data.vehicledetails[0].vrccardproof,
+                  vtaxrenewalproof:response.data.vehicledetails[0].vtaxrenewalproof,
+
+                  ddrivername:response.data.driverdetails[0].ddrivername,
+                  ddriverid:response.data.driverdetails[0].ddriverid,
+                  dgender:response.data.driverdetails[0].dgender,
+                  dpermanentaddress:response.data.driverdetails[0].dpermanentaddress,
+                  dpresentaddress:response.data.driverdetails[0].dpresentaddress,
+                  ddateofbirth:response.data.driverdetails[0].ddateofbirth,
+                  dmobilenumber:response.data.driverdetails[0].dmobilenumber,
+                  demergencycontactnumber:response.data.driverdetails[0].demergencycontactnumber,
+                  dadharcardnumber:response.data.driverdetails[0].dadharcardnumber,
+                  dinsurancenumber:response.data.driverdetails[0].dinsurancenumber,
+                  ddrivinglicence:response.data.driverdetails[0].ddrivinglicence,
+                  dlanguagesknown:response.data.driverdetails[0].dlanguagesknown,
+                  dpoliceverificationcertificate:response.data.driverdetails[0].dpoliceverificationcertificate,
+                  ddrivinglicenceproof:response.data.driverdetails[0].ddrivinglicenceproof,
+                  dpoliceverificationproof:response.data.driverdetails[0].dpoliceverificationproof,
+                  dinsuranceproof:response.data.driverdetails[0].dinsuranceproof,
+                  dfrontadharproof:response.data.driverdetails[0].dfrontadharproof,
+                  dbackadharproof:response.data.driverdetails[0].dbackadharproof,
+                  bbankname:response.data.bankdetails.bbankname,
+                  baccountnumber:response.data.bankdetails.baccountnumber,
+                  bbranchcode:response.data.bankdetails.bbranchcode,
+                  bifsccode:response.data.bankdetails.bifsccode,
+                  bpassbookphoto:response.data.bankdetails.bpassbookphoto
+
+
+
+                
+      
+            
+              })
+            })
+      
+        
+          
+          .catch((error) => {
+            console.log(error);
+          })
+          
         }
         onChangeofirstname(e) {
             this.setState({
@@ -174,9 +264,9 @@ export default class Adduser extends Component{
               olastname: e.target.value
             })
           }
-          onChangeodateofbirth(date) {
+          onChangeodateofbirth(e) {
             this.setState({
-              odateofbirth: date
+              odateofbirth: e.target.value
             })
           }
           onChangeogender(e) {
@@ -244,6 +334,7 @@ export default class Adduser extends Component{
               oczipcode: e.target.value
             })
           }
+          
           onChangeouploadaadharprooffront(e) {
             this.setState({
               oadharprooffront: e.target.value
@@ -304,19 +395,19 @@ export default class Adduser extends Component{
               vemmissiontest: e.target.value
             })
           }
-          onChangevrccardrenewaldate(date) {
+          onChangevrccardrenewaldate(e) {
             this.setState({
-              vrccardrenewaldate: date
+              vrccardrenewaldate: e.target.value
             })
           }
-          onChangevinsurencerenewaldate(date) {
+          onChangevinsurencerenewaldate(e) {
             this.setState({
-              vinsurencerenewaldate: date
+              vinsurancerenewaldate: e.target.value
             })
           }
-          onChangevemmissiontestrenewaldate(date) {
+          onChangevemmissiontestrenewaldate(e) {
             this.setState({
-              vemmissiontestrenewaldate: date
+              vemmissiontestrenewaldate: e.target.value
             })
           }
           onChangevtaxrenewal(e) {
@@ -356,7 +447,7 @@ export default class Adduser extends Component{
           }
           onChangevuploademmissiontestdocument(e) {
             this.setState({
-              vemmissiontestdocument: e.target.value
+              vemissiontestdocument: e.target.value
             })
           }
           onChangevuploadrccardproof(e) {
@@ -394,9 +485,9 @@ export default class Adduser extends Component{
               dpresentaddress: e.target.value
             })
           }
-          onChangeddateofbirth(date) {
+          onChangeddateofbirth(e) {
             this.setState({
-              ddateofbirth: date
+              ddateofbirth: e.target.value
             })
           }
           onChangedmobilenumber(e) {
@@ -511,8 +602,8 @@ export default class Adduser extends Component{
               ocstate:this.state.ocstate,
               occity:this.state.occity,
               oczipcode:this.state.oczipcode,
-              oadharproofback:this.state.oadharproofback,
               oadharprooffront:this.state.oadharprooffront,
+              oadharproofback:this.state.oadharproofback,
               opanproof:this.state.opanproof,
               vvehiclemodel:this.state.vvehiclemodel,
               vvehicletype:this.state.vvehicletype,
@@ -533,7 +624,7 @@ export default class Adduser extends Component{
               vnationalpermitdocument:this.state.vnationalpermitdocument,
               vinsurancedocument:this.state.vinsurancedocument,
               vvehiclepicture:this.state.vvehiclepicture,
-              vemissiontestdocument:this.state.vemmissiontestdocument,
+              vemissiontestdocument:this.state.vemissiontestdocument,
               vrccardproof:this.state.vrccardproof,
               vtaxrenewalproof:this.state.vtaxrenewalproof,
               ddrivername:this.state.ddrivername,
@@ -568,11 +659,11 @@ export default class Adduser extends Component{
         
             console.log(trainer);
         
-            axios.post('https://acabnodejs.herokuapp.com/enrollfleetowner/add', trainer)
+            axios.post('https://acabnodejs.herokuapp.com/enrollfleetowner/update/'+ this.props.match.params.id,trainer )
             .then(function(response){
         
-              if(response.data ==='Enrollfleetowner added!'){
-                  window.location='/#/dashboard/overview'
+              if(response.data ==='Enrollfleetowner updated!'){
+                  window.location='/#/components/fleetowner'
               }
              }) 
           }
@@ -615,20 +706,8 @@ export default class Adduser extends Component{
             <Col md={3} className="mb-3">
               <Form.Group id="emal">
                 <Form.Label>Date Of Birth</Form.Label>
-                <Col md={3} className="mb-3">
-            <DatePicker
-            
-             selected={this.state.odateofbirth}
-             onChange={this.onChangeodateofbirth}
-             name="startDate"
-        
-            
-            
-             timeCaption="time"
-             dateFormat="MMMM dd yyyy "
-            />
-        
-            </Col>
+                <Form.Control required type="text" placeholder="Enter Your Lastname" value={this.state.odateofbirth}
+              onChange={this.onChangeodateofbirth} />
             
               </Form.Group>
             </Col>
@@ -776,7 +855,7 @@ export default class Adduser extends Component{
             <Col md={4} className="mb-3">
               <Form.Group id="gender">
                 <Form.Label>Upload Pan Card</Form.Label>
-                <Form.Control required type="text" placeholder="" value={this.state.ouploadpancard}
+                <Form.Control required type="text" placeholder="" value={this.state.opanproof}
               onChange={this.onChangeouploadpancard} />
               </Form.Group>
             </Col>
@@ -859,7 +938,7 @@ export default class Adduser extends Component{
   <Col md={4} className="mb-3">
     <Form.Group id="firstName">
       <Form.Label> Insurence Number</Form.Label>
-      <Form.Control required type="text" placeholder="Enter Insurence Number" value={this.state.vinsurencenumber}
+      <Form.Control required type="text" placeholder="Enter Insurence Number" value={this.state.vinsurancenumber}
     onChange={this.onChangevinsurencenumber}  />
     </Form.Group>
   </Col>
@@ -875,54 +954,26 @@ export default class Adduser extends Component{
 <Col md={4} className="mb-3">
     <Form.Group id="firstName">
       <Form.Label> RC Card Renewal Date</Form.Label>
-      <br/>
-      <DatePicker
-            
-             selected={this.state.vrccardrenewaldate}
-             onChange={this.onChangevrccardrenewaldate}
-             name="startDate"
-        
-            
-             
-             timeCaption="time"
-             dateFormat="MMMM dd yyyy "
-            />
+      
+      <Form.Control required type="text" placeholder="Enter Your Lastname" value={this.state.vrccardrenewaldate}
+              onChange={this.onChangevrccardrenewaldate} />
       
     </Form.Group>
   </Col>
   <Col md={4} className="mb-3">
     <Form.Group id="firstName">
       <Form.Label> Insurence Renewal Date</Form.Label>
-      <br/>
-      <DatePicker
-            
-             selected={this.state.vinsurencerenewaldate}
-             onChange={this.onChangevinsurencerenewaldate}
-             name="startDate"
-        
-            
-            
-             timeCaption="time"
-             dateFormat="MMMM dd yyyy "
-            />
+     
+      <Form.Control required type="text" placeholder="Enter Your Lastname" value={this.state.vinsurancerenewaldate}
+              onChange={this.onChangevinsurencerenewaldate} />
       
     </Form.Group>
   </Col>
   <Col md={4} className="mb-3">
     <Form.Group id="firstName">
       <Form.Label>Emmission Test Renewal Date</Form.Label>
-      <br/>
-      <DatePicker
-            
-             selected={this.state.vemmissiontestrenewaldate}
-             onChange={this.onChangevemmissiontestrenewaldate}
-             name="startDate"
-        
-            
-             
-             timeCaption="time"
-             dateFormat="MMMM dd yyyy "
-            />
+      <Form.Control required type="text" placeholder="Enter Your Lastname" value={this.state.vemmissiontestrenewaldate}
+              onChange={this.onChangevemmissiontestrenewaldate} />
       
     </Form.Group>
   </Col>
@@ -984,7 +1035,7 @@ export default class Adduser extends Component{
   <Col md={3} className="mb-3">
     <Form.Group id="firstName">
       <Form.Label> Upload Emmission Test Document</Form.Label>
-      <Form.Control required type="text" placeholder="Enter Upload Emmission Test Document" value={this.state.vemmissiontestdocument}
+      <Form.Control required type="text" placeholder="Enter Upload Emmission Test Document" value={this.state.vemissiontestdocument}
     onChange={this.onChangevuploademmissiontestdocument}  />
     </Form.Group>
   </Col>
@@ -1030,11 +1081,9 @@ export default class Adduser extends Component{
             <Col md={4} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> Gender</Form.Label>
-                <select class="form-control" id="calculator" name="calculator" onChange={this.onChangedgender} value={this.state.dgender}>
-                                                    <option value="Male">Male</option>
-                                                    <option value="Female">Female</option>
-                                                    
-                                                    
+                <select class="form-control" placeholder="select Country" id="calculator" name="calculator" onChange={this.onChangedgender} value={this.state.dgender}>
+                                                    <option value="Male">MALE</option>
+                                                    <option value="Female">FEMALE</option>
                                                     
                                                 </select>
               </Form.Group>
@@ -1061,18 +1110,8 @@ export default class Adduser extends Component{
             <Col md={4} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> Date Of Birth</Form.Label>
-                <br/>
-                <DatePicker
-            
-             selected={this.state.ddateofbirth}
-             onChange={this.onChangeddateofbirth}
-             name="startDate"
-        
-            
-             
-             timeCaption="time"
-             dateFormat="MMMM dd yyyy "
-            />
+                <Form.Control required type="text" placeholder="Enter Your Lastname" value={this.state.ddateofbirth}
+              onChange={this.onChangeddateofbirth} />
               </Form.Group>
             </Col>
             <Col md={4} className="mb-3">

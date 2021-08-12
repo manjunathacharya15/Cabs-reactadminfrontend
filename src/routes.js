@@ -16,6 +16,7 @@ export const Routes = {
     Lock: { path: "/examples/lock" },
     NotFound: { path: "/examples/404" },
     ServerError: { path: "/examples/500" },
+    
 
     // docs
     DocsOverview: { path: "/documentation/overview" },
@@ -46,5 +47,8 @@ export const Routes = {
     Toasts: { path: "/components/toasts" },
     WidgetsComponent: { path: "/components/widgets" },
     Widget: { path: "/components/userdetail" },
+    Fleetowner:{path:"/components/fleetowner"},
+    Enrolledit:{path:"/components/enrolledit/:id"},
+    Editenroll:{path:"/components/editenroll/:id"}
 
 };

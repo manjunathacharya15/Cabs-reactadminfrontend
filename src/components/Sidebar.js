@@ -182,9 +182,9 @@ export default (props = {}) => {
 
 
               <NavItem title="Blocked Driver " link={Routes.Buttons.path} icon={faUserTie}npm />
-              <CollapsableNavItem eventKey="examples/" title="Enroll Passenger" icon={faFileAlt}>
-                <NavItem title="Add " link={Routes.Signin.path} />
-                <NavItem title="View " link={Routes.Signin.path} />
+              <CollapsableNavItem eventKey="examples/" title="Enroll Fleet Owner" icon={faFileAlt}>
+                <NavItem title="Add " link={Routes.Tooltips.path} />
+                <NavItem title="View " link={Routes.Fleetowner.path} />
                 
                 
               </CollapsableNavItem>

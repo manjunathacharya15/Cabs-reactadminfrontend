@@ -9,6 +9,7 @@ import ForgotPasswordImg from "../assets/img/pages/forgot-password.jpg";
 import ResetPasswordImg from "../assets/img/pages/reset-password.jpg";
 import NotFoundImg from "../assets/img/pages/404.jpg";
 import ServerErrorImg from "../assets/img/pages/500.jpg";
+import Fleetowner from "../assets/img/pages/500.jpg";
 
 import { Routes } from "../routes";
 
@@ -73,5 +74,11 @@ export default [
         "name": "500",
         "image": ServerErrorImg,
         "link": Routes.ServerError.path
+    },
+    {
+        "id": 11,
+        "name": "50",
+        "image": Fleetowner,
+        "link": Routes.Fleetowner.path
     }
 ];
