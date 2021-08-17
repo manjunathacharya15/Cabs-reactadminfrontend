@@ -188,26 +188,45 @@ export default (props = {}) => {
                 
                 
               </CollapsableNavItem>
-              <CollapsableNavItem eventKey="examples/" title="Add Corporate" icon={faFileAlt}>
-                <NavItem title="Add " link={Routes.Signin.path} />
-                <NavItem title="View " link={Routes.Signin.path} />
+              <CollapsableNavItem eventKey="examples/" title="Enroll Passenger" icon={faFileAlt}>
+                <NavItem title="Add " link={Routes.Addpassenger.path} />
+                <NavItem title="View " link={Routes.Viewpassenger.path} />
                 
                 
               </CollapsableNavItem>
-              <NavItem title="Rides" link={Routes.Alerts.path} icon={faMoneyCheckAlt} />
-              <NavItem title="Active Trips" icon={faHandHoldingUsd} link={Routes.Accordions.path} />
-              <NavItem title="Completed Trips" link={Routes.Alerts.path} icon={faMoneyCheckAlt} />
-              <NavItem title="Booked Trips" icon={faHandHoldingUsd} link={Routes.Accordions.path} />
-              <NavItem title="Cancelled Trips" link={Routes.Alerts.path} icon={faMoneyCheckAlt} />
-              <NavItem title="Wallet" icon={faHandHoldingUsd} link={Routes.Accordions.path} />
-              <NavItem title="Passenger Wallet" link={Routes.Alerts.path} icon={faMoneyCheckAlt} />
-              <NavItem title="Driver Wallet" icon={faHandHoldingUsd} link={Routes.Accordions.path} />
-              <NavItem title="Statement" link={Routes.Alerts.path} icon={faMoneyCheckAlt} />
-              <NavItem title="Over Ride Statement" icon={faHandHoldingUsd} link={Routes.Accordions.path} />
-              <NavItem title="Driver Statement" link={Routes.Alerts.path} icon={faMoneyCheckAlt} />
-              <NavItem title="Daily Statement" icon={faHandHoldingUsd} link={Routes.Accordions.path} />
-              <NavItem title="Monthly Statement" link={Routes.Alerts.path} icon={faMoneyCheckAlt} />
-              <NavItem title="Yearly Statement" icon={faHandHoldingUsd} link={Routes.Accordions.path} />
+              <CollapsableNavItem eventKey="examples/" title="Add Corporate" icon={faFileAlt}>
+                <NavItem title="Add " link={Routes.Addcorporate.path} />
+                <NavItem title="View " link={Routes.Viewcorporate.path} />
+                
+                
+              </CollapsableNavItem>
+              <CollapsableNavItem eventKey="examples/" title="Rides" icon={faFileAlt}>
+                <NavItem title="Active Trips " link={Routes.Activetrips.path} />
+                <NavItem title="Completed Trips " link={Routes.Completedtrips.path} />
+                <NavItem title="Booked trips " link={Routes.Bookedtrips.path} />
+                <NavItem title="Cancelled Trips " link={Routes.Cancelledtrips.path} />
+                
+                
+              </CollapsableNavItem>
+              <CollapsableNavItem eventKey="examples/" title="Wallets" icon={faFileAlt}>
+                <NavItem title="Passenger Wallet " link={Routes.Activetrips.path} />
+                <NavItem title="Driver Wallet " link={Routes.Completedtrips.path} />
+                
+                
+              </CollapsableNavItem>
+              <CollapsableNavItem eventKey="examples/" title="Statements" icon={faFileAlt}>
+                <NavItem title="Over All Ride statement " link={Routes.Overall.path} />
+                <NavItem title="Driver Statement " link={Routes.Providerstatement.path} />
+                <NavItem title="Daily Statement " link={Routes.Dailystatement.path} />
+                <NavItem title="Monthly Statement " link={Routes.Monthlystatement.path} />
+                <NavItem title="Yearly Statement " link={Routes.yearlystatement.path} />
+                
+                
+              </CollapsableNavItem>
+              
+              
+              
+             
               <NavItem title="Payment Settings" link={Routes.Alerts.path} icon={faMoneyCheckAlt} />
               <NavItem title="Documents Renewal Report" icon={faHandHoldingUsd} link={Routes.Accordions.path} />
               <NavItem title="Site Setting" link={Routes.Alerts.path} icon={faMoneyCheckAlt} />

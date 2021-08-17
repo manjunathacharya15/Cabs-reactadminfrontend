@@ -49,6 +49,22 @@ export const Routes = {
     Widget: { path: "/components/userdetail" },
     Fleetowner:{path:"/components/fleetowner"},
     Enrolledit:{path:"/components/enrolledit/:id"},
-    Editenroll:{path:"/components/editenroll/:id"}
+    Editenroll:{path:"/components/editenroll/:id"},
+    Addpassenger:{path:"/components/addpassenger"},
+    Viewpassenger:{path:"/components/viewpassenger"},
+    Editpassenger:{path:"/components/editpassenger/:id"},
+    Addcorporate:{path:"/components/addcorporate"},
+    Viewcorporate:{path:"/components/viewcorporate"},
+    Editcorporate:{path:"/components/editcorporate/:id"},
+    Addvehicle:{path:"/components/addvehicle/:id"},
+    Activetrips:{path:"/components/activetrips"},
+    Completedtrips:{path:"/components/completedtrips"},
+    Bookedtrips:{path:"/components/bookedtrips"},
+    Cancelledtrips:{path:"/components/cancelledtrips"},
+    Overall:{path:"/components/overall"},
+    Providerstatement:{path:"/components/providerstatement"},
+    Dailystatement:{path:"/components/dailystatement"},
+    Monthlystatement:{path:"/components/monthlystatement"},
+    yearlystatement:{path:"/components/yearlystatement"},
 
 };

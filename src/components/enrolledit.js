@@ -673,567 +673,530 @@ export default class Adduser extends Component{
               <Card border="light" className="bg-white shadow-sm mb-4">
       <Card.Body>
         <h3 className="mb-4">Onfleet Owner information</h3>
-        <Form onSubmit={this.onSubmit}>
-          <Row>
-            <Col md={4} className="mb-3">
-              <Form.Group id="firstName">
-                <Form.Label> First Name</Form.Label>
-                <Form.Control required type="text" placeholder="Enter your firsttname" value={this.state.ofirstname}
-                onChange={this.onChangeofirstname}
-               />
-              </Form.Group>
-            </Col>
-            <Col md={4} className="mb-3">
-              <Form.Group id="firstName">
-                <Form.Label> Middle Name</Form.Label>
-                <Form.Control required type="text" placeholder="Enter your  Middlename" value={this.state.omiddlename}
-             />
-              </Form.Group>
-            </Col>
-            
-            <Col md={4} className="mb-3">
-              <Form.Group id="gender">
-                <Form.Label>Last Name</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Your Lastname" value={this.state.olastname}
-             />
-              </Form.Group>
-            </Col>
-          </Row>
-          <Row className="align-items-center">
-   
-          </Row>
-          <Row>
-            <Col md={3} className="mb-3">
-              <Form.Group id="emal">
-                <Form.Label>Date Of Birth</Form.Label>
-
-                <Form.Control required type="text" placeholder="Enter Your Lastname" value={this.state.odateofbirth}
-             />
-            
-              </Form.Group>
-            </Col>
-            <Col md={3} className="mb-3">
-              <Form.Group id="phone">
-                <Form.Label>Gender</Form.Label>
-                <Form.Control required type="email" placeholder="Enter Your Email Id" value={this.state.ogender}
-            />
-              </Form.Group>
-            </Col>
-            <Col md={3} className="mb-3">
-              <Form.Group id="phone">
-                <Form.Label>Email ID</Form.Label>
-                <Form.Control required type="email" placeholder="Enter Your Email Id" value={this.state.oemail}
-            />
-              </Form.Group>
-            </Col>
-            <Col md={3} className="mb-3">
-              <Form.Group id="phone">
-                <Form.Label>Phone Number</Form.Label>
-                <Form.Control required type="number" placeholder="0123456789" value={this.state.ophonenumber}
-              onChange={this.onChangeophonenumber} />
-              </Form.Group>
-            </Col>
-          </Row>
-          <Row>
-          <Col md={9} className="mb-3">
-          <Form.Group id="phone">
-          <Form.Label>Permanemt Adress</Form.Label>
-          <br/>
-         
-            <textarea style={{width:"50%" ,height:"50%"}} placeholder="Enter Your Permanemt Address"  value={this.state.opermanentaddress} />
-           
-            </Form.Group>
-            </Col>
-          </Row>
-          <Row>
-          <Col md={3} className="mb-3">
-              <Form.Group id="phone">
-              <Form.Label>Country</Form.Label>
-              <Form.Control required type="email" placeholder="Enter Your Email Id" value={this.state.opcountry}
-            />
-              </Form.Group>
-            </Col>
-            <Col md={3} className="mb-3">
-              <Form.Group id="phone">
-                <Form.Label>State</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Your Lastname" value={this.state.opstate}
-             />
-              </Form.Group>
-            </Col>
-            <Col md={3} className="mb-3">
-              <Form.Group id="phone">
-              <Form.Label>City</Form.Label>
-              <Form.Control required type="text" placeholder="Enter Your Lastname" value={this.state.opcity}
-             />
-              </Form.Group>
-            </Col>
-            <Col md={3} className="mb-3">
-              <Form.Group id="phone">
-                <Form.Label>Pin Code</Form.Label>
-                <Form.Control required type="number" placeholder="" value={this.state.opzipcode}
-              onChange={this.onChangeoppincode} />
-              </Form.Group>
-            </Col>
-          </Row>
-          <Row>
-          <Col md={9} className="mb-3">
-          <Form.Group id="phone">
-          <Form.Label>Cureent Adress</Form.Label>
-          <br/>
-         
-            <textarea style={{width:"50%" ,height:"50%"}} placeholder="Enter Your Current Address"  value={this.state.ocurrentaddress}/>
-           
-            </Form.Group>
-            </Col>
-          </Row>
-          <Row>
-          <Col md={3} className="mb-3">
-              <Form.Group id="phone">
-              <Form.Label>Country</Form.Label>
-              <Form.Control required type="text" placeholder="Enter Pin Code" value={this.state.occountry}
-              onChange={this.onChangeocpincode} />
-              </Form.Group>
-            </Col>
-            <Col md={3} className="mb-3">
-              <Form.Group id="phone">
-                <Form.Label>State</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Pin Code" value={this.state.ocstate}
-              onChange={this.onChangeocpincode} />
-              </Form.Group>
-            </Col>
-            <Col md={3} className="mb-3">
-              <Form.Group id="phone">
-              <Form.Label>City</Form.Label>
-              <Form.Control required type="text" placeholder="Enter Pin Code" value={this.state.occity}
-              onChange={this.onChangeocpincode} />
-              </Form.Group>
-            </Col>
-            <Col md={3} className="mb-3">
-              <Form.Group id="phone">
-                <Form.Label>Pin Code</Form.Label>
-                <Form.Control required type="number" placeholder="Enter Pin Code" value={this.state.oczipcode}
-              onChange={this.onChangeocpincode} />
-              </Form.Group>
-            </Col>
-          </Row>
-          <Row>
-            <Col md={4} className="mb-3">
-              <Form.Group id="firstName">
-                <Form.Label> Upload Front Aadhar Proof</Form.Label>
-                <Form.Control required type="text" placeholder="" value={this.state.oadharprooffront}
-              onChange={this.onChangeouploadaadharprooffront}  />
-              </Form.Group>
-            </Col>
-            <Col md={4} className="mb-3">
-              <Form.Group id="firstName">
-                <Form.Label> Upload Back Aadhar Proff</Form.Label>
-                <Form.Control required type="text" placeholder="" value={this.state.oadharproofback}
-              onChange={this.onChangeouploadaadharproofback} />
-              </Form.Group>
-            </Col>
-            
-            <Col md={4} className="mb-3">
-              <Form.Group id="gender">
-                <Form.Label>Upload Pan Card</Form.Label>
-                <Form.Control required type="text" placeholder="" value={this.state.opanproof}
-              onChange={this.onChangeouploadpancard} />
-              </Form.Group>
-            </Col>
-          </Row>
-
-
-          <Card border="light" className="bg-white shadow-sm mb-4">
-          <Card.Body>
-          <h3 className="mb-4">Vechile Details</h3>
-
-<Row>
-  <Col md={4} className="mb-3">
-    <Form.Group id="firstName">
-      <Form.Label> Vehicle Model</Form.Label>
-      <Form.Control required type="text" placeholder="Enter your  Vehicle  Model Name" value={this.state.vvehiclemodel}
-    onChange={this.onChangevvehiclemodal}  />
-    </Form.Group>
-  </Col>
-  <Col md={4} className="mb-3">
-    <Form.Group id="firstName">
-      <Form.Label> Vehicle Type</Form.Label>
-      <Form.Control required type="text" placeholder="Enter Your Lastname" value={this.state.vvehicletype}
-             />
-    </Form.Group>
-  </Col>
-  
-  <Col md={4} className="mb-3">
-    <Form.Group id="gender">
-      <Form.Label>Vehicle Capacity</Form.Label>
-      <Form.Control required type="text" placeholder="Enter Your Lastname" value={this.state.vvehiclecapacity}
-             />
-    </Form.Group>
-  </Col>
-</Row>
-<Row>
-<Col md={4} className="mb-3">
-    <Form.Group id="firstName">
-      <Form.Label> Registration Number</Form.Label>
-      <Form.Control required type="number" placeholder="Enter Registration Number" value={this.state.vregistrationnumber}
-    onChange={this.onChangevregistrationnumber}  />
-    </Form.Group>
-  </Col>
-  <Col md={4} className="mb-3">
-    <Form.Group id="firstName">
-      <Form.Label> Chassis Number</Form.Label>
-      <Form.Control required type="text" placeholder="Enter Chassis Number" value={this.state.vchassisnumber}
-    onChange={this.onChangevchassisnumber}  />
-    </Form.Group>
-  </Col>
-  <Col md={4} className="mb-3">
-    <Form.Group id="firstName">
-      <Form.Label>Engine Number</Form.Label>
-      <Form.Control required type="text" placeholder="Enter Engine Number" value={this.state.venginenumber}
-    onChange={this.onChangevenginenumber}  />
-    </Form.Group>
-  </Col>
-</Row>
-<Row>
-<Col md={4} className="mb-3">
-    <Form.Group id="firstName">
-      <Form.Label> RC Card Number</Form.Label>
-      <Form.Control required type="text" placeholder="Enter RC Card Number" value={this.state.vrccardproof}
-    onChange={this.onChangevrccardnumber}  />
-    </Form.Group>
-  </Col>
-  <Col md={4} className="mb-3">
-    <Form.Group id="firstName">
-      <Form.Label> Insurence Number</Form.Label>
-      <Form.Control required type="text" placeholder="Enter Insurence Number" value={this.state.vinsurancenumber}
-    onChange={this.onChangevinsurencenumber}  />
-    </Form.Group>
-  </Col>
-  <Col md={4} className="mb-3">
-    <Form.Group id="firstName">
-      <Form.Label>Emmission Test</Form.Label>
-      <Form.Control required type="text" placeholder="Enter Enmission Test" value={this.state.vemmissiontest}
-    onChange={this.onChangevemmissiontest}  />
-    </Form.Group>
-  </Col>
-</Row>
-<Row>
-<Col md={4} className="mb-3">
-    <Form.Group id="firstName">
-      <Form.Label> RC Card Renewal Date</Form.Label>
-      <Form.Control required type="text" placeholder="Enter Your Lastname" value={this.state.vrccardrenewaldate}
-             />
-      
-    </Form.Group>
-  </Col>
-  <Col md={4} className="mb-3">
-    <Form.Group id="firstName">
-      <Form.Label> Insurence Renewal Date</Form.Label>
-      <Form.Control required type="text" placeholder="Enter Your Lastname" value={this.state.vinsurancerenewaldate}
-             />
-      
-    </Form.Group>
-  </Col>
-  <Col md={4} className="mb-3">
-    <Form.Group id="firstName">
-      <Form.Label>Emmission Test Renewal Date</Form.Label>
-      <Form.Control required type="text" placeholder="Enter Your Lastname" value={this.state.vemmissiontestrenewaldate}
-             />
-      
-    </Form.Group>
-  </Col>
-</Row>
-<Row>
-<Col md={4} className="mb-3">
-    <Form.Group id="firstName">
-      <Form.Label> Tax Renewal </Form.Label>
-      <Form.Control required type="number" placeholder="Enter Tax Renewal" value={this.state.vtaxrenewal}
-    onChange={this.onChangevtaxrenewal}  />
-    </Form.Group>
-  </Col>
-  <Col md={4} className="mb-3">
-    <Form.Group id="firstName">
-      <Form.Label> State Permit</Form.Label>
-      <Form.Control required type="text" placeholder="Enter State Permit" value={this.state.vstatepermit}
-    onChange={this.onChangevstatepermit}  />
-    </Form.Group>
-  </Col>
-  <Col md={4} className="mb-3">
-    <Form.Group id="firstName">
-      <Form.Label>National Permit</Form.Label>
-      <Form.Control required type="text" placeholder="Enter National Permit" value={this.state.vnationalpermit}
-    onChange={this.onChangevnationalpermit}  />
-    </Form.Group>
-  </Col>
-</Row>
-<Row>
-<Col md={4} className="mb-3">
-    <Form.Group id="firstName">
-      <Form.Label> Upload State Permit Document</Form.Label>
-      <Form.Control required type="number" placeholder="Enter Upload State Permit Document" value={this.state.vstatepermitdocument}
-    onChange={this.onChangevuploadstatepermitdocument}  />
-    </Form.Group>
-  </Col>
-  <Col md={4} className="mb-3">
-    <Form.Group id="firstName">
-      <Form.Label> Upload National Permit Document</Form.Label>
-      <Form.Control required type="text" placeholder="Enter Upload National Permit Document" value={this.state.vnationalpermitdocument}
-    onChange={this.onChangevuploadnationalpermitdocument}  />
-    </Form.Group>
-  </Col>
-  <Col md={4} className="mb-3">
-    <Form.Group id="firstName">
-      <Form.Label> Upload Insurence Document</Form.Label>
-      <Form.Control required type="text" placeholder="Enter Upload Insurence" value={this.state.vinsurancedocument}
-    onChange={this.onChangevuploadinsurencedocument}  />
-    </Form.Group>
-  </Col>
-</Row>
-<Row>
-<Col md={3} className="mb-3">
-    <Form.Group id="firstName">
-      <Form.Label> Upload Vehicle Picture</Form.Label>
-      <Form.Control required type="number" placeholder="Enter Upload Vehicle Picture" value={this.state.vvehiclepicture}
-    onChange={this.onChangevuploadvehiclepicture}  />
-    </Form.Group>
-  </Col>
-  <Col md={3} className="mb-3">
-    <Form.Group id="firstName">
-      <Form.Label> Upload Emmission Test Document</Form.Label>
-      <Form.Control required type="text" placeholder="Enter Upload Emmission Test Document" value={this.state.vemissiontestdocument}
-    onChange={this.onChangevuploademmissiontestdocument}  />
-    </Form.Group>
-  </Col>
-  <Col md={3} className="mb-3">
-    <Form.Group id="firstName">
-      <Form.Label> Upload RC Proof Document</Form.Label>
-      <Form.Control required type="text" placeholder="Enter Upload RC Proof Document" value={this.state.vrccardproof}
-    onChange={this.onChangevuploadrccardproof}  />
-    </Form.Group>
-  </Col>
-  <Col md={3} className="mb-3">
-    <Form.Group id="firstName">
-      <Form.Label> Upload Tax Renewal Document</Form.Label>
-      <Form.Control required type="text" placeholder="Enter Upload Tax Renewal Proof" value={this.state.vtaxrenewalproof}
-    onChange={this.onChangevuploadtaxrenewalproof}  />
-    </Form.Group>
-  </Col>
-</Row>
-
-
-
-            </Card.Body>
-
-          </Card>
-          <Card border="light" className="bg-white shadow-sm mb-4">
-      <Card.Body>
-        <h3 className="mb-4">Driver information</h3>
         <Row>
             <Col md={4} className="mb-3">
               <Form.Group id="firstName">
-                <Form.Label> Driver Name</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Driver Name" value={this.state.ddrivername}
-              onChange={this.onChangeddrivername}  />
-              </Form.Group>
-            </Col>
-            <Col md={4} className="mb-3">
-              <Form.Group id="firstName">
-                <Form.Label> Driver ID</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Driver ID" value={this.state.ddriverid}
-              onChange={this.onChangeddriverid}  />
-              </Form.Group>
-            </Col>
-            <Col md={4} className="mb-3">
-              <Form.Group id="firstName">
-                <Form.Label> Gender</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Your Lastname" value={this.state.dgender}
-             />
-              </Form.Group>
-            </Col>
-            </Row>
-            <Row>
-            <Col md={6} className="mb-3">
-              <Form.Group id="firstName">
-                <Form.Label> Permanemt Address</Form.Label>
-                <br/>
-                <textarea style={{width:"50%"}} onChange={this.onChangedpermanentaddress} value={this.state.dpermanentaddress}/>
-              </Form.Group>
-            </Col>
-            <Col md={6} className="mb-3">
-              <Form.Group id="firstName">
-                <Form.Label> Current Adress</Form.Label>
-                <br/>
-                <textarea style={{width:"50%"}} onChange={this.onChangedcurrentaddress} value={this.state.dpresentaddress}/>
-              </Form.Group>
-            </Col>
-            
-            </Row>
-            <Row>
-            <Col md={4} className="mb-3">
-              <Form.Group id="firstName">
-                <Form.Label> Date Of Birth</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Your Lastname" value={this.state.ddateofbirth}
-             />
-              </Form.Group>
-            </Col>
-            <Col md={4} className="mb-3">
-              <Form.Group id="firstName">
-                <Form.Label> Mobile Number</Form.Label>
-                <Form.Control required type="number" max="0-9" placeholder="Enter Mobile Number" value={this.state.dmobilenumber}
-              onChange={this.onChangedmobilenumber}  />
-              </Form.Group>
-            </Col>
-            <Col md={4} className="mb-3">
-              <Form.Group id="firstName">
-                <Form.Label> Emergency Contact Number</Form.Label>
-                <Form.Control required type="number" maxLength="0-9" placeholder="Enter Emergency Contact Number" value={this.state.demergencycontactnumber}
-              onChange={this.onChangedemergencycontactnumber}  />
+                <label>First Name: <span style={{marginLeft:"15px"}}>{this.state.ofirstname}</span>     </label> 
+                
               </Form.Group>
             </Col>
             </Row>
             <Row>
             <Col md={4} className="mb-3">
               <Form.Group id="firstName">
-                <Form.Label> Aadhar Card Number</Form.Label>
-                <Form.Control required type="number" placeholder="Enter Aadhar Card Number" value={this.state.dadharcardnumber}
-              onChange={this.onChangedaadharcardnumber}  />
-              </Form.Group>
-            </Col>
-            <Col md={4} className="mb-3">
-              <Form.Group id="firstName">
-                <Form.Label> Insurence Number</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Insurence" value={this.state.dinsurancenumber}
-              onChange={this.onChangedinsurencenumber}  />
-              </Form.Group>
-            </Col>
-            <Col md={4} className="mb-3">
-              <Form.Group id="firstName">
-                <Form.Label> Driving Licence</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Driving Licence" value={this.state.ddrivinglicence}
-              onChange={this.onChangeddrivinglicence}  />
+                <label>Middle Name: <span style={{marginLeft:"15px"}}>{this.state.omiddlename}</span>     </label> 
+                
               </Form.Group>
             </Col>
             </Row>
             <Row>
             <Col md={4} className="mb-3">
               <Form.Group id="firstName">
-                <Form.Label> Police Verification Certificate</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Police Verification Certificate" value={this.state.dpoliceverificationcertificate}
-              onChange={this.onChangedpoliceverificationcertificate}  />
-              </Form.Group>
-            </Col>
-            <Col md={4} className="mb-3">
-              <Form.Group id="firstName">
-                <Form.Label> Language Known</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Language Known" value={this.state.dlanguagesknown}
-              onChange={this.onChangedlanguageknown}  />
-              </Form.Group>
-            </Col>
-            
-            </Row>
-            <Row>
-            <Col md={4} className="mb-3">
-              <Form.Group id="firstName">
-                <Form.Label> Upload Driving Licence Proof</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Driving Licence Proof" value={this.state.ddrivinglicenceproof}
-              onChange={this.onChangeduploaddrivinglicenceproof}  />
-              </Form.Group>
-            </Col>
-            <Col md={4} className="mb-3">
-              <Form.Group id="firstName">
-                <Form.Label> Upload Police Verification Proof</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Police Verification Proof" value={this.state.dpoliceverificationproof}
-              onChange={this.onChangeduploadpoliceverificationproof}  />
-              </Form.Group>
-            </Col>
-            <Col md={4} className="mb-3">
-              <Form.Group id="firstName">
-                <Form.Label> Upload Insurence Proof</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Insurence Proof" value={this.state.dinsuranceproof}
-              onChange={this.onChangeduploadinsurenceproof}  />
+                <label>Last Name: <span style={{marginLeft:"15px"}}>{this.state.olastname}</span>     </label> 
+                
               </Form.Group>
             </Col>
             </Row>
             <Row>
-            <Col md={6} className="mb-3">
+            <Col md={4} className="mb-3">
               <Form.Group id="firstName">
-                <Form.Label> Upload Front Aadhar Proof</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Aadhar Proof" value={this.state.dfrontadharproof}
-              onChange={this.onChangeduploadfrontaadharproof}  />
+                <label>Date Of Birth: <span style={{marginLeft:"15px"}}>{this.state.odateofbirth}</span>     </label> 
+                
               </Form.Group>
             </Col>
-            <Col md={6} className="mb-3">
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
               <Form.Group id="firstName">
-                <Form.Label>  Upload Back Aadhar Proof</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Aadhar Proof" value={this.state.dbackadharproof}
-              onChange={this.onChangeduploadbackaadharproof}  />
+                <label>Gender: <span style={{marginLeft:"15px"}}>{this.state.ogender}</span>     </label> 
+                
               </Form.Group>
             </Col>
-            
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Email ID: <span style={{marginLeft:"15px"}}>{this.state.oemail}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Phone Number: <span style={{marginLeft:"15px"}}>{this.state.ophonenumber}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Permanemt Address: <span style={{marginLeft:"15px"}}>{this.state.opermanentaddress}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Country: <span style={{marginLeft:"15px"}}>{this.state.opcountry}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>State: <span style={{marginLeft:"15px"}}>{this.state.opstate}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>City: <span style={{marginLeft:"15px"}}>{this.state.opcity}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Pin Code: <span style={{marginLeft:"15px"}}>{this.state.opzipcode}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Current Address: <span style={{marginLeft:"15px"}}>{this.state.ocurrentaddress}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Country: <span style={{marginLeft:"15px"}}>{this.state.occountry}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>State: <span style={{marginLeft:"15px"}}>{this.state.ocstate}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>City: <span style={{marginLeft:"15px"}}>{this.state.occity}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Pincode: <span style={{marginLeft:"15px"}}>{this.state.oczipcode}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Adhar Proof Front: <span style={{marginLeft:"15px"}}>{this.state.oadharprooffront}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Adhar Proof back: <span style={{marginLeft:"15px"}}>{this.state.oadharproofback}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Pan Card Proof: <span style={{marginLeft:"15px"}}>{this.state.opanproof}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
             </Row>
 
         </Card.Body>
         </Card>
         <Card border="light" className="bg-white shadow-sm mb-4">
       <Card.Body>
-        <h3 className="mb-4">Bank information</h3>
+        <h3 className="mb-4">Vechile Information</h3>
         <Row>
-            <Col md={3} className="mb-3">
+            <Col md={4} className="mb-3">
               <Form.Group id="firstName">
-                <Form.Label> Bank Name</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Bank Name" value={this.state.bbankname}
-              onChange={this.onChangebbankname}  />
-              </Form.Group>
-            </Col>
-            <Col md={3} className="mb-3">
-              <Form.Group id="firstName">
-                <Form.Label> Account Number</Form.Label>
-                <Form.Control required type="number" placeholder="Enter Account Number" value={this.state.baccountnumber}
-              onChange={this.onChangebaccountnumber}  />
-              </Form.Group>
-            </Col>
-            <Col md={3} className="mb-3">
-              <Form.Group id="firstName">
-                <Form.Label> Branch Code</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Branch Code" value={this.state.bbranchcode}
-              onChange={this.onChangebbranchcode}  />
-              </Form.Group>
-            </Col>
-            <Col md={3} className="mb-3">
-              <Form.Group id="firstName">
-                <Form.Label> IFSC Code</Form.Label>
-                <Form.Control required type="text" placeholder="Enter IFSC Code" value={this.state.bifsccode}
-              onChange={this.onChangebifsccode}  />
+                <label>Vehicle Modal: <span style={{marginLeft:"15px"}}>{this.state.vvehiclemodel}</span>     </label> 
+                
               </Form.Group>
             </Col>
             </Row>
             <Row>
             <Col md={4} className="mb-3">
               <Form.Group id="firstName">
-                <Form.Label> Upload Pass Book</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Pass Book" value={this.state.bpassbookphoto}
-              onChange={this.onChangebuploadpassbookproof}  />
+                <label>Vehicle Type: <span style={{marginLeft:"15px"}}>{this.state.vvehicletype}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Vehicle Capacity: <span style={{marginLeft:"15px"}}>{this.state.vvehiclecapacity}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Registration Number: <span style={{marginLeft:"15px"}}>{this.state.vregistrationnumber}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Chassis Number: <span style={{marginLeft:"15px"}}>{this.state.vchassisnumber}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Engine Number: <span style={{marginLeft:"15px"}}>{this.state.venginenumber}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Rc Card Number: <span style={{marginLeft:"15px"}}>{this.state.vrccardnumber}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Insurance Number: <span style={{marginLeft:"15px"}}>{this.state.vinsurancenumber}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Emmission Test: <span style={{marginLeft:"15px"}}>{this.state.vemmissiontest}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Rc Card Renewal Date: <span style={{marginLeft:"15px"}}>{this.state.vrccardrenewaldate}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Insurance Renewal Date: <span style={{marginLeft:"15px"}}>{this.state.vinsurancerenewaldate}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Emmission Test Renewal Date: <span style={{marginLeft:"15px"}}>{this.state.vemmissiontestrenewaldate}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Tax Renewal: <span style={{marginLeft:"15px"}}>{this.state.vtaxrenewal}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>State Permit: <span style={{marginLeft:"15px"}}>{this.state.vstatepermit}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>National Permit: <span style={{marginLeft:"15px"}}>{this.state.vnationalpermit}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>State Permit Document: <span style={{marginLeft:"15px"}}>{this.state.vstatepermitdocument}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>National Permit Document: <span style={{marginLeft:"15px"}}>{this.state.vnationalpermitdocument}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Insurance Document: <span style={{marginLeft:"15px"}}>{this.state.vinsurancedocument}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Vehicle Picture: <span style={{marginLeft:"15px"}}>{this.state.vvehiclepicture}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Emmission Test Document: <span style={{marginLeft:"15px"}}>{this.state.vemissiontestdocument}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Rc Card Documnet: <span style={{marginLeft:"15px"}}>{this.state.vrccardproof}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Tax Renewal Document: <span style={{marginLeft:"15px"}}>{this.state.vtaxrenewalproof}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            
+        </Card.Body> 
+        </Card>  
+        <Card border="light" className="bg-white shadow-sm mb-4">
+      <Card.Body>
+        <h3 className="mb-4">Driver Information</h3>
+        <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Driver Name: <span style={{marginLeft:"15px"}}>{this.state.ddrivername}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Driver Id: <span style={{marginLeft:"15px"}}>{this.state.ddriverid}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Gender: <span style={{marginLeft:"15px"}}>{this.state.dgender}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Date Of Birth: <span style={{marginLeft:"15px"}}>{this.state.ddateofbirth}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Mobile Number: <span style={{marginLeft:"15px"}}>{this.state.dmobilenumber}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Emergency Contact Number: <span style={{marginLeft:"15px"}}>{this.state.demergencycontactnumber}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Aadharcard Number: <span style={{marginLeft:"15px"}}>{this.state.dadharcardnumber}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Insurance Number: <span style={{marginLeft:"15px"}}>{this.state.dinsurancenumber}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Driving Licence: <span style={{marginLeft:"15px"}}>{this.state.ddrivinglicence}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Police Verification Certificate: <span style={{marginLeft:"15px"}}>{this.state.dpoliceverificationcertificate}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Languages Known: <span style={{marginLeft:"15px"}}>{this.state.dlanguagesknown}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Driving Licence Proof: <span style={{marginLeft:"15px"}}>{this.state.ddrivinglicenceproof}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Police Verification Proof: <span style={{marginLeft:"15px"}}>{this.state.dpoliceverificationproof}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Insurance Proof: <span style={{marginLeft:"15px"}}>{this.state.dinsuranceproof}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Aadhar Front Proof: <span style={{marginLeft:"15px"}}>{this.state.dfrontadharproof}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Aadhar Back Proof: <span style={{marginLeft:"15px"}}>{this.state.dbackadharproof}</span>     </label> 
+                
               </Form.Group>
             </Col>
             </Row>
         </Card.Body>
-        </Card>
-
-         
-          
-          <div className="mt-3">
-            <Button variant="primary" type="submit">Save </Button>
-          
-          </div>
-        
-        </Form>
-        <div className="mt-3">
-            <Button variant="primary" type="submit" onClick={this.onback}>Back</Button>
-          
-          </div>
-      </Card.Body>
-    </Card>
+</Card>
+<Card border="light" className="bg-white shadow-sm mb-4">
+      <Card.Body>
+        <h3 className="mb-4">Bank Information</h3>
+        <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Bank Name: <span style={{marginLeft:"15px"}}>{this.state.bbankname}</span>     </label> 
                 
-            </div>
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Account Number: <span style={{marginLeft:"15px"}}>{this.state.baccountnumber}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Branch Code: <span style={{marginLeft:"15px"}}>{this.state.bbranchcode}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>IFSC Code: <span style={{marginLeft:"15px"}}>{this.state.bifsccode}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+            <Row>
+            <Col md={4} className="mb-3">
+              <Form.Group id="firstName">
+                <label>Passbook Proof: <span style={{marginLeft:"15px",borderColor:"black",border:"5px"}}>{this.state.bpassbookphoto}</span>     </label> 
+                
+              </Form.Group>
+            </Col>
+            </Row>
+        </Card.Body>
+        </Card> 
+           </div>
         )
     }
 }

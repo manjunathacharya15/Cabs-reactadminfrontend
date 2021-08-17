@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import {  faCog, faHome, faSearch,faTrashAlt,faPlus,faPencilAlt, faEye,faCarAlt } from '@fortawesome/free-solid-svg-icons';
+import {  faCog, faHome, faSearch,faTrashAlt,faPlus,faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { Col, Row, Form, Button, ButtonGroup, Breadcrumb, InputGroup, Dropdown } from '@themesberg/react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -14,10 +14,10 @@ export default class buttons extends Component {
     super(props);
 
     this.deleteCustomer = this.deleteCustomer.bind(this)
-    this.onChangeoaadhar = this.onChangeoaadhar.bind(this);
+    this.onChangefirstname = this.onChangefirstname.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.state = {
-      oaadhar:'',
+      firstname:'',
       customers: []
     };
   }
@@ -25,7 +25,7 @@ export default class buttons extends Component {
 
   componentDidMount() {
    
-      axios.post('https://acabnodejs.herokuapp.com/enrollfleetowner/')
+      axios.post('https://acabnodejs.herokuapp.com/enrollpassenger/')
     .then(response => {
       
       this.setState({ customers: response.data})
@@ -36,13 +36,12 @@ export default class buttons extends Component {
           return{
             select : false,
             id : e._id,
-            createddate : e.createdAt,
+            joiningdate:e.createdAt,
+            firstname : e.firstname,
           
-            firstname:e.ofirstname,
-            lastname:e.olastname,
-            phonenumber:e.ophonenumber,
-            emailid:e.oemail,
-            aadharcard:e.adharnumber,
+            lastname:e.lastname,
+            email:e.email,
+            phonenumber:e.phonenumber
           
 
           }
@@ -63,7 +62,7 @@ export default class buttons extends Component {
       }
     });
    
-    axios.post('https://acabnodejs.herokuapp.com/subadmin/delete',{arrayids:arrayids})
+    axios.post('https://acabnodejs.herokuapp.com/enrollpassenger/delete',{arrayids:arrayids})
    
     .then(response=>{
       if(response.data.message==="Deleted Successfully")
@@ -76,18 +75,18 @@ export default class buttons extends Component {
     ;
     
   };
-  onChangeoaadhar(e) {
+  onChangefirstname(e) {
     this.setState({
-      oaadhar: e.target.value
+      firstname: e.target.value
     })
   }
   onSubmit(e) {
     e.preventDefault();
 
     const customer = {
-      oaadhar: this.state.oaadhar
+      firstname: this.state.firstname
     }
-    axios.post('https://acabnodejs.herokuapp.com/enrollfleetowner/search', customer)
+    axios.post('https://acabnodejs.herokuapp.com/enrollpassenger/search', customer)
       .then(res => {
         this.setState({ customers: res.data })
       })
@@ -106,34 +105,32 @@ export default class buttons extends Component {
   }
   
   customerList() {
-    // this.state.customers.sort(function(a,b){
-    //   if(a.name.toLowerCase() < b.name.toLowerCase()) return -1;
-    //   if(a.name.toLowerCase() > b.name.toLowerCase()) return 1;
-    //   return 0;
-    //  })
+    this.state.customers.sort(function(a,b){
+      if(a.firstname.toLowerCase() < b.firstname.toLowerCase()) return -1;
+      if(a.firstname.toLowerCase() > b.firstname.toLowerCase()) return 1;
+      return 0;
+     })
 
     return this.state.customers.map(currentcustomer => (
       <tr>
-        {/* <td  style={{border:"1px double black",textAlign:"center"}}>
+        <td  style={{border:"1px double black",textAlign:"center"}}>
         <input type="checkbox" onChange={e => {
                                 let value = e.target.checked
                                 console.log(this.state)
                                 this.state.customers.find(o => o.id=== currentcustomer.id).select = value
                                 this.setState(this.state);
                             }} />
-      </td> */}
+      </td>
       <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.id}</td>
       
-      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.createddate}</td>
+      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.joiningdate}</td>
       
       <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.firstname}</td>
       <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.lastname}</td>
+      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.email}</td>
       <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.phonenumber}</td>
-      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.emailid}</td>
-      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.aadharcard}</td>
-      <td style={{border:"1px double black",textAlign:"center"}}><Link to={"/components/enrolledit/"+currentcustomer.id}><FontAwesomeIcon icon={faEye}/></Link>/<Link to={"/components/editenroll/"+currentcustomer.id}><FontAwesomeIcon icon={faPencilAlt} /></Link>/<Link to={"/components/addvehicle/"+currentcustomer.id}><FontAwesomeIcon icon={faCarAlt} /></Link></td>
-      
-      
+      <td style={{border:"1px double black",textAlign:"center"}}><Link to={"/components/editpassenger/"+currentcustomer.id}><FontAwesomeIcon icon={faPencilAlt} /></Link></td>
+
       
       
       
@@ -161,11 +158,11 @@ export default class buttons extends Component {
         <div className="d-block mb-4 mb-md-0">
           <Breadcrumb className="d-none d-md-inline-block" listProps={{ className: "breadcrumb-dark breadcrumb-transparent" }}>
             <Breadcrumb.Item><FontAwesomeIcon icon={faHome} /></Breadcrumb.Item>
-            <Breadcrumb.Item>Onfleet Information</Breadcrumb.Item>
+            <Breadcrumb.Item>Enroll Passenger</Breadcrumb.Item>
           
           </Breadcrumb>
-          <h4>Onfleet Owner</h4>
-          <p className="mb-0">Onfleet Owner Details .</p>
+          <h4>Enroll Passenger Details</h4>
+          <p className="mb-0">Enroll Passenger Information .</p>
         </div>
       
       </div>
@@ -177,11 +174,11 @@ export default class buttons extends Component {
               <InputGroup.Text>
                 <FontAwesomeIcon icon={faSearch} />
               </InputGroup.Text>
-              <Form.Control type="text" placeholder="Search" value={this.state.oaadhar} onChange={this.onChangeoaadhar} />
+              <Form.Control type="text" placeholder="Search" value={this.state.firstname} onChange={this.onChangefirstname} />
             </InputGroup>
             </Form>
           </Col>
-          {/* <Col xs={4} md={2} xl={1} className="ps-md-0 text-end" style={{marginRight:"200px"}}>
+          <Col xs={4} md={2} xl={1} className="ps-md-0 text-end" style={{marginRight:"200px"}}>
             <Dropdown as={ButtonGroup} >
               <Dropdown.Toggle split as={Button} variant="link" className="text-dark m-0 p-0">
               <span className="icon icon-sm icon-gray" style={{marginRight:"15px"}}>
@@ -198,7 +195,7 @@ export default class buttons extends Component {
                 </Dropdown.Item> */}
                 {/* <Dropdown.Item className="d-flex fw-bold">
                 <Link to="/components/accordions" className="nav-link">    <span className="icon icon-small ms-auto" style={{marginRight:"50px"}}>Add <FontAwesomeIcon icon={faPlus}  /></span></Link>
-                </Dropdown.Item>
+                </Dropdown.Item> */}
                 <Dropdown.Item className="fw-bold" >
                 <span style={{marginRight:"10px"}}    onClick={() => {
           this.deleteCustomerByIds();
@@ -207,7 +204,7 @@ export default class buttons extends Component {
                
               </Dropdown.Menu>
             </Dropdown>
-          </Col> */} 
+          </Col>
           </Row>
           </div>
         
@@ -240,17 +237,16 @@ export default class buttons extends Component {
           <thead className="thead-light">
             <tr>
            
-            
-              <th style={{border:"1px double black",width:"150px" ,backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>SL.NO</th>
+            <th style={{border:"1px double  black",width:"100px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Delete</th>
+              <th style={{border:"1px double black",width:"150px" ,backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>SL NO</th>
 
-              <th style={{border:"1px double black",width:"150px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Created Date</th>
+              <th style={{border:"1px double black",width:"150px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Joing Date</th>
              
               <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>First Name</th>
               <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Last Name</th>
-              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Phone Number</th>
               <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Email</th>
-              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>AadharCard</th>
-              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>ACtions</th>
+              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Phone Number</th>
+              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Actions</th>
               
               
               

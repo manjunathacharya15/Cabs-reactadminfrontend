@@ -673,17 +673,19 @@ export default class Adduser extends Component{
             <div style={{marginTop:"50px"}}>
               <Card border="light" className="bg-white shadow-sm mb-4">
       <Card.Body>
-        <h3 className="mb-4">Onfleet Owner information</h3>
+        <h3  className="mb-4" >Onfleet Owner information</h3>
+       
+       
         <Form onSubmit={this.onSubmit}>
           <Row>
             <Col md={4} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> First Name</Form.Label>
                 <Form.Control required type="text" placeholder="Enter your firsttname" value={this.state.ofirstname}
-              onChange={this.onChangeofirstname}  />
+              onChange={this.onChangeofirstname}   />
               </Form.Group>
             </Col>
-            <Col md={4} className="mb-3">
+            <Col md={4} className="mb-3" >
               <Form.Group id="firstName">
                 <Form.Label> Middle Name</Form.Label>
                 <Form.Control required type="text" placeholder="Enter your  Middlename" value={this.state.omiddlename}

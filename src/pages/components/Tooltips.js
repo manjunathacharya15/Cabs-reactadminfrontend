@@ -16,6 +16,7 @@ export default class Adduser extends Component{
         this.onChangeofirstname = this.onChangeofirstname.bind(this);
         this.onChangeomiddlename= this.onChangeomiddlename.bind(this);
         this.onChangeolastname = this.onChangeolastname.bind(this);
+        this.onChangeoadharnumber = this.onChangeoadharnumber.bind(this);
         this.onChangeodateofbirth= this.onChangeodateofbirth.bind(this);
         this.onChangeogender = this.onChangeogender.bind(this);
         this.onChangeoemail = this.onChangeoemail.bind(this);
@@ -87,6 +88,7 @@ export default class Adduser extends Component{
            ofirstname:'',
            omiddlename:'',
            olastname:'',
+           adharnumber:'',
            odateofbirth:new Date(),
            ogender:'',
            oemail:'',
@@ -172,6 +174,11 @@ export default class Adduser extends Component{
           onChangeolastname(e) {
             this.setState({
               olastname: e.target.value
+            })
+          }
+          onChangeoadharnumber(e) {
+            this.setState({
+              oadharnumber: e.target.value
             })
           }
           onChangeodateofbirth(date) {
@@ -497,6 +504,7 @@ export default class Adduser extends Component{
               ofirstname: this.state.ofirstname,
               omiddlename: this.state.omiddlename,
               olastname:this.state.olastname,
+
               odateofbirth:this.state.odateofbirth,
               ogender:this.state.ogender,
               oemail:this.state.oemail,
@@ -572,7 +580,8 @@ export default class Adduser extends Component{
             .then(function(response){
         
               if(response.data ==='Enrollfleetowner added!'){
-                  window.location='/#/dashboard/overview'
+                alert("Enrollment added!")
+                  window.location='/#/components/fleetowner'
               }
              }) 
           }
@@ -585,14 +594,14 @@ export default class Adduser extends Component{
         <h3 className="mb-4">Onfleet Owner information</h3>
         <Form onSubmit={this.onSubmit}>
           <Row>
-            <Col md={4} className="mb-3">
+            <Col md={3} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> First Name</Form.Label>
                 <Form.Control required type="text" placeholder="Enter your firsttname" value={this.state.ofirstname}
               onChange={this.onChangeofirstname}  />
               </Form.Group>
             </Col>
-            <Col md={4} className="mb-3">
+            <Col md={3} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> Middle Name</Form.Label>
                 <Form.Control required type="text" placeholder="Enter your  Middlename" value={this.state.omiddlename}
@@ -600,11 +609,18 @@ export default class Adduser extends Component{
               </Form.Group>
             </Col>
             
-            <Col md={4} className="mb-3">
+            <Col md={3} className="mb-3">
               <Form.Group id="gender">
                 <Form.Label>Last Name</Form.Label>
                 <Form.Control required type="text" placeholder="Enter Your Lastname" value={this.state.olastname}
               onChange={this.onChangeolastname} />
+              </Form.Group>
+            </Col>
+            <Col md={3} className="mb-3">
+              <Form.Group id="gender">
+                <Form.Label>Aadhar Card Number</Form.Label>
+                <Form.Control required type="text" placeholder="Enter Your aadharcardnumber" value={this.state.oadharnumber}
+              onChange={this.onChangeoadharnumber} />
               </Form.Group>
             </Col>
           </Row>

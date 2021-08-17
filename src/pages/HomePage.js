@@ -32,8 +32,24 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Preloader from "../components/Preloader";
 import Fleetowner from "../components/Fleetowner";
+import Addpassenger from "../components/addpassenger";
+import Viewpassenger from "../components/viewpassenger";
+import Editpassenger from "../components/editpassenger";
+import Addcorporate from "../components/addcorporate";
+import Viewcorporate from "../components/viewcorporate";
+import Editcorporate from "../components/editcorporate";
 import Enrolledit from "../components/enrolledit";
 import Editenroll from "../components/editenroll";
+import Addvehicle from "../components/addvehicle";
+import Activetrips from "../components/activetrips";
+import Completedtrips from "../components/completedtrips";
+import Bookedtrips from "../components/bookedtrips";
+import Cancelledtrips from "../components/cancelledtrips";
+import Overall from "../components/overall";
+import Providerstatement from "../components/providerstatement";
+import Dailystatement from "../components/dailystatement";
+import Monthlystatement from "../components/monthlystatement";
+import yearlystatement from "../components/yearlystatement";
 import Accordion from "./components/Accordion";
 import Alerts from "./components/Alerts";
 import Badges from "./components/Badges";
@@ -121,8 +137,24 @@ export default () => (
     {/* components */}
     <RouteWithSidebar exact path={Routes.Accordions.path} component={Accordion} />
     <RouteWithSidebar exact path={Routes.Fleetowner.path} component={Fleetowner} />
+    <RouteWithSidebar exact path={Routes.Addpassenger.path} component={Addpassenger} />
+    <RouteWithSidebar exact path={Routes.Viewpassenger.path} component={Viewpassenger} />
+    <RouteWithSidebar exact path={Routes.Editpassenger.path} component={Editpassenger} />
+    <RouteWithSidebar exact path={Routes.Addcorporate.path} component={Addcorporate} />
+    <RouteWithSidebar exact path={Routes.Viewcorporate.path} component={Viewcorporate} />
+    <RouteWithSidebar exact path={Routes.Editcorporate.path} component={Editcorporate} />
     <RouteWithSidebar exact path={Routes.Enrolledit.path} component={Enrolledit} />
     <RouteWithSidebar exact path={Routes.Editenroll.path} component={Editenroll} />
+    <RouteWithSidebar exact path={Routes.Addvehicle.path} component={Addvehicle} />
+    <RouteWithSidebar exact path={Routes.Activetrips.path} component={Activetrips} />
+    <RouteWithSidebar exact path={Routes.Completedtrips.path} component={Completedtrips} />
+    <RouteWithSidebar exact path={Routes.Bookedtrips.path} component={Bookedtrips} />
+    <RouteWithSidebar exact path={Routes.Cancelledtrips.path} component={Cancelledtrips} />
+    <RouteWithSidebar exact path={Routes.Overall.path} component={Overall} />
+    <RouteWithSidebar exact path={Routes.Providerstatement.path} component={Providerstatement} />
+    <RouteWithSidebar exact path={Routes.Dailystatement.path} component={Dailystatement} />
+    <RouteWithSidebar exact path={Routes.Monthlystatement.path} component={Monthlystatement} />
+    <RouteWithSidebar exact path={Routes.yearlystatement.path} component={yearlystatement} />
     <RouteWithSidebar exact path={Routes.Alerts.path} component={Alerts} />
     <RouteWithSidebar exact path={Routes.Badges.path} component={Badges} />
     <RouteWithSidebar exact path={Routes.Breadcrumbs.path} component={Breadcrumbs} />

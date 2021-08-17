@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import {  faCog, faHome, faSearch,faTrashAlt,faPlus,faPencilAlt, faEye,faCarAlt } from '@fortawesome/free-solid-svg-icons';
+import {  faCog, faHome, faSearch,faTrashAlt,faPlus,faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { Col, Row, Form, Button, ButtonGroup, Breadcrumb, InputGroup, Dropdown } from '@themesberg/react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -14,10 +14,10 @@ export default class buttons extends Component {
     super(props);
 
     this.deleteCustomer = this.deleteCustomer.bind(this)
-    this.onChangeoaadhar = this.onChangeoaadhar.bind(this);
+    this.onChangecompanyname = this.onChangecompanyname.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.state = {
-      oaadhar:'',
+      companyname:'',
       customers: []
     };
   }
@@ -25,7 +25,7 @@ export default class buttons extends Component {
 
   componentDidMount() {
    
-      axios.post('https://acabnodejs.herokuapp.com/enrollfleetowner/')
+      axios.post('https://acabnodejs.herokuapp.com/corporate/')
     .then(response => {
       
       this.setState({ customers: response.data})
@@ -36,13 +36,13 @@ export default class buttons extends Component {
           return{
             select : false,
             id : e._id,
-            createddate : e.createdAt,
+            companyemail : e.companyemail,
           
-            firstname:e.ofirstname,
-            lastname:e.olastname,
-            phonenumber:e.ophonenumber,
-            emailid:e.oemail,
-            aadharcard:e.adharnumber,
+            companyname:e.companyname,
+            department:e.department,
+            numberofemployees:e.numberofemployees,
+            country:e.country,
+            mobilenumber:e.mobilenumber,
           
 
           }
@@ -63,7 +63,7 @@ export default class buttons extends Component {
       }
     });
    
-    axios.post('https://acabnodejs.herokuapp.com/subadmin/delete',{arrayids:arrayids})
+    axios.post('https://acabnodejs.herokuapp.com/corporate/delete',{arrayids:arrayids})
    
     .then(response=>{
       if(response.data.message==="Deleted Successfully")
@@ -76,18 +76,18 @@ export default class buttons extends Component {
     ;
     
   };
-  onChangeoaadhar(e) {
+  onChangecompanyname(e) {
     this.setState({
-      oaadhar: e.target.value
+      companyname: e.target.value
     })
   }
   onSubmit(e) {
     e.preventDefault();
 
     const customer = {
-      oaadhar: this.state.oaadhar
+      companyname: this.state.companyname
     }
-    axios.post('https://acabnodejs.herokuapp.com/enrollfleetowner/search', customer)
+    axios.post('https://acabnodejs.herokuapp.com/corporate/search', customer)
       .then(res => {
         this.setState({ customers: res.data })
       })
@@ -106,34 +106,31 @@ export default class buttons extends Component {
   }
   
   customerList() {
-    // this.state.customers.sort(function(a,b){
-    //   if(a.name.toLowerCase() < b.name.toLowerCase()) return -1;
-    //   if(a.name.toLowerCase() > b.name.toLowerCase()) return 1;
-    //   return 0;
-    //  })
+    this.state.customers.sort(function(a,b){
+      if(a.companyname.toLowerCase() < b.companyname.toLowerCase()) return -1;
+      if(a.companyname.toLowerCase() > b.companyname.toLowerCase()) return 1;
+      return 0;
+     })
 
     return this.state.customers.map(currentcustomer => (
       <tr>
-        {/* <td  style={{border:"1px double black",textAlign:"center"}}>
+        <td  style={{border:"1px double black",textAlign:"center"}}>
         <input type="checkbox" onChange={e => {
                                 let value = e.target.checked
                                 console.log(this.state)
                                 this.state.customers.find(o => o.id=== currentcustomer.id).select = value
                                 this.setState(this.state);
                             }} />
-      </td> */}
-      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.id}</td>
+      </td>
+      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.companyemail}</td>
       
-      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.createddate}</td>
+      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.companyname}</td>
       
-      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.firstname}</td>
-      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.lastname}</td>
-      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.phonenumber}</td>
-      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.emailid}</td>
-      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.aadharcard}</td>
-      <td style={{border:"1px double black",textAlign:"center"}}><Link to={"/components/enrolledit/"+currentcustomer.id}><FontAwesomeIcon icon={faEye}/></Link>/<Link to={"/components/editenroll/"+currentcustomer.id}><FontAwesomeIcon icon={faPencilAlt} /></Link>/<Link to={"/components/addvehicle/"+currentcustomer.id}><FontAwesomeIcon icon={faCarAlt} /></Link></td>
-      
-      
+      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.department}</td>
+      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.numberofemployees}</td>
+      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.country}</td>
+      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.mobilenumber}</td>
+      <td style={{border:"1px double black",textAlign:"center"}}><Link to={"/components/editcorporate/"+currentcustomer.id}><FontAwesomeIcon icon={faPencilAlt} /></Link></td>
       
       
       
@@ -161,11 +158,11 @@ export default class buttons extends Component {
         <div className="d-block mb-4 mb-md-0">
           <Breadcrumb className="d-none d-md-inline-block" listProps={{ className: "breadcrumb-dark breadcrumb-transparent" }}>
             <Breadcrumb.Item><FontAwesomeIcon icon={faHome} /></Breadcrumb.Item>
-            <Breadcrumb.Item>Onfleet Information</Breadcrumb.Item>
+            <Breadcrumb.Item>Corporates</Breadcrumb.Item>
           
           </Breadcrumb>
-          <h4>Onfleet Owner</h4>
-          <p className="mb-0">Onfleet Owner Details .</p>
+          <h4>Corporates Information</h4>
+          <p className="mb-0">Corporates Details .</p>
         </div>
       
       </div>
@@ -177,11 +174,11 @@ export default class buttons extends Component {
               <InputGroup.Text>
                 <FontAwesomeIcon icon={faSearch} />
               </InputGroup.Text>
-              <Form.Control type="text" placeholder="Search" value={this.state.oaadhar} onChange={this.onChangeoaadhar} />
+              <Form.Control type="text" placeholder="Search" value={this.state.companyname} onChange={this.onChangecompanyname} />
             </InputGroup>
             </Form>
           </Col>
-          {/* <Col xs={4} md={2} xl={1} className="ps-md-0 text-end" style={{marginRight:"200px"}}>
+          <Col xs={4} md={2} xl={1} className="ps-md-0 text-end" style={{marginRight:"200px"}}>
             <Dropdown as={ButtonGroup} >
               <Dropdown.Toggle split as={Button} variant="link" className="text-dark m-0 p-0">
               <span className="icon icon-sm icon-gray" style={{marginRight:"15px"}}>
@@ -196,9 +193,7 @@ export default class buttons extends Component {
                 {/* <Dropdown.Item className="d-flex fw-bold">
                 <Link to="/components/breadcrumbs" className="nav-link">    <span className="icon icon-small ms-auto">Adduser <FontAwesomeIcon icon={faPlus} style={{marginLeft:"16px"}} /></span></Link>
                 </Dropdown.Item> */}
-                {/* <Dropdown.Item className="d-flex fw-bold">
-                <Link to="/components/accordions" className="nav-link">    <span className="icon icon-small ms-auto" style={{marginRight:"50px"}}>Add <FontAwesomeIcon icon={faPlus}  /></span></Link>
-                </Dropdown.Item>
+               
                 <Dropdown.Item className="fw-bold" >
                 <span style={{marginRight:"10px"}}    onClick={() => {
           this.deleteCustomerByIds();
@@ -207,7 +202,7 @@ export default class buttons extends Component {
                
               </Dropdown.Menu>
             </Dropdown>
-          </Col> */} 
+          </Col>
           </Row>
           </div>
         
@@ -240,17 +235,16 @@ export default class buttons extends Component {
           <thead className="thead-light">
             <tr>
            
-            
-              <th style={{border:"1px double black",width:"150px" ,backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>SL.NO</th>
+            <th style={{border:"1px double  black",width:"100px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Delete</th>
+              <th style={{border:"1px double black",width:"150px" ,backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Company Offical Email</th>
 
-              <th style={{border:"1px double black",width:"150px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Created Date</th>
+              <th style={{border:"1px double black",width:"150px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Company Name</th>
              
-              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>First Name</th>
-              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Last Name</th>
+              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Department</th>
+              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Number Of Employees</th>
+              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Country</th>
               <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Phone Number</th>
-              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Email</th>
-              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>AadharCard</th>
-              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>ACtions</th>
+              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Actions</th>
               
               
               
