@@ -50,6 +50,11 @@ import Providerstatement from "../components/providerstatement";
 import Dailystatement from "../components/dailystatement";
 import Monthlystatement from "../components/monthlystatement";
 import yearlystatement from "../components/yearlystatement";
+import Paymentsetting from "../components/paymentsetting";
+import Paymenthistory from "../components/paymenthistory";
+import Sitesettings from "../components/sitesettings";
+import Translation from "../components/translation";
+import Documentsrenewal from "../components/documentsrenewal";
 import Accordion from "./components/Accordion";
 import Alerts from "./components/Alerts";
 import Badges from "./components/Badges";
@@ -155,6 +160,11 @@ export default () => (
     <RouteWithSidebar exact path={Routes.Dailystatement.path} component={Dailystatement} />
     <RouteWithSidebar exact path={Routes.Monthlystatement.path} component={Monthlystatement} />
     <RouteWithSidebar exact path={Routes.yearlystatement.path} component={yearlystatement} />
+    <RouteWithSidebar exact path={Routes.Paymentsetting.path} component={Paymentsetting} />
+    <RouteWithSidebar exact path={Routes.Paymenthistory.path} component={Paymenthistory} />
+    <RouteWithSidebar exact path={Routes.Sitesetting.path} component={Sitesettings} />
+    <RouteWithSidebar exact path={Routes.Translation.path} component={Translation} />
+    <RouteWithSidebar exact path={Routes.Documentsrenewal.path} component={Documentsrenewal} />
     <RouteWithSidebar exact path={Routes.Alerts.path} component={Alerts} />
     <RouteWithSidebar exact path={Routes.Badges.path} component={Badges} />
     <RouteWithSidebar exact path={Routes.Breadcrumbs.path} component={Breadcrumbs} />

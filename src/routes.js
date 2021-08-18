@@ -66,5 +66,10 @@ export const Routes = {
     Dailystatement:{path:"/components/dailystatement"},
     Monthlystatement:{path:"/components/monthlystatement"},
     yearlystatement:{path:"/components/yearlystatement"},
+    Paymentsetting:{path:"/components/paymentsetting"},
+    Paymenthistory:{path:"/components/paymenthistory"},
+    Sitesetting:{path:"/components/sitesettings"},
+    Translation:{path:"/components/translation"},
+    Documentsrenewal:{path:"/components/documentsrenewal"},
 
 };

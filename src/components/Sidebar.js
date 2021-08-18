@@ -228,7 +228,7 @@ export default (props = {}) => {
               
              
               <NavItem title="Payment Settings" link={Routes.Alerts.path} icon={faMoneyCheckAlt} />
-              <NavItem title="Documents Renewal Report" icon={faHandHoldingUsd} link={Routes.Accordions.path} />
+              <NavItem title="Documents Renewal Report" icon={faHandHoldingUsd} link={Routes.Documentsrenewal.path} />
               <NavItem title="Site Setting" link={Routes.Alerts.path} icon={faMoneyCheckAlt} />
               <NavItem title="Privacy policy" icon={faHandHoldingUsd} link={Routes.Accordions.path} />
               <NavItem title="Terms" link={Routes.Alerts.path} icon={faMoneyCheckAlt} />
