@@ -5,7 +5,7 @@ import axios from 'axios';
 import {  faCog, faHome, faSearch,faTrashAlt,faPlus,faPencilAlt,faMoneyBillAlt,faCreditCard } from '@fortawesome/free-solid-svg-icons';
 import { Col, Row, Form, Button, ButtonGroup, Breadcrumb, InputGroup, Dropdown } from '@themesberg/react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import 'C:/Users/manjunath/OneDrive/Desktop/accrone projects/Cabreact/node_modules/font-awesome/css/font-awesome.min.css'; 
+
 
 
 
