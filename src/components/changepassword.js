@@ -85,53 +85,43 @@ this.onback=this.onback.bind(this);
                 <div style={{marginTop:"50px"}}>
                 <Card border="light" className="bg-white shadow-sm mb-4">
           <Card.Body>
-          <h5 className="mb-4">Support Contact Update</h5>
-          <Form onSubmit={this.onSubmit}>
-            <Row>
-              <Col md={6} className="mb-3">
-                <Form.Group id="firstName">
-                  <Form.Label> Passenger Contact</Form.Label>
-                  <Form.Control required type="number"  placeholder="" value={this.state.pcontact}
-                onChange={this.onChangepcontact}
-                
-               />
-                </Form.Group>
-              </Col>
-             
-              
-          
-              
-              
-            </Row>
-            <Row className="align-items-center">
-            <Col md={6} className="mb-3">
-                <Form.Group id="firstName">
-                  <Form.Label> Driver Contact</Form.Label>
-                  <Form.Control required type="number"  placeholder="" value={this.state.dcontact}
-                onChange={this.onChangedcontact}
-                
-               />
-                </Form.Group>
-              </Col>
-              
-            </Row>
-            <Row className="align-items-center">
-            <Col md={3} className="mb-3"><div className="mt-3">
-              <Button variant="primary" type="submit">Save </Button>
+          <h5 className="mb-4">Change Password</h5>
+          <form class="form-horizontal" action="https://enterprisecabs.deliveryventure.com/admin/password" method="POST" role="form">
+            	
+
+            	<div class="form-group row">
+					<label for="old_password" class="col-xs-12 col-form-label">Old Password</label>
+					<div class="col-xs-10">
+						<input class="form-control" type="password" name="old_password" id="old_password" placeholder="Old Password" />
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="password" class="col-xs-12 col-form-label">Password </label>
+					<div class="col-xs-10">
+						<input class="form-control" type="password" name="password" id="password" placeholder="New Password" />
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="password_confirmation" class="col-xs-12 col-form-label">Password Confirmation</label>
+					<div class="col-xs-10">
+						<input class="form-control" type="password" name="password_confirmation" id="password_confirmation" placeholder="Re-type New Password" />
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="zipcode" class="col-xs-12 col-form-label"></label>
+					<div class="col-xs-10">
+						<button type="submit" class="btn btn-primary">Change Password</button>
+					</div>
+				</div>
+
+			</form>
+          <div className="mt-3">
+              <Button variant="primary" type="submit" onClick={this.onback}>Back</Button>
             
-            </div></Col>
-            <Col md={3} className="mb-3"><div className="mt-3">
-              <Button variant="primary"  onClick={this.onback}>Back</Button>
-            
-            </div></Col>
-            </Row>
-            
-              
-            
-            
-          
-          </Form>
-          
+            </div>
           </Card.Body>
           </Card>
                   

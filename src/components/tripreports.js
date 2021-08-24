@@ -23,38 +23,38 @@ export default class buttons extends Component {
   }
   
 
-  componentDidMount() {
+//   componentDidMount() {
    
-      axios.post('https://acabnodejs.herokuapp.com/enrollfleetowner/')
-    .then(response => {
+//       axios.post('https://acabnodejs.herokuapp.com/enrollfleetowner/')
+//     .then(response => {
       
-      this.setState({ customers: response.data})
+//       this.setState({ customers: response.data})
       
-      let result=response.data
-      this.setState({customers:
-        result.map(e => {
-          return{
-            select : false,
-            id : e._id,
-            createddate : e.createdAt,
+//       let result=response.data
+//       this.setState({customers:
+//         result.map(e => {
+//           return{
+//             select : false,
+//             id : e._id,
+//             createddate : e.createdAt,
           
-            firstname:e.ofirstname,
-            lastname:e.olastname,
-            phonenumber:e.ophonenumber,
-            emailid:e.oemail,
-            aadharcard:e.adharnumber,
+//             firstname:e.ofirstname,
+//             lastname:e.olastname,
+//             phonenumber:e.ophonenumber,
+//             emailid:e.oemail,
+//             aadharcard:e.adharnumber,
           
 
-          }
-        })
+//           }
+//         })
 
-    })
-    })
-    .catch((error) => {
-      console.log(error);
-    })
+//     })
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     })
     
-  }
+//   }
   deleteCustomerByIds = () => {
   const arrayids = [];
     this.state.customers.forEach(d => {
@@ -171,13 +171,13 @@ export default class buttons extends Component {
       </div>
       <div className="table-settings mb-4">
         <Row className="justify-content-between align-items-center">
-          <Col xs={8} md={6} lg={3} xl={4}>
+          <Col xs={8} md={6} lg={3} xl={4} >
             <Form onSubmit={this.onSubmit}>
-            <InputGroup style={{marginLeft:"20px"}}>
-              <InputGroup.Text>
+            <InputGroup style={{marginLeft:"650px"}}>
+              <InputGroup.Text >
                 <FontAwesomeIcon icon={faSearch} />
               </InputGroup.Text>
-              <Form.Control type="text" placeholder="Search" value={this.state.oaadhar} onChange={this.onChangeoaadhar} />
+              <Form.Control  type="text" placeholder="Search" value={this.state.oaadhar} onChange={this.onChangeoaadhar} />
             </InputGroup>
             </Form>
           </Col>
@@ -241,18 +241,20 @@ export default class buttons extends Component {
             <tr>
            
             
-              <th style={{border:"1px double black",width:"150px" ,backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>SL.NO</th>
+              <th style={{border:"1px double black",width:"150px" ,backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>ID</th>
 
-              <th style={{border:"1px double black",width:"150px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Created Date</th>
+              <th style={{border:"1px double black",width:"150px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Booking ID</th>
              
-              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>First Name</th>
-              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Last Name</th>
-              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Phone Number</th>
-              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Email</th>
-              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>AadharCard</th>
+              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>User Name</th>
+              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Provider Name</th>
+              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Date & Time</th>
+              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Statud</th>
+              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Amount</th>
+              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Payment Mode</th>
+              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Payment Status</th>
               <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>ACtions</th>
               
-              
+
               
            
             </tr>

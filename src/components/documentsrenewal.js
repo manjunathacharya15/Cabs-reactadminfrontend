@@ -132,7 +132,7 @@ export default class buttons extends Component {
       <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.vtaxrenewalproof}</td>
        {/* <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.emailid}</td>
       <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.aadharcard}</td> */}
-       <td style={{border:"1px double black",textAlign:"center"}}><Link to={"/components/editenroll/"+currentcustomer.id}><FontAwesomeIcon icon={faPencilAlt} /></Link></td> 
+       <td style={{border:"1px double black",textAlign:"center"}}><Link to={"/components/editdocumentrenewal/"+currentcustomer.id}><FontAwesomeIcon icon={faPencilAlt} /></Link></td> 
       
       
       
@@ -174,7 +174,7 @@ export default class buttons extends Component {
         <Row className="justify-content-between align-items-center">
           <Col xs={8} md={6} lg={3} xl={4}>
             <Form onSubmit={this.onSubmit}>
-            <InputGroup>
+            <InputGroup style={{marginLeft:"650px"}}>
               <InputGroup.Text>
                 <FontAwesomeIcon icon={faSearch} />
               </InputGroup.Text>

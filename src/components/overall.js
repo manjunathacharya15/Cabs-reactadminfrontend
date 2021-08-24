@@ -128,14 +128,14 @@ export default class buttons extends Component {
 //             )
 //         ),
       <tr>
-        <td  style={{border:"1px double black",textAlign:"center"}}>
+        {/* <td  style={{border:"1px double black",textAlign:"center"}}>
         <input type="checkbox" onChange={e => {
                                 let value = e.target.checked
                                 // console.log(this.state)
                                 this.state.customers.find(o => o.id=== currentcustomer.id).select = value
                                 this.setState(this.state);
                             }} />
-      </td>
+      </td> */}
       <td style={{border:"1px double black",textAlign:"center"}}></td>
       
       <td style={{border:"1px double black",textAlign:"center"}}></td>
@@ -204,31 +204,7 @@ export default class buttons extends Component {
             </InputGroup>
             </Form> */}
           </Col>
-          <Col xs={4} md={2} xl={1} className="ps-md-0 text-end" style={{marginRight:"200px"}}>
-            <Dropdown as={ButtonGroup} >
-              <Dropdown.Toggle split as={Button} variant="link" className="text-dark m-0 p-0">
-              <span className="icon icon-sm icon-gray" style={{marginRight:"15px"}}>
-                  <b>Actions</b>
-                  
-                </span>
-                  <FontAwesomeIcon icon={faCog} />
-              
-              </Dropdown.Toggle>
-              <Dropdown.Menu className="dropdown-menu-xs dropdown-menu-right">
-              
-                {/* <Dropdown.Item className="d-flex fw-bold">
-                <Link to="/components/breadcrumbs" className="nav-link">    <span className="icon icon-small ms-auto">Adduser <FontAwesomeIcon icon={faPlus} style={{marginLeft:"16px"}} /></span></Link>
-                </Dropdown.Item> */}
-               
-                <Dropdown.Item className="fw-bold" >
-                <span style={{marginRight:"10px"}}    onClick={() => {
-          this.deleteCustomerByIds();
-        }}  > Delete <FontAwesomeIcon icon={faTrashAlt} style={{marginLeft:"5px"}} /> </span>
-                </Dropdown.Item>
-               
-              </Dropdown.Menu>
-            </Dropdown>
-          </Col>
+          
           </Row>
           </div>
           <h4 style={{textAlign:"center",color:"blue"}}>Over All Earning:$0.00</h4>
@@ -375,7 +351,7 @@ export default class buttons extends Component {
           <thead className="thead-light">
             <tr>
            
-            <th style={{border:"1px double  black",width:"100px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Delete</th>
+           
               <th style={{border:"1px double black",width:"150px" ,backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Sl.No</th>
 
               <th style={{border:"1px double black",width:"150px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Trip ID</th>

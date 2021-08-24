@@ -5,7 +5,9 @@ import axios from 'axios';
 import {  faCog, faHome, faSearch,faTrashAlt,faPlus,faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { Col, Row, Form, Button, ButtonGroup, Breadcrumb, InputGroup, Dropdown } from '@themesberg/react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import * as $ from 'jquery';
+import 'datatables.net';
+import 'datatables.net-bs4';
 
 
 export default class buttons extends Component {
@@ -104,24 +106,32 @@ export default class buttons extends Component {
       customers: this.state.customers.filter(el => el._id !== id)
     })
   }
-  
+  paging(){
+    $(document).ready(function(){
+      $('#example').dataTable({
+        paging: false,
+    searching: false,
+        "pageLength":10
+      })
+    })
+  }
   customerList() {
+   this.paging()
     this.state.customers.sort(function(a,b){
       if(a.companyname.toLowerCase() < b.companyname.toLowerCase()) return -1;
       if(a.companyname.toLowerCase() > b.companyname.toLowerCase()) return 1;
       return 0;
      })
-
     return this.state.customers.map(currentcustomer => (
       <tr>
-        <td  style={{border:"1px double black",textAlign:"center"}}>
+        {/* <td  style={{border:"1px double black",textAlign:"center"}}>
         <input type="checkbox" onChange={e => {
                                 let value = e.target.checked
                                 console.log(this.state)
                                 this.state.customers.find(o => o.id=== currentcustomer.id).select = value
                                 this.setState(this.state);
                             }} />
-      </td>
+      </td> */}
       <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.companyemail}</td>
       
       <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.companyname}</td>
@@ -137,8 +147,9 @@ export default class buttons extends Component {
     
     </tr>
      
+     
     ))
-    
+   
   }
   
   
@@ -170,7 +181,7 @@ export default class buttons extends Component {
         <Row className="justify-content-between align-items-center">
           <Col xs={8} md={6} lg={3} xl={4}>
             <Form onSubmit={this.onSubmit}>
-            <InputGroup>
+            <InputGroup style={{marginLeft:"650px"}}>
               <InputGroup.Text>
                 <FontAwesomeIcon icon={faSearch} />
               </InputGroup.Text>
@@ -178,34 +189,9 @@ export default class buttons extends Component {
             </InputGroup>
             </Form>
           </Col>
-          <Col xs={4} md={2} xl={1} className="ps-md-0 text-end" style={{marginRight:"200px"}}>
-            <Dropdown as={ButtonGroup} >
-              <Dropdown.Toggle split as={Button} variant="link" className="text-dark m-0 p-0">
-              <span className="icon icon-sm icon-gray" style={{marginRight:"15px"}}>
-                  <b>Actions</b>
-                  
-                </span>
-                  <FontAwesomeIcon icon={faCog} />
-              
-              </Dropdown.Toggle>
-              <Dropdown.Menu className="dropdown-menu-xs dropdown-menu-right">
-              
-                {/* <Dropdown.Item className="d-flex fw-bold">
-                <Link to="/components/breadcrumbs" className="nav-link">    <span className="icon icon-small ms-auto">Adduser <FontAwesomeIcon icon={faPlus} style={{marginLeft:"16px"}} /></span></Link>
-                </Dropdown.Item> */}
-               
-                <Dropdown.Item className="fw-bold" >
-                <span style={{marginRight:"10px"}}    onClick={() => {
-          this.deleteCustomerByIds();
-        }}  > Delete <FontAwesomeIcon icon={faTrashAlt} style={{marginLeft:"5px"}} /> </span>
-                </Dropdown.Item>
-               
-              </Dropdown.Menu>
-            </Dropdown>
-          </Col>
+         
           </Row>
           </div>
-        
         <div class="container">
 
 
@@ -231,11 +217,11 @@ export default class buttons extends Component {
           
        
        
-        <table className="table">
+        <table className="table" id="example">
           <thead className="thead-light">
             <tr>
            
-            <th style={{border:"1px double  black",width:"100px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Delete</th>
+           
               <th style={{border:"1px double black",width:"150px" ,backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Company Offical Email</th>
 
               <th style={{border:"1px double black",width:"150px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Company Name</th>
@@ -253,7 +239,9 @@ export default class buttons extends Component {
             
           </thead>
           <tbody>
-            { this.customerList() }
+
+          {this.customerList()}
+         
           </tbody>
          
         </table>

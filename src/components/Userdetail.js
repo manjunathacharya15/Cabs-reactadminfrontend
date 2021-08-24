@@ -131,14 +131,14 @@ export default class Userdetails extends Component {
 
     return this.state.customers.map(currentcustomer => (
       <tr>
-        <td  style={{border:"1px double grey",textAlign:"center"}}>
+        {/* <td  style={{border:"1px double grey",textAlign:"center"}}>
         <input type="checkbox" onChange={e => {
                                 let value = e.target.checked
                                 console.log(this.state)
                                 this.state.customers.find(o => o.id=== currentcustomer.id).select = value
                                 this.setState(this.state);
                             }} />
-      </td>
+      </td> */}
       <td style={{border:"1px double grey",textAlign:"center"}}><Link to={"/userdetail/"+currentcustomer.id}>{currentcustomer.firstname}</Link></td>
       <td style={{border:"1px double grey",textAlign:"center"}}>{currentcustomer.lastname}</td>
       <td style={{border:"1px double grey",textAlign:"center"}}>{currentcustomer.email}</td>

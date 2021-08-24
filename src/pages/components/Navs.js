@@ -186,17 +186,27 @@ export default class Accordion extends Component{
               </Form.Group>
             </Col>
             </Row>
-          
-          <div className="mt-3">
+            <Row>
+            <Col md={3} className="mb-3"
+            >
+              <div className="mt-3">
             <Button variant="primary" type="submit">Save </Button>
           
           </div>
+            </Col>
+            
+            <Col md={3} className="mb-3"
+            > <div className="mt-3">
+            <Button variant="primary"  onClick={this.onback}>Back</Button>
+          
+          </div></Col>
+           
+            </Row>
+          
+          
         
         </Form>
-        <div className="mt-3">
-            <Button variant="primary" type="submit" onClick={this.onback}>Back</Button>
-          
-          </div>
+        
       </Card.Body>
     </Card>
                 

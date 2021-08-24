@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import {  faCog, faHome, faSearch,faTrashAlt,faPlus } from '@fortawesome/free-solid-svg-icons';
+import {  faCog, faHome, faSearch,faTrashAlt,faPlus,faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Col, Row, Form, Button, ButtonGroup, Breadcrumb, InputGroup, Dropdown } from '@themesberg/react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -97,7 +97,7 @@ export default class buttons extends Component {
       
   }
   deleteCustomer(id) {
-    axios.delete('https://mitnessnew.herokuapp.com/customers/'+id)
+    axios.delete('https://acabnodejs.herokuapp.com/couponmanagement/'+id)
       .then(response => { console.log(response.data)});
 
     this.setState({
@@ -114,14 +114,14 @@ export default class buttons extends Component {
 
     return this.state.customers.map(currentcustomer => (
       <tr>
-        <td  style={{border:"1px double black",textAlign:"center"}}>
+        {/* <td  style={{border:"1px double black",textAlign:"center"}}>
         <input type="checkbox" onChange={e => {
                                 let value = e.target.checked
                                 console.log(this.state)
                                 this.state.customers.find(o => o.id=== currentcustomer.id).select = value
                                 this.setState(this.state);
                             }} />
-      </td>
+      </td> */}
       <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.coupontext}</td>
       
       <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.percentageorflat}</td>
@@ -130,6 +130,9 @@ export default class buttons extends Component {
       <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.couponexpirydate}</td>
       
       <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.count}</td>
+      <td style={{border:"1px double black",textAlign:"center"}}>
+       <a href="#" onClick={() => { this.deleteCustomer(currentcustomer.id) }}><FontAwesomeIcon icon={faTrash} /></a>
+    </td>
       
       
     
@@ -168,7 +171,7 @@ export default class buttons extends Component {
         <Row className="justify-content-between align-items-center">
           <Col xs={8} md={6} lg={3} xl={4}>
             <Form onSubmit={this.onSubmit}>
-            <InputGroup>
+            <InputGroup style={{marginLeft:"650px"}}>
               <InputGroup.Text>
                 <FontAwesomeIcon icon={faSearch} />
               </InputGroup.Text>
@@ -176,33 +179,7 @@ export default class buttons extends Component {
             </InputGroup>
             </Form>
           </Col>
-          <Col xs={4} md={2} xl={1} className="ps-md-0 text-end" style={{marginRight:"200px"}}>
-            <Dropdown as={ButtonGroup} >
-              <Dropdown.Toggle split as={Button} variant="link" className="text-dark m-0 p-0">
-              <span className="icon icon-sm icon-gray" style={{marginRight:"15px"}}>
-                  <b>Actions</b>
-                  
-                </span>
-                  <FontAwesomeIcon icon={faCog} />
-              
-              </Dropdown.Toggle>
-              <Dropdown.Menu className="dropdown-menu-xs dropdown-menu-right">
-              
-                {/* <Dropdown.Item className="d-flex fw-bold">
-                <Link to="/components/breadcrumbs" className="nav-link">    <span className="icon icon-small ms-auto">Adduser <FontAwesomeIcon icon={faPlus} style={{marginLeft:"16px"}} /></span></Link>
-                </Dropdown.Item> */}
-                <Dropdown.Item className="d-flex fw-bold">
-                <Link to="/components/navs" className="nav-link">    <span className="icon icon-small ms-auto" style={{marginRight:"50px"}}>Add <FontAwesomeIcon icon={faPlus}  /></span></Link>
-                </Dropdown.Item>
-                <Dropdown.Item className="fw-bold" >
-                <span style={{marginRight:"10px"}}    onClick={() => {
-          this.deleteCustomerByIds();
-        }}  > Delete <FontAwesomeIcon icon={faTrashAlt} style={{marginLeft:"5px"}} /> </span>
-                </Dropdown.Item>
-               
-              </Dropdown.Menu>
-            </Dropdown>
-          </Col>
+          
           </Row>
           </div>
         
@@ -235,7 +212,7 @@ export default class buttons extends Component {
           <thead className="thead-light">
             <tr>
            
-            <th style={{border:"1px double  black",width:"100px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Delete</th>
+            
               <th style={{border:"1px double black",width:"150px" ,backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Coupon Text</th>
 
               <th style={{border:"1px double black",width:"150px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Percentage OR Flat</th>
@@ -243,6 +220,7 @@ export default class buttons extends Component {
               <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Amount</th>
               <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Coupon Expiry Date</th>
               <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Count</th>
+              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Actions</th>
               
               
               

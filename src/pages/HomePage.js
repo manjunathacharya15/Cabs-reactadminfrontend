@@ -55,6 +55,21 @@ import Paymenthistory from "../components/paymenthistory";
 import Sitesettings from "../components/sitesettings";
 import Translation from "../components/translation";
 import Documentsrenewal from "../components/documentsrenewal";
+import Terms from "../components/terms";
+import Privacypolicy from "../components/privacypolicy";
+import Aboutus from "../components/aboutus";
+import Help from "../components/help";
+import Faq from "../components/faq";
+import Adminprofile from "../components/adminprofile";
+import Changepassword from "../components/changepassword";
+import Editdocumentrenewal from "../components/editdocumentrenewal";
+import Heatmap from "../components/heatmap";
+import Map from "../components/map";
+import Bookedrides from "../components/bookedrides";
+import Completedrides from "../components/completedrides";
+import Activerides from "../components/activerides";
+import Cancelledrides from "../components/cancelledrides";
+import Tripreports from "../components/tripreports";
 import Accordion from "./components/Accordion";
 import Alerts from "./components/Alerts";
 import Badges from "./components/Badges";
@@ -164,7 +179,22 @@ export default () => (
     <RouteWithSidebar exact path={Routes.Paymenthistory.path} component={Paymenthistory} />
     <RouteWithSidebar exact path={Routes.Sitesetting.path} component={Sitesettings} />
     <RouteWithSidebar exact path={Routes.Translation.path} component={Translation} />
+    <RouteWithSidebar exact path={Routes.Terms.path} component={Terms} />
+    <RouteWithSidebar exact path={Routes.Privacypolicy.path} component={Privacypolicy} />
+    <RouteWithSidebar exact path={Routes.Help.path} component={Help} />
+    <RouteWithSidebar exact path={Routes.Aboutus.path} component={Aboutus} />
+    <RouteWithSidebar exact path={Routes.Faq.path} component={Faq} />
     <RouteWithSidebar exact path={Routes.Documentsrenewal.path} component={Documentsrenewal} />
+    <RouteWithSidebar exact path={Routes.Adminprofile.path} component={Adminprofile} />
+    <RouteWithSidebar exact path={Routes.Changepassword.path} component={Changepassword} />
+    <RouteWithSidebar exact path={Routes.Editdocumentrenewal.path} component={Editdocumentrenewal} />
+    <RouteWithSidebar exact path={Routes.Heatmap.path} component={Heatmap} />
+    <RouteWithSidebar exact path={Routes.Map.path} component={Map} />
+    <RouteWithSidebar exact path={Routes.Bookedrides.path} component={Bookedrides} />
+    <RouteWithSidebar exact path={Routes.Completedrides.path} component={Completedrides} />
+    <RouteWithSidebar exact path={Routes.Activerides.path} component={Activerides} />
+    <RouteWithSidebar exact path={Routes.Cancelledrides.path} component={Cancelledrides} />
+    <RouteWithSidebar exact path={Routes.Tripreports.path} component={Tripreports} />
     <RouteWithSidebar exact path={Routes.Alerts.path} component={Alerts} />
     <RouteWithSidebar exact path={Routes.Badges.path} component={Badges} />
     <RouteWithSidebar exact path={Routes.Breadcrumbs.path} component={Breadcrumbs} />

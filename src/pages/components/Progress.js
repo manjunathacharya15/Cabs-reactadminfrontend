@@ -1,5 +1,7 @@
 import React,{Component} from "react"
 import axios from 'axios';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 // import moment from "moment-timezone";
 import DatePicker from 'react-datepicker'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,6 +15,7 @@ import moment from "moment-timezone";
 // import moment from "moment";
 import { CCard,CCardBody } from '@coreui/react';
 import { Link } from 'react-router-dom'
+import { valHooks } from "jquery";
 
 export default class Accordion extends Component{
     constructor(props) {
@@ -184,14 +187,14 @@ export default class Accordion extends Component{
         
             return this.state.customers.map(currentcustomer => (
               <tr>
-                <td  style={{border:"1px double black",textAlign:"center"}}>
+                {/* <td  style={{border:"1px double black",textAlign:"center"}}>
                 <input type="checkbox" onChange={e => {
                                         let value = e.target.checked
                                         console.log(this.state)
                                         this.state.customers.find(o => o.id=== currentcustomer.id).select = value
                                         this.setState(this.state);
                                     }} />
-              </td>
+              </td> */}
               <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.pmessages}</td>
               
               <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.dmessages}</td>
@@ -219,9 +222,13 @@ export default class Accordion extends Component{
             <Col md={6} className="mb-4">
               <Form.Group id="firstName">
                 <Form.Label> Message</Form.Label>
-                <textarea value={this.state.pmessage} onChange={this.onChangepmessage}>
-
-                </textarea>
+                <CKEditor 
+                    editor={ ClassicEditor }
+                   
+                   
+                   
+                />
+               
               </Form.Group>
             </Col>
            
@@ -265,9 +272,21 @@ export default class Accordion extends Component{
             <Col md={6} className="mb-4">
               <Form.Group id="firstName">
                 <Form.Label> Message</Form.Label>
-                <textarea value={this.state.dmessage} onChange={this.onChangedmessage}>
-
-                </textarea>
+                <CKEditor 
+                    editor={ ClassicEditor }
+                    
+                  
+                    
+                   
+                    // onBlur={ ( event, editor ) => {
+                    //     console.log( 'Blur.', editor );
+                    // } }
+                    // onFocus={ ( event, editor ) => {
+                    //     console.log( 'Focus.', editor );
+                    // } } 
+                    
+                />
+               
               </Form.Group>
             </Col>
            
@@ -325,33 +344,7 @@ export default class Accordion extends Component{
             </InputGroup>
             </Form> */}
           </Col>
-          <Col xs={4} md={2} xl={1} className="ps-md-0 text-end" style={{marginRight:"200px"}}>
-            <Dropdown as={ButtonGroup} >
-              <Dropdown.Toggle split as={Button} variant="link" className="text-dark m-0 p-0">
-              <span className="icon icon-sm icon-gray" style={{marginRight:"15px"}}>
-                  <b>Actions</b>
-                  
-                </span>
-                  <FontAwesomeIcon icon={faCog} />
-              
-              </Dropdown.Toggle>
-              <Dropdown.Menu className="dropdown-menu-xs dropdown-menu-right">
-              
-                {/* <Dropdown.Item className="d-flex fw-bold">
-                <Link to="/components/breadcrumbs" className="nav-link">    <span className="icon icon-small ms-auto">Adduser <FontAwesomeIcon icon={faPlus} style={{marginLeft:"16px"}} /></span></Link>
-                </Dropdown.Item> */}
-                <Dropdown.Item className="d-flex fw-bold">
-                <Link to="/components/accordions" className="nav-link">    <span className="icon icon-small ms-auto" style={{marginRight:"50px"}}>Add <FontAwesomeIcon icon={faPlus}  /></span></Link>
-                </Dropdown.Item>
-                <Dropdown.Item className="fw-bold" >
-                <span style={{marginRight:"10px"}}    onClick={() => {
-          this.deleteCustomerByIds();
-        }}  > Delete <FontAwesomeIcon icon={faTrashAlt} style={{marginLeft:"5px"}} /> </span>
-                </Dropdown.Item>
-               
-              </Dropdown.Menu>
-            </Dropdown>
-          </Col>
+         
           </Row>
           </div>
         
@@ -384,7 +377,7 @@ export default class Accordion extends Component{
           <thead className="thead-light">
             <tr>
            
-            <th style={{border:"1px double  black",width:"100px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Delete</th>
+         
               <th style={{border:"1px double black",width:"150px" ,backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Name</th>
 
               <th style={{border:"1px double black",width:"150px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Email</th>
