@@ -1,5 +1,7 @@
 import React,{Component} from "react"
+
 import axios from 'axios';
+import * as Yup from 'yup'
 // import moment from "moment-timezone";
 import DatePicker from 'react-datepicker'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -39,6 +41,9 @@ export default class Accordion extends Component{
           country:'',
           mobilenumber:'',
          
+            
+          
+         
             trainer:[]
             
             
@@ -73,6 +78,7 @@ export default class Accordion extends Component{
           }
           onChangemobilenumber(e) {
             this.setState({
+             
             mobilenumber: e.target.value
             })
           }
@@ -84,7 +90,7 @@ export default class Accordion extends Component{
           
           
           onback(){
-            window.location='/#/dashboard/overview'
+            window.location='/#/components/viewcorporate'
             }
      
           onSubmit(e) {
@@ -105,6 +111,8 @@ export default class Accordion extends Component{
               numberofemployees:this.state.numberofemployees,
               country:this.state.country,
               mobilenumber:this.state.mobilenumber,
+              
+             
               
              
 
@@ -213,7 +221,7 @@ export default class Accordion extends Component{
             <Col md={4} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> Phone Number</Form.Label>
-                <Form.Control required type="number"  placeholder="" value={this.state.mobilenumber}
+                <Form.Control required type="number"  placeholder="" value={this.state.mobilenumber} min="10" 
               onChange={this.onChangemobilenumber}
               
              />

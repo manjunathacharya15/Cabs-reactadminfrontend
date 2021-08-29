@@ -27,7 +27,7 @@ export default class buttons extends Component {
 
   componentDidMount() {
    
-      axios.post('https://acabnodejs.herokuapp.com/corporate/')
+      axios.post('https://acabnodejs.herokuapp.com/driverbenifitscheme/')
     .then(response => {
       
       this.setState({ customers: response.data})
@@ -38,13 +38,13 @@ export default class buttons extends Component {
           return{
             select : false,
             id : e._id,
-            companyemail : e.companyemail,
+            createddate : e.createdAt,
           
-            companyname:e.companyname,
-            department:e.department,
-            numberofemployees:e.numberofemployees,
-            country:e.country,
-            mobilenumber:e.mobilenumber,
+            wheelalignment:e.wheelalignment,
+            oilchange:e.oilchange,
+            carinsurance:e.carinsurance,
+            childrenbenifitscheme:e.childrenbenifit,
+            familybenifitscheme:e.familyinsurance,
           
 
           }
@@ -117,37 +117,35 @@ export default class buttons extends Component {
   // }
   customerList() {
    
-    this.state.customers.sort(function(a,b){
-      if(a.companyname.toLowerCase() < b.companyname.toLowerCase()) return -1;
-      if(a.companyname.toLowerCase() > b.companyname.toLowerCase()) return 1;
-      return 0;
-     })
+    // this.state.customers.sort(function(a,b){
+    //   if(a.companyname.toLowerCase() < b.companyname.toLowerCase()) return -1;
+    //   if(a.companyname.toLowerCase() > b.companyname.toLowerCase()) return 1;
+    //   return 0;
+    //  })
     return this.state.customers.map(currentcustomer => (
       <tr>
-        {/* <td  style={{border:"1px double black",textAlign:"center"}}>
-        <input type="checkbox" onChange={e => {
-                                let value = e.target.checked
-                                console.log(this.state)
-                                this.state.customers.find(o => o.id=== currentcustomer.id).select = value
-                                this.setState(this.state);
-                            }} />
-      </td> */}
-      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.companyemail}</td>
+     
+      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.id}</td>
       
-      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.companyname}</td>
+      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.createddate}</td>
       
-      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.department}</td>
-      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.numberofemployees}</td>
-      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.country}</td>
-      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.mobilenumber}</td>
-      <td style={{border:"1px double black",textAlign:"center"}}><Link to={"/components/editcorporate/"+currentcustomer.id}><FontAwesomeIcon icon={faPencilAlt} /></Link></td>
+      
+      <td style={{border:"1px double grey",textAlign:"center"}}>
+    <tr style={{textAlign:"center"}}>Wheel Alignment:{currentcustomer.wheelalignment}</tr>
+    <tr style={{textAlign:"center"}}>Oil Change:{currentcustomer.oilchange}</tr>
+    <tr style={{textAlign:"center"}}>Car Insurance:{currentcustomer.carinsurance}</tr>
+    <tr style={{textAlign:"center"}}>Children Benifit Scheme:{currentcustomer.childrenbenifitscheme}</tr>
+    <tr style={{textAlign:"center"}}>Family Benifit Scheme:{currentcustomer.familybenifitscheme}</tr>
+    
+</td>
+      <td style={{border:"1px double black",textAlign:"center"}}><Link to={"/components/editdriverscheme/"+currentcustomer.id}><FontAwesomeIcon icon={faPencilAlt} /></Link></td>
       
       
       
     
     </tr>
      
-     
+    
     ))
    
   }
@@ -169,11 +167,11 @@ export default class buttons extends Component {
         <div className="d-block mb-4 mb-md-0">
           <Breadcrumb className="d-none d-md-inline-block" listProps={{ className: "breadcrumb-dark breadcrumb-transparent" }}>
             <Breadcrumb.Item><FontAwesomeIcon icon={faHome} /></Breadcrumb.Item>
-            <Breadcrumb.Item>Corporates</Breadcrumb.Item>
+            <Breadcrumb.Item>Driver Benifit Scheme</Breadcrumb.Item>
           
           </Breadcrumb>
-          <h4>Corporates Information</h4>
-          <p className="mb-0">Corporates Details .</p>
+          {/* <h4>Corporates Information</h4> */}
+          <p className="mb-0">Driver Benifit Scheme .</p>
         </div>
       
       </div>
@@ -222,14 +220,12 @@ export default class buttons extends Component {
             <tr>
            
            
-              <th style={{border:"1px double black",width:"150px" ,backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Company Offical Email</th>
+              <th style={{border:"1px double black",width:"150px" ,backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Sl No</th>
 
-              <th style={{border:"1px double black",width:"150px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Company Name</th>
+              <th style={{border:"1px double black",width:"150px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Created Date</th>
              
-              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Department</th>
-              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Number Of Employees</th>
-              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Country</th>
-              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Phone Number</th>
+              
+              <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Benifits</th>
               <th style={{border:"1px double black",width:"30px",backgroundColor:"00ADB5",color:"black",textAlign:"center"}}>Actions</th>
               
               

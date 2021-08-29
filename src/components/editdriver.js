@@ -42,6 +42,36 @@ export default class Accordion extends Component{
             
           }
         }
+        componentDidMount() {
+   
+            axios.get('https://acabnodejs.herokuapp.com/driverbenifitscheme/' + this.props.match.params.id)
+          .then(response => {
+            console.log(response.data.ofirstname)
+            this.setState({ 
+                  id : response.data._id,
+                  wheelalignment : response.data.wheelalignment,
+                
+                  oilchange:response.data.oilchange,
+                  carinsurance:response.data.carinsurance,
+                  childrenbenifit:response.data.childrenbenifit,
+                  familyinsurance:response.data.familyinsurance,
+                 
+                 
+
+
+                
+      
+            
+              })
+            })
+      
+        
+          
+          .catch((error) => {
+            console.log(error);
+          })
+          
+        }
         
         onChangewheelalignment(e) {
           this.setState({
@@ -105,11 +135,11 @@ export default class Accordion extends Component{
         
             
         
-            axios.post('https://acabnodejs.herokuapp.com/driverbenifitscheme/add', trainer)
+            axios.post('https://acabnodejs.herokuapp.com/driverbenifitscheme/update/'+ this.props.match.params.id,trainer )
             .then(function(response){
         
-              if(response.data ==='Driverbenifitscheme added!'){
-                alert("Driver Benifit Scheme Added")
+              if(response.data ==='Driverbenifitscheme updated!'){
+                alert("Driver Benifit Scheme Updated")
                   window.location='/#/components/driverview'
               }
              }) 
@@ -120,7 +150,7 @@ export default class Accordion extends Component{
             <div style={{marginTop:"50px"}}>
               <Card border="light" className="bg-white shadow-sm mb-4">
       <Card.Body>
-        <h5 className="mb-4">Driver Benifit Scheme</h5>
+        <h5 className="mb-4">Driver Benifit Scheme Update </h5>
         <Form onSubmit={this.onSubmit}>
           <Row>
             <Col md={6} className="mb-3">
@@ -188,7 +218,7 @@ export default class Accordion extends Component{
             </Row>
             <Row>
             <Col md={3} className="mb-3"> <div className="mt-3">
-            <Button variant="primary" type="submit">Save </Button>
+            <Button variant="primary" type="submit">Update </Button>
           
           </div> </Col>
             <Col md={3} className="mb-3">  <div className="mt-3">

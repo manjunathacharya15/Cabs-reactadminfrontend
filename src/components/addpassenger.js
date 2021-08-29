@@ -73,7 +73,7 @@ export default class Accordion extends Component{
           
           
           onback(){
-            window.location='/#/dashboard/overview'
+            window.location='/#/components/viewpassenger'
             }
      
           onSubmit(e) {

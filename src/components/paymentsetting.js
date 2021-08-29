@@ -82,6 +82,12 @@ export default class buttons extends Component {
       companyname: e.target.value
     })
   }
+  onback(){
+  alert("You have Submitted")
+    }
+    oncancel(){
+        alert("You have Cancelled")
+          }
   onSubmit(e) {
     e.preventDefault();
 
@@ -483,94 +489,17 @@ export default class buttons extends Component {
                             </div>
                     </blockquote>
                 </div>
-                <div class="card card-block card-inverse card-info">
-                    <blockquote class="card-blockquote">
-                        <div class="form-group row">
-                            <label for="daily_target" class="col-xs-4 col-form-label">Daily Target</label>
-                            <div class="col-xs-8">
-                                <input class="form-control" 
-                                    type="number"
-                                    value="5"
-                                    id="daily_target"
-                                    name="daily_target"
-                                    min="0"
-                                    required
-                                    placeholder="Daily Target" />
-                            </div>
-                        </div>
+               
 
-                        <div class="form-group row">
-                            <label for="commission_percentage" class="col-xs-4 col-form-label">Commission (%)</label>
-                            <div class="col-xs-8">
-                                <input class="form-control"
-                                    type="number"
-                                    value="0"
-                                    id="commission_percentage"
-                                    name="commission_percentage"
-                                    min="0"
-                                    max="100"
-                                    placeholder="Commission (%)" />
-                            </div>
-                        </div>  
-                        <div class="form-group row">
-                            <label for="fleet_commission_percentage" class="col-xs-4 col-form-label">Fleet Commission (%) <span style={{color:"red"}}>(It will work if admin commission 0%) </span> </label>
-                            <div class="col-xs-8">
-                                <input class="form-control"
-                                    type="number"
-                                    value="0"
-                                    id="fleet_commission_percentage"
-                                    name="fleet_commission_percentage"
-                                    min="0"
-                                    max="100"
-                                    placeholder="Fleet Commission (%)" />
-                            </div>
-                        </div>   
-                        <div class="form-group row">
-                            <label for="peak_percentage" class="col-xs-4 col-form-label">Peak Hours Commission (%)</label>
-                            <div class="col-xs-8">
-                                <input class="form-control"
-                                    type="number"
-                                    value="8"
-                                    id="peak_percentage"
-                                    name="peak_percentage"
-                                    min="0"
-                                    max="100"
-                                    placeholder="Peak Hours Commission (%)" />
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="waiting_percentage" class="col-xs-4 col-form-label">Waiting Charges Commission (%)</label>
-                            <div class="col-xs-8">
-                                <input class="form-control"
-                                    type="number"
-                                    value="50"
-                                    id="waiting_percentage"
-                                    name="waiting_percentage"
-                                    min="0"
-                                    max="100"
-                                    placeholder="Waiting Charges Commission (%)" />
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="minimum_negative_balance" class="col-xs-4 col-form-label">Minimum Negative Balance</label>
-                            <div class="col-xs-8">
-                                <input class="form-control"
-                                    type="number"
-                                    value="-500"
-                                    id="minimum_negative_balance"
-                                    name="minimum_negative_balance"
-                                    max='0'
-                                    placeholder="Minimum Negative Balance" />
-                            </div>
-                        </div>
-
-                    </blockquote>
-                </div>           
+                   
                 <div class="form-group row">
                     <div class="col-xs-4">
-                        <a href="/#/dashboard/overview" class="btn btn-warning btn-block">Back</a>
+                        <button class="btn btn-warning btn-block" onClick={this.onback} >Submit</button>
+                    </div>
+                    </div>
+                <div class="form-group row">
+                    <div class="col-xs-4">
+                        <a onClick={this.oncancel} class="btn btn-warning btn-block">Cancel</a>
                     </div>
                     </div>
 

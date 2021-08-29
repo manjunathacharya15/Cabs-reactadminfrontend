@@ -96,7 +96,11 @@ export default class buttons extends Component {
   }
   deleteCustomer(id) {
     axios.delete('https://acabnodejs.herokuapp.com/subadmin/'+id)
-      .then(response => { console.log(response.data)});
+      .then(response => { 
+        console.log(response)
+        window.location.reload(true)
+
+      });
 
     this.setState({
       customers: this.state.customers.filter(el => el._id !== id)
@@ -127,7 +131,7 @@ export default class buttons extends Component {
       <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.profilepicture}</td>
       <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.role}</td>
       <td style={{border:"1px double black",textAlign:"center"}}>
-       <a href="#" onClick={() => { this.deleteCustomer(currentcustomer.id) }}><FontAwesomeIcon icon={faTrash} /></a>
+       <a  onClick={() => { this.deleteCustomer(currentcustomer.id) }}><FontAwesomeIcon icon={faTrash} /></a>
     </td>
       
       

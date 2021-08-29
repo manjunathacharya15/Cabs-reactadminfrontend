@@ -131,7 +131,7 @@ export default class Accordion extends Component{
         
               if(response.data ==='Callradiussetting added!'){
                 alert("Call Radius Added percentage")
-                  window.location='/#/dashboard/overview'
+                window.location.reload(true)
               }
              }) 
           }

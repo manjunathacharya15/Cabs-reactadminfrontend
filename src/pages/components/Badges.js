@@ -131,7 +131,7 @@ export default class Accordion extends Component{
         
               if(response.data ==='Wagespercentage added!'){
                 alert("Wages percentage")
-                  window.location='/#/dashboard/overview'
+                window.location.reload(true)
               }
              }) 
           }
@@ -176,7 +176,7 @@ export default class Accordion extends Component{
           <Row>
             <Col md={6} className="mb-3">
               <Form.Group id="firstName">
-                <Form.Label> Commission</Form.Label>
+                <Form.Label> Commission(%)</Form.Label>
                 <Form.Control required type="number"  placeholder="" value={this.state.commission}
               onChange={this.onChangecommission}
               

@@ -33,7 +33,7 @@ export default class Accordion extends Component{
         this.state = {
           name:'',
           email:'',
-          profilepicture:'',
+          file1: null,
           password:'',
           role:'',
          
@@ -56,7 +56,7 @@ export default class Accordion extends Component{
           }
           onChangeprofilepicture(e) {
             this.setState({
-              profilepicture: e.target.value
+            file1: e.target.files[0]
             })
           }
           onChangepassword(e) {
@@ -77,7 +77,7 @@ export default class Accordion extends Component{
           
           
           onback(){
-            window.location='/#/dashboard/overview'
+            window.location='/#/components/alerts'
             }
      
           onSubmit(e) {
@@ -90,22 +90,24 @@ export default class Accordion extends Component{
   
    
   
-
-            const trainer = {
-              name: this.state.name,
-              password: this.state.password,
-              email:this.state.email,
-              profilepicture:this.state.profilepicture,
-              role:this.state.role,
-              
-             
-
-        
-            }
+            const formData=new FormData();
+            formData.append('name',this.state.name);
+            formData.append('email',this.state.email);
+            formData.append('profilepicture',this.state.file1);
+            formData.append('password',this.state.password);
+            formData.append('role',this.state.role);
+            
+          
+            
+            
+            const config={
+              headers:{
+                'content-type':'multipart/form-data'
+              }
         
             
-        
-            axios.post('https://acabnodejs.herokuapp.com/subadmin/add', trainer)
+            }
+            axios.post('https://acabnodejs.herokuapp.com/subadmin/add', formData)
             .then(function(response){
         
               if(response.data ==='Subadmin added!'){
@@ -127,7 +129,7 @@ export default class Accordion extends Component{
               <Form.Group id="firstName">
                 <Form.Label> Name</Form.Label>
                 <Form.Control required type="type"  placeholder="" value={this.state.name}
-              onChange={this.onChangename}
+              onChange={this.onChangename} name="name"
               
              />
               </Form.Group>
@@ -143,7 +145,7 @@ export default class Accordion extends Component{
               <Form.Group id="firstName">
                 <Form.Label> Email</Form.Label>
                 <Form.Control required type="email"  placeholder="" value={this.state.email}
-              onChange={this.onChangeemail}
+              onChange={this.onChangeemail} name="email"
               
              />
               </Form.Group>
@@ -155,7 +157,7 @@ export default class Accordion extends Component{
               <Form.Group id="emal">
                 <Form.Label>Password</Form.Label>
                 <Form.Control required type="password" placeholder="" value={this.state.password}
-              onChange={this.onChangepassword}
+              onChange={this.onChangepassword} name="password"
               
              />
           
@@ -169,7 +171,8 @@ export default class Accordion extends Component{
             <Col md={6} className="mb-3">
               <Form.Group id="phone">
                 <Form.Label>Profile Picture</Form.Label>
-                <Form.Control required type="text"  placeholder="" value={this.state.profilepicture }
+                <Form.Control  type="file"   name="profilepicture"
+                
               onChange={this.onChangeprofilepicture} />
               </Form.Group>
             </Col>
@@ -182,7 +185,7 @@ export default class Accordion extends Component{
               <Form.Group id="percenta">
                 <Form.Label>Role</Form.Label>
                 <Form.Control required type="text" placeholder="" value={this.state.role}
-              onChange={this.onChangerole} max="100" />
+              onChange={this.onChangerole} max="100" name="role" />
               </Form.Group>
             </Col>
             </Row>

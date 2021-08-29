@@ -70,6 +70,8 @@ import Completedrides from "../components/completedrides";
 import Activerides from "../components/activerides";
 import Cancelledrides from "../components/cancelledrides";
 import Tripreports from "../components/tripreports";
+import Driverview from "../components/driverview";
+import Editdriver from "../components/editdriver";
 import Accordion from "./components/Accordion";
 import Alerts from "./components/Alerts";
 import Badges from "./components/Badges";
@@ -195,6 +197,8 @@ export default () => (
     <RouteWithSidebar exact path={Routes.Activerides.path} component={Activerides} />
     <RouteWithSidebar exact path={Routes.Cancelledrides.path} component={Cancelledrides} />
     <RouteWithSidebar exact path={Routes.Tripreports.path} component={Tripreports} />
+    <RouteWithSidebar exact path={Routes.Driverview.path} component={Driverview} />
+    <RouteWithSidebar exact path={Routes.Editdriver.path} component={Editdriver} />
     <RouteWithSidebar exact path={Routes.Alerts.path} component={Alerts} />
     <RouteWithSidebar exact path={Routes.Badges.path} component={Badges} />
     <RouteWithSidebar exact path={Routes.Breadcrumbs.path} component={Breadcrumbs} />

@@ -20,12 +20,15 @@ export default class buttons extends Component {
 
   constructor(props) {
     super(props);
+    var today = new Date(),
+            date =  today.getMonth() + 1 ;
 
     this.deleteCustomer = this.deleteCustomer.bind(this)
     this.onChangecompanyname = this.onChangecompanyname.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.state = {
       companyname:'',
+      date:date,
       customers: []
     };
   }
@@ -207,6 +210,7 @@ export default class buttons extends Component {
           
           </Row>
           </div>
+          <h4 style={{textAlign:"center",color:"blue"}}>Month:{this.state.date}</h4>
           <h4 style={{textAlign:"center",color:"blue"}}>Over All Earning:$0.00</h4>
           <h4 style={{textAlign:"center",color:"blue"}}>Over All Commission:$0.00</h4>
           

@@ -23,7 +23,7 @@ export default class Presentation extends Component {
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      username: '',
+      email: '',
       password: '',
     
     
@@ -34,7 +34,7 @@ export default class Presentation extends Component {
 
   onChangeusername(e) {
     this.setState({
-      username: e.target.value
+      email: e.target.value
     })
   }
 
@@ -48,20 +48,20 @@ export default class Presentation extends Component {
     e.preventDefault();
 
     const admin = {
-      username: this.state.username,
+      email: this.state.email,
       password: this.state.password,
      
     }
 
     
 
-    axios.post('https://carrombackend.herokuapp.com/admin/login ', admin)
+    axios.post('https://acabnodejs.herokuapp.com/admin/login ', admin)
       .then(function(response){
-        if(response.data === 'valid')
+        if(response.data.Code === 'Su')
         {
           window.location="/#/dashboard/overview"
         }
-        else if(response.data=== 'invaliduser')
+        else if(response.data.Code=== 'Fa')
         {
           window.location="/"
         }
@@ -98,13 +98,13 @@ export default class Presentation extends Component {
                   </div>
                   <Form className="mt-4" onSubmit={this.onSubmit} >
                     <Form.Group id="email" className="mb-4">
-                      <Form.Label>Your Username</Form.Label>
+                      <Form.Label>Your Email</Form.Label>
                       <InputGroup>
                         <InputGroup.Text>
                         
                           <FontAwesomeIcon icon={faEnvelope} />
                         </InputGroup.Text>
-                        <Form.Control autoFocus required type="text" placeholder="example" value={this.state.username} onChange={this.onChangeusername} />
+                        <Form.Control autoFocus required type="email" placeholder="example" value={this.state.username} onChange={this.onChangeusername} />
                       </InputGroup>
                     </Form.Group>
                     <Form.Group>

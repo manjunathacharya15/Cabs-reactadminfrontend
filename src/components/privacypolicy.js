@@ -15,6 +15,7 @@ class App extends Component {
                         
                     } }
                     
+                    
                     // onChange={ ( event, editor ) => {
                     //     const data = editor.getData();
                     //     console.log( { event, editor, data } );

@@ -54,7 +54,7 @@ export default class Accordion extends Component{
         this.state = {
           vehiclename:'',
           vehicletype:'',
-          vehicleicon:'',
+          file:null,
           seatingcapacity:'',
           pricinglogic:'',
           initialwaitingtime:'',
@@ -100,7 +100,7 @@ export default class Accordion extends Component{
           }
           onChangevehicleicon(e) {
             this.setState({
-              vehicleicon: e.target.value
+              file: e.target.files[0]
             })
           }
           onChangeseatingcapacity(e) {
@@ -220,7 +220,7 @@ export default class Accordion extends Component{
           
           
           onback(){
-            window.location='/#/dashboard/overview'
+            window.location='/#/components/modals'
             }
      
           onSubmit(e) {
@@ -234,41 +234,46 @@ export default class Accordion extends Component{
    
   
 
-            const trainer = {
-              vehiclename: this.state.vehiclename,
-              vehicletype: this.state.vehicletype,
-              vehicleicon:this.state.vehicleicon,
-              seatingcapacity:this.state.seatingcapacity,
-              pricinglogic:this.state.pricinglogic,
-              initialwaitingtime: this.state.initialwaitingtime,
-              additionalwaitingtime: this.state.additionalwaitingtime,
-              baseprice:this.state.baseprice,
-              fareperkm:this.state.fareperkm,
-              ridetimecharge:this.state.ridetimecharge,
-              waitingfare: this.state.waitingfare,
-              onehr15km: this.state.onehr15km,
-              twohr30km:this.state.twohr30km,
-              fourhr40km:this.state.fourhr40km,
-              eighthr80km:this.state.eighthr80km,
-              basepriceperday180: this.state.basepriceperday180,
-              after180km: this.state.after180km,
-              dailyallowance180:this.state.dailyallowance180,
-              bookingfee180:this.state.bookingfee180,
-              taxes180:this.state.taxes180,
-              basepriceperday180: this.state.basepriceperday250,
-              after250km: this.state.after250km,
-              dailyallowance250:this.state.dailyallowance250,
-              bookingfee250:this.state.bookingfee250,
-              taxes250:this.state.taxes250,
-              
-             
+            
+            const formData=new FormData();
+formData.append('vehiclename', this.state.vehiclename);
+formData.append('vehicleicon',this.state.file);
+formData.append(' vehicletype', this.state.vehicletype);
+formData.append(' seatingcapacity',this.state.seatingcapacity);
+formData.append('pricinglogic',this.state.pricinglogic);
+formData.append('initialwaitingtime', this.state.initialwaitingtime);
+formData.append('additionalwaitingtime', this.state.additionalwaitingtime);
+formData.append('baseprice',this.state.baseprice);
+formData.append('fareperkm',this.state.fareperkm);
+formData.append('ridetimecharge',this.state.ridetimecharge);
+formData.append('waitingfare', this.state.waitingfare);
+formData.append('onehr15km',this.state.onehr15km);
+formData.append('twohr30km',this.state.twohr30km);
+formData.append('fourhr40km',this.state.fourhr40km);
+formData.append('eighthr80km',this.state.eighthr80km);
+formData.append('basepriceperday180', this.state.basepriceperday180);
+formData.append(' after180km', this.state.after180km);
+formData.append('dailyallowance180',this.state.dailyallowance180);
+formData.append(' bookingfee180',this.state.bookingfee180);
+formData.append('taxes180',this.state.taxes180);
+formData.append('basepriceperday180', this.state.basepriceperday250);
+formData.append(' after250km', this.state.after250km);
+formData.append('dailyallowance250',this.state.dailyallowance250);
+formData.append(' bookingfee250',this.state.bookingfee250);
+formData.append('taxes250',this.state.taxes250);
 
-        
-            }
+
+
+const config={
+  headers:{
+    'content-type':'multipart/form-data'
+  }
+
+  }
         
             
         
-            axios.post('https://acabnodejs.herokuapp.com/vehicle/add', trainer)
+            axios.post('https://acabnodejs.herokuapp.com/vehicle/add', formData)
             .then(function(response){
         
               if(response.data ==='Vehicle added!'){
@@ -289,7 +294,7 @@ export default class Accordion extends Component{
             <Col md={6} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> Vehicle Name</Form.Label>
-                <Form.Control required type="text"  placeholder="" value={this.state.vehiclename}
+                <Form.Control required type="text"  placeholder="" value={this.state.vehiclename} name="vehiclename"
               onChange={this.onChangevehiclename} />
               {/* <select class="form-control" id="calculator" name="calculator" onChange={this.onChangevehiclename} value={this.state.vehiclename}>
                                                     <option value="MIN">Per Minute Pricing</option>
@@ -313,7 +318,7 @@ export default class Accordion extends Component{
               <Form.Group id="firstName">
                 <Form.Label> Vehicle Type</Form.Label>
                 
-               <select class="form-control" id="calculator" name="calculator" onChange={this.onChangevehicletype} value={this.state.vehicletype}>
+               <select class="form-control" id="calculator" name="vehicletype" onChange={this.onChangevehicletype} value={this.state.vehicletype} >
                                                     <option value="Auto">Auto</option>
                                                     <option value="Bike">Bike</option>
                                                     <option value="Mini">Mini</option>
@@ -330,7 +335,7 @@ export default class Accordion extends Component{
           <Col md={6} className="mb-3">
               <Form.Group id="emal">
                 <Form.Label>Vehicle Icon</Form.Label>
-                <Form.Control  type="text" placeholder="" value={this.state.vehicleicon}
+                <Form.Control  type="file" placeholder="" value={this.state.vehicleicon} name="vehicleicon" 
               onChange={this.onChangevehicleicon}
               
              />
@@ -345,7 +350,7 @@ export default class Accordion extends Component{
             <Col md={6} className="mb-3">
               <Form.Group id="phone">
                 <Form.Label>Seating Capacity</Form.Label>
-                <select class="form-control" id="calculator"  name="calculator" onChange={this.onChangeseatingcapacity} value={this.state.seatingcapacity}>
+                <select class="form-control" id="calculator"  name="seatingcapacity" onChange={this.onChangeseatingcapacity} value={this.state.seatingcapacity}>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
@@ -365,7 +370,7 @@ export default class Accordion extends Component{
               <Form.Group id="percenta">
                 <Form.Label>Pricing Logic</Form.Label>
                
-              <select class="form-control" id="calculator" name="calculator" onChange={this.onChangepricinglogic} value={this.state.pricinglogic}>
+              <select class="form-control" id="calculator" name="pricinglogic" onChange={this.onChangepricinglogic} value={this.state.pricinglogic}>
               <option value="MIN">Per Minute Pricing</option>
                                                     <option value="Per Hour Pricing">Per Hour Pricing</option>
                                                     <option value="Distance Pricing">Distance Pricing</option>
@@ -381,7 +386,7 @@ export default class Accordion extends Component{
               <Form.Group id="firstName">
                 <Form.Label> Initial Waiting Time</Form.Label>
                 <Form.Control required type="number"  placeholder="" value={this.state.initialwaitingtime}
-              onChange={this.onChangeinitailwaitingtime} />
+              onChange={this.onChangeinitailwaitingtime} name="initialwaitingtime" />
             
               
              
@@ -398,7 +403,7 @@ export default class Accordion extends Component{
               <Form.Group id="firstName">
                 <Form.Label> Additional Waiting Time</Form.Label>
                 <Form.Control required type="number"  placeholder="" value={this.state.additionalwaitingtime}
-              onChange={this.onChangeaddiditionalwaitingtime} />
+              onChange={this.onChangeaddiditionalwaitingtime} name="additionalwaitingtime" />
               </Form.Group>
             </Col>
            </Row>
@@ -407,7 +412,7 @@ export default class Accordion extends Component{
               <Form.Group id="firstName">
                 <Form.Label> Base Price</Form.Label>
                 <Form.Control required type="number"  placeholder="" value={this.state.baseprice}
-              onChange={this.onChangebaseprice} />
+              onChange={this.onChangebaseprice} name="baseprice" />
               </Form.Group>
             </Col>
            </Row>
@@ -416,7 +421,7 @@ export default class Accordion extends Component{
               <Form.Group id="firstName">
                 <Form.Label> Fare Per Km</Form.Label>
                 <Form.Control required type="number"  placeholder="" value={this.state.fareperkm}
-              onChange={this.onChangefareperkm} />
+              onChange={this.onChangefareperkm} name="fareperkm" />
               </Form.Group>
             </Col>
            </Row>
@@ -425,7 +430,7 @@ export default class Accordion extends Component{
               <Form.Group id="firstName">
                 <Form.Label> Ride Time Charge</Form.Label>
                 <Form.Control required type="number"  placeholder="" value={this.state.ridetimecharge}
-              onChange={this.onChangeridetimecharge} />
+              onChange={this.onChangeridetimecharge} name="ridetimecharge" />
               </Form.Group>
             </Col>
            </Row>
@@ -434,7 +439,7 @@ export default class Accordion extends Component{
               <Form.Group id="firstName">
                 <Form.Label> Waiting Fare</Form.Label>
                 <Form.Control required type="number"  placeholder="" value={this.state.waitingfare}
-              onChange={this.onChangewaitingfare} />
+              onChange={this.onChangewaitingfare} name="waitingfare" />
               </Form.Group>
             </Col>
            </Row>
@@ -459,7 +464,7 @@ export default class Accordion extends Component{
               <Form.Group id="firstName">
                 <Form.Label>1 Hour 15 KM </Form.Label>
                 <Form.Control required type="number"  placeholder="" value={this.state.onehr15km}
-              onChange={this.onChange1hr15km} />
+              onChange={this.onChange1hr15km} name="onehr15km" />
               </Form.Group>
             </Col>
            </Row>
@@ -468,7 +473,7 @@ export default class Accordion extends Component{
               <Form.Group id="firstName">
                 <Form.Label>2 Hour 30 KM </Form.Label>
                 <Form.Control required type="number"  placeholder="" value={this.state.twohr30km}
-              onChange={this.onChange2hr30km} />
+              onChange={this.onChange2hr30km} name="twohr30km" />
               </Form.Group>
             </Col>
            </Row>
@@ -477,7 +482,7 @@ export default class Accordion extends Component{
               <Form.Group id="firstName">
                 <Form.Label>4 Hour 40 KM </Form.Label>
                 <Form.Control required type="number"  placeholder="" value={this.state.fourhr40km}
-              onChange={this.onChange4hr40km} />
+              onChange={this.onChange4hr40km} name="fourhr40km" />
               </Form.Group>
             </Col>
            </Row>
@@ -486,7 +491,7 @@ export default class Accordion extends Component{
               <Form.Group id="firstName">
                 <Form.Label>8 Hour 80 KM </Form.Label>
                 <Form.Control required type="number"  placeholder="" value={this.state.eighthr80km}
-              onChange={this.onChange8hr80km} />
+              onChange={this.onChange8hr80km} name="eighthr80km" />
               </Form.Group>
             </Col>
            </Row>
@@ -511,7 +516,7 @@ export default class Accordion extends Component{
               <Form.Group id="firstName">
                 <Form.Label>Base Price Per Day </Form.Label>
                 <Form.Control required type="number"  placeholder="" value={this.state.basepriceperday180}
-              onChange={this.onChangebasepriceperday1} />
+              onChange={this.onChangebasepriceperday1} name="basepriceperday180" />
               </Form.Group>
             </Col>
            </Row>
@@ -520,7 +525,7 @@ export default class Accordion extends Component{
               <Form.Group id="firstName">
                 <Form.Label>After 180 KM  </Form.Label>
                 <Form.Control required type="number"  placeholder="" value={this.state.after180km}
-              onChange={this.onChangeafter180km} />
+              onChange={this.onChangeafter180km} name="after180km" />
               </Form.Group>
             </Col>
            </Row>
@@ -529,7 +534,7 @@ export default class Accordion extends Component{
               <Form.Group id="firstName">
                 <Form.Label>Daily Allowance </Form.Label>
                 <Form.Control required type="number"  placeholder="" value={this.state.dailyallowance180}
-              onChange={this.onChangedailyallowance} />
+              onChange={this.onChangedailyallowance} name="dailyallowance" />
               </Form.Group>
             </Col>
            </Row>
@@ -538,7 +543,7 @@ export default class Accordion extends Component{
               <Form.Group id="firstName">
                 <Form.Label>Booking Fee </Form.Label>
                 <Form.Control required type="number"  placeholder="" value={this.state.bookingfee180}
-              onChange={this.onChangebookingfee} />
+              onChange={this.onChangebookingfee} name="bookingfee180" />
               </Form.Group>
             </Col>
            </Row>
@@ -547,7 +552,7 @@ export default class Accordion extends Component{
               <Form.Group id="firstName">
                 <Form.Label>Taxes </Form.Label>
                 <Form.Control required type="number"  placeholder="" value={this.state.taxes180}
-              onChange={this.onChangetaxes} />
+              onChange={this.onChangetaxes} name="taxes180" />
               </Form.Group>
             </Col>
            </Row>
@@ -564,7 +569,7 @@ export default class Accordion extends Component{
               <Form.Group id="firstName">
                 <Form.Label>Base Price Per Day </Form.Label>
                 <Form.Control required type="number"  placeholder="" value={this.state.basepriceperday250}
-              onChange={this.onChangebasepriceday2} />
+              onChange={this.onChangebasepriceday2} name="basepriceday250" />
               </Form.Group>
             </Col>
            </Row>
@@ -573,7 +578,7 @@ export default class Accordion extends Component{
               <Form.Group id="firstName">
                 <Form.Label>After 250 KM  </Form.Label>
                 <Form.Control required type="number"  placeholder="" value={this.state.after250km}
-              onChange={this.onChangeperafter250km} />
+              onChange={this.onChangeperafter250km} name="after250km" />
               </Form.Group>
             </Col>
            </Row>
@@ -582,7 +587,7 @@ export default class Accordion extends Component{
               <Form.Group id="firstName">
                 <Form.Label>Daily Allowance </Form.Label>
                 <Form.Control required type="number"  placeholder="" value={this.state.dailyallowance250}
-              onChange={this.onChangedailyallowance1} />
+              onChange={this.onChangedailyallowance1} name="dailyallowance250" />
               </Form.Group>
             </Col>
            </Row>
@@ -591,7 +596,7 @@ export default class Accordion extends Component{
               <Form.Group id="firstName">
                 <Form.Label>Booking Fee </Form.Label>
                 <Form.Control required type="number"  placeholder="" value={this.state.bookingfee250}
-              onChange={this.onChangebookingfee1} />
+              onChange={this.onChangebookingfee1} name="bookingfee250" />
               </Form.Group>
             </Col>
            </Row>
@@ -600,7 +605,7 @@ export default class Accordion extends Component{
               <Form.Group id="firstName">
                 <Form.Label>Taxes </Form.Label>
                 <Form.Control required type="number"  placeholder="" value={this.state.taxes250}
-              onChange={this.onChangetaxes1} />
+              onChange={this.onChangetaxes1} name="taxes250" />
               </Form.Group>
             </Col>
            </Row>

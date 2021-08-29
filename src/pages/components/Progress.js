@@ -222,12 +222,9 @@ export default class Accordion extends Component{
             <Col md={6} className="mb-4">
               <Form.Group id="firstName">
                 <Form.Label> Message</Form.Label>
-                <CKEditor 
-                    editor={ ClassicEditor }
-                   
-                   
-                   
-                />
+                <textarea value={this.state.pmessage} onChange={this.onChangepmessage}>
+
+                </textarea>
                
               </Form.Group>
             </Col>
@@ -246,7 +243,7 @@ export default class Accordion extends Component{
             </Col>
             <Col md={6} className="mb-3">
               <Form.Group id="firstName">
-              <Link to={"/dashboard/overview"} >  <Button variant="primary" >Cancel </Button></Link>
+              <Link to={"/components/progress"} >  <Button variant="primary" >Cancel </Button></Link>
 
               </Form.Group>
             </Col>
@@ -272,20 +269,9 @@ export default class Accordion extends Component{
             <Col md={6} className="mb-4">
               <Form.Group id="firstName">
                 <Form.Label> Message</Form.Label>
-                <CKEditor 
-                    editor={ ClassicEditor }
-                    
-                  
-                    
-                   
-                    // onBlur={ ( event, editor ) => {
-                    //     console.log( 'Blur.', editor );
-                    // } }
-                    // onFocus={ ( event, editor ) => {
-                    //     console.log( 'Focus.', editor );
-                    // } } 
-                    
-                />
+                <textarea value={this.state.dmessage} onChange={this.onChangedmessage}>
+
+                </textarea>
                
               </Form.Group>
             </Col>
@@ -304,7 +290,7 @@ export default class Accordion extends Component{
             </Col>
             <Col md={6} className="mb-3">
               <Form.Group id="firstName">
-              <Link to={"/dashboard/overview"} >  <Button variant="primary" >Cancel </Button></Link>
+              <Link to={"/components/progress"} >  <Button variant="primary" >Cancel </Button></Link>
 
               </Form.Group>
             </Col>

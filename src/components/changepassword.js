@@ -12,48 +12,45 @@ export default class Tabs extends Component {
     super(props);
 
     
-    this.onChangepcontact = this.onChangepcontact.bind(this);
-    this.onChangedcontact = this.onChangedcontact.bind(this);
+    this.onChangeemail = this.onChangeemail.bind(this);
+    this.onChangeoldpassword = this.onChangeoldpassword.bind(this);
+    this.onChangenewpassword = this.onChangenewpassword.bind(this);
+
 
 this.onSubmit = this.onSubmit.bind(this);
 this.onback=this.onback.bind(this);
     
     this.state = {
         
-     pcontact:'',
-     dcontact:'',
+     email:'',
+     oldpassword:'',
+     newpassword:'',
      
         trainer:[]
         
         
       }
     }
-    componentDidMount(){
-      axios.get('https://acabnodejs.herokuapp.com/supportcontactsetting/' + this.props.match.params.id )
-      .then(response => {
-        this.setState({ 
-          pcontact:response.data.contacts.passenger.pcontact,
-          dcontact:response.data.contacts.driver.dcontact,
-        })
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-  }
+    
 
-  onChangepcontact(e) {
+  onChangeemail(e) {
     this.setState({
-      pcontact: e.target.value
+      email: e.target.value
     })
   }
-  onChangedcontact(e) {
+  onChangeoldpassword(e) {
     this.setState({
-      dcontact: e.target.value
+      oldpassword: e.target.value
+    })
+  }
+  onChangenewpassword(e) {
+    this.setState({
+      newpassword: e.target.value
     })
   }
 
       onback(){
-            window.location='/#/components/tables'
+            window.location='/#/dashboard/overview'
             }
   
             onSubmit(e) {
@@ -61,8 +58,9 @@ this.onback=this.onback.bind(this);
               
           
               const customer = {
-                pcontact: this.state.pcontact,
-                dcontact: this.state.dcontact,
+                email: this.state.email,
+                oldpassword: this.state.oldpassword,
+                newpassword: this.state.newpassword,
             
                 
           
@@ -72,10 +70,11 @@ this.onback=this.onback.bind(this);
           
               }
           
-              axios.post('https://acabnodejs.herokuapp.com/supportcontactsetting/update/' + this.props.match.params.id, customer)
+              axios.post('https://acabnodejs.herokuapp.com/admin/changepassword' , customer)
                 .then(function(response){
-                 if(response.data==='Supportcontactsetting updated!'){
-                     window.location='/#/components/tables'
+                  console.log(response)
+                 if(response.data==='Password Change Successful'){
+                     window.location='/#/'
                  }
                 }) 
             }
@@ -86,27 +85,27 @@ this.onback=this.onback.bind(this);
                 <Card border="light" className="bg-white shadow-sm mb-4">
           <Card.Body>
           <h5 className="mb-4">Change Password</h5>
-          <form class="form-horizontal" action="https://enterprisecabs.deliveryventure.com/admin/password" method="POST" role="form">
+          <form   onSubmit={this.onSubmit}  >
             	
 
             	<div class="form-group row">
-					<label for="old_password" class="col-xs-12 col-form-label">Old Password</label>
+					<label for="old_password" class="col-xs-12 col-form-label">Email:</label>
 					<div class="col-xs-10">
-						<input class="form-control" type="password" name="old_password" id="old_password" placeholder="Old Password" />
+						<input class="form-control" type="email"  placeholder="Email" value={this.state.email} onChange={this.onChangeemail} />
 					</div>
 				</div>
 
 				<div class="form-group row">
-					<label for="password" class="col-xs-12 col-form-label">Password </label>
+					<label for="password" class="col-xs-12 col-form-label"> Old Password </label>
 					<div class="col-xs-10">
-						<input class="form-control" type="password" name="password" id="password" placeholder="New Password" />
+						<input class="form-control" type="password"   placeholder="old password"  value={this.state.password} onChange={this.onChangeoldpassword} />
 					</div>
 				</div>
 
 				<div class="form-group row">
-					<label for="password_confirmation" class="col-xs-12 col-form-label">Password Confirmation</label>
+					<label for="password_confirmation" class="col-xs-12 col-form-label">New Password</label>
 					<div class="col-xs-10">
-						<input class="form-control" type="password" name="password_confirmation" id="password_confirmation" placeholder="Re-type New Password" />
+						<input class="form-control" type="password"   placeholder="New Password" value={this.state.newpassword} onChange={this.onChangenewpassword} />
 					</div>
 				</div>
 

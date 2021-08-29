@@ -86,5 +86,7 @@ export const Routes = {
     Activerides:{path:"/components/activerides"},
     Cancelledrides:{path:"/components/cancelledrides"},
     Tripreports:{path:"/components/tripreports"},
+    Driverview:{path:"/components/driverview"},
+    Editdriver:{path:"/components/editdriverscheme/:id"},
 
 };

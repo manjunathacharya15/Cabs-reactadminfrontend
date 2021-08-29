@@ -170,7 +170,7 @@ export default class buttons extends Component {
                                                 </select>
           <p className="mb-0"><h4>Name .</h4></p>
           <Form onSubmit={this.onSubmit}>
-            <InputGroup style={{marginLeft:"650px"}}>
+            <InputGroup  >
               <InputGroup.Text>
                 <FontAwesomeIcon icon={faSearch} />
               </InputGroup.Text>

@@ -34,7 +34,7 @@ export default class Accordion extends Component{
           coupontext:'',
           percentageorflat:'',
           amount:'',
-          couponexpirydate:'',
+          couponexpirydate:new Date(),
           count:'',
          
             trainer:[]
@@ -59,9 +59,9 @@ export default class Accordion extends Component{
               amount: e.target.value
             })
           }
-          onChangeentercouponexpirydate(e) {
+          onChangeentercouponexpirydate(date) {
             this.setState({
-              couponexpirydate: e.target.value
+              couponexpirydate: date
             })
           }
           onChangeentercount(e) {
@@ -77,7 +77,7 @@ export default class Accordion extends Component{
           
           
           onback(){
-            window.location='/#/dashboard/overview'
+            window.location='/#/components/pagination'
             }
      
           onSubmit(e) {
@@ -142,7 +142,7 @@ export default class Accordion extends Component{
           <Col md={6} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> Percentage OR Flat</Form.Label>
-                <Form.Control required type="text"  placeholder="" value={this.state.percentageorflat}
+                <Form.Control required type="number"  placeholder="" value={this.state.percentageorflat}
               onChange={this.onChangepercentageorflat}
               
              />
@@ -154,8 +154,10 @@ export default class Accordion extends Component{
           <Col md={6} className="mb-3">
               <Form.Group id="emal">
                 <Form.Label>Amount</Form.Label>
-                <Form.Control required type="number" placeholder="" value={this.state.amount}
-              onChange={this.onChangeenteramount}
+                <Form.Control required type="tel" placeholder="" value={this.state.amount}
+              onChange={this.onChangeenteramount} 
+                
+              
               
              />
           
@@ -169,8 +171,19 @@ export default class Accordion extends Component{
             <Col md={6} className="mb-3">
               <Form.Group id="phone">
                 <Form.Label>Coupon Experiy Date</Form.Label>
-                <Form.Control required type="text"  placeholder="" value={this.state.couponexpirydate }
-              onChange={this.onChangeentercouponexpirydate} />
+                <Col md={3} className="mb-3">
+                <DatePicker
+            
+            selected={this.state.couponexpirydate}
+            onChange={this.onChangeentercouponexpirydate}
+            name="startDate"
+       
+           
+           
+            timeCaption="time"
+            dateFormat="MMMM dd yyyy "
+           />
+           </Col>
               </Form.Group>
             </Col>
             
