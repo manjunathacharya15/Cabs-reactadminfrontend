@@ -966,7 +966,7 @@ export default class Adduser extends Component{
     </Form.Group>
   </Col>
 </Row>
-<Row>
+{/* <Row>
 <Col md={4} className="mb-3">
     <Form.Group id="firstName">
       <Form.Label> Upload State Permit Document</Form.Label>
@@ -1018,7 +1018,7 @@ export default class Adduser extends Component{
     onChange={this.onChangevuploadtaxrenewalproof}  />
     </Form.Group>
   </Col>
-</Row>
+</Row> */}
 
 
 
@@ -1091,20 +1091,20 @@ export default class Adduser extends Component{
             />
               </Form.Group>
             </Col>
-            <Col md={4} className="mb-3">
+            {/* <Col md={4} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> Mobile Number</Form.Label>
                 <Form.Control required type="number" max="0-9" placeholder="Enter Mobile Number" value={this.state.dmobilenumber}
               onChange={this.onChangedmobilenumber}  />
               </Form.Group>
-            </Col>
-            <Col md={4} className="mb-3">
+            </Col> */}
+            {/* <Col md={4} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> Emergency Contact Number</Form.Label>
                 <Form.Control required type="number" maxLength="0-9" placeholder="Enter Emergency Contact Number" value={this.state.demergencycontactnumber}
               onChange={this.onChangedemergencycontactnumber}  />
               </Form.Group>
-            </Col>
+            </Col> */}
             </Row>
             <Row>
             <Col md={4} className="mb-3">
@@ -1146,7 +1146,7 @@ export default class Adduser extends Component{
             </Col>
             
             </Row>
-            <Row>
+            {/* <Row>
             <Col md={4} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> Upload Driving Licence Proof</Form.Label>
@@ -1185,7 +1185,7 @@ export default class Adduser extends Component{
               </Form.Group>
             </Col>
             
-            </Row>
+            </Row> */}
 
         </Card.Body>
         </Card>
