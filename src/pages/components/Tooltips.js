@@ -665,13 +665,13 @@ export default class Adduser extends Component{
               onChange={this.onChangeoemail} />
               </Form.Group>
             </Col>
-            <Col md={3} className="mb-3">
+            {/* <Col md={3} className="mb-3">
               <Form.Group id="phone">
                 <Form.Label>Phone Number</Form.Label>
                 <Form.Control required type="number" placeholder="0123456789" value={this.state.ophonenumber}
               onChange={this.onChangeophonenumber} />
               </Form.Group>
-            </Col>
+            </Col> */}
           </Row>
           <Row>
           <Col md={9} className="mb-3">
@@ -773,7 +773,7 @@ export default class Adduser extends Component{
               </Form.Group>
             </Col>
           </Row>
-          <Row>
+          {/* <Row>
             <Col md={4} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> Upload Front Aadhar Proof</Form.Label>
@@ -796,7 +796,7 @@ export default class Adduser extends Component{
               onChange={this.onChangeouploadpancard} />
               </Form.Group>
             </Col>
-          </Row>
+          </Row> */}
 
 
           <Card border="light" className="bg-white shadow-sm mb-4">
