@@ -72,6 +72,7 @@ import Cancelledrides from "../components/cancelledrides";
 import Tripreports from "../components/tripreports";
 import Driverview from "../components/driverview";
 import Editdriver from "../components/editdriver";
+import Updateadmin from "../components/updateprofile";
 import Accordion from "./components/Accordion";
 import Alerts from "./components/Alerts";
 import Badges from "./components/Badges";
@@ -188,6 +189,7 @@ export default () => (
     <RouteWithSidebar exact path={Routes.Faq.path} component={Faq} />
     <RouteWithSidebar exact path={Routes.Documentsrenewal.path} component={Documentsrenewal} />
     <RouteWithSidebar exact path={Routes.Adminprofile.path} component={Adminprofile} />
+    <RouteWithSidebar exact path={Routes.Updateadmin.path} component={Updateadmin} />
     <RouteWithSidebar exact path={Routes.Changepassword.path} component={Changepassword} />
     <RouteWithSidebar exact path={Routes.Editdocumentrenewal.path} component={Editdocumentrenewal} />
     <RouteWithSidebar exact path={Routes.Heatmap.path} component={Heatmap} />

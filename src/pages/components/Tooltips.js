@@ -103,9 +103,9 @@ export default class Adduser extends Component{
            ocstate:'',
            occity:'',
            oczipcode:'',
-           oadharprooffront:'',
-           oadharprooffront:'',
-           oadharproofback:'',
+           file:null,
+           file1:null,
+           file2:null,
            opanproof:'',
            vvehiclemodel:'',
            vvehicletype:'',
@@ -122,13 +122,13 @@ export default class Adduser extends Component{
            vtaxrenewal:'',
            vstatepermit:'',
            vnationalpermit:'',
-           vstatepermitdocument:'',
-           vnationalpermitdocument:'',
-           vinsurancedocument:'',
-           vvehiclepicture:'',
-           vemmissiontestdocument:'',
-           vrccardproof:'',
-           vtaxrenewalproof:'',
+           file3:null,
+           file4:null,
+          file5:null,
+          file6:null,
+           file7:null,
+           file8:null,
+           file9:null,
            ddrivername:'',
            ddriverid:'',
            dgender:'',
@@ -142,16 +142,16 @@ export default class Adduser extends Component{
            ddrivinglicence:'',
            dlanguagesknown:'',
            dpoliceverificationcertificate:'',
-           ddrivinglicenceproof:'',
-           dpoliceverificationproof:'',
-           dinsuranceproof:'',
-           dfrontadharproof:'',
-           dbackadharproof:'',
+           file10:null,
+           file11:null,
+           file12:null,
+           file13:null,
+           file14:null,
            bbankname:'',
            baccountnumber:'',
            bbranchcode:'',
            bifsccode:'',
-           bpassbookphoto:'',
+           file15:null,
 
 
 
@@ -253,17 +253,17 @@ export default class Adduser extends Component{
           }
           onChangeouploadaadharprooffront(e) {
             this.setState({
-              oadharprooffront: e.target.value
+              file: e.target.files[0]
             })
           }
           onChangeouploadaadharproofback(e) {
             this.setState({
-              oadharproofback: e.target.value
+              file1: e.target.files[0]
             })
           }
           onChangeouploadpancard(e) {
             this.setState({
-              opanproof: e.target.value
+              file2: e.target.files[0]
             })
           }
           onChangevvehiclemodal(e) {
@@ -343,37 +343,37 @@ export default class Adduser extends Component{
           }
           onChangevuploadstatepermitdocument(e) {
             this.setState({
-              vstatepermitdocument: e.target.value
+              file3: e.target.files[0]
             })
           }
           onChangevuploadnationalpermitdocument(e) {
             this.setState({
-              vnationalpermitdocument: e.target.value
+              file4: e.target.files[0]
             })
           }
           onChangevuploadinsurencedocument(e) {
             this.setState({
-              vinsurancedocument: e.target.value
+              file5: e.target.files[0]
             })
           }
           onChangevuploadvehiclepicture(e) {
             this.setState({
-              vvehiclepicture: e.target.value
+              file6: e.target.files[0]
             })
           }
           onChangevuploademmissiontestdocument(e) {
             this.setState({
-              vemmissiontestdocument: e.target.value
+              file7: e.target.files[0]
             })
           }
           onChangevuploadrccardproof(e) {
             this.setState({
-              vrccardproof: e.target.value
+              file8: e.target.files[0]
             })
           }
           onChangevuploadtaxrenewalproof(e) {
             this.setState({
-              vtaxrenewalproof: e.target.value
+              file9: e.target.files[0]
             })
           }
           onChangeddrivername(e) {
@@ -443,27 +443,27 @@ export default class Adduser extends Component{
           }
           onChangeduploaddrivinglicenceproof(e) {
             this.setState({
-              ddrivinglicenceproof: e.target.value
+              file10: e.target.files[0]
             })
           }
           onChangeduploadpoliceverificationproof(e) {
             this.setState({
-              dpoliceverificationproof: e.target.value
+              file11: e.target.files[0]
             })
           }
           onChangeduploadinsurenceproof(e) {
             this.setState({
-              dinsuranceproof: e.target.value
+              file12: e.target.files[0]
             })
           }
           onChangeduploadfrontaadharproof(e) {
             this.setState({
-              dfrontadharproof: e.target.value
+              file13: e.target.files[0]
             })
           }
           onChangeduploadbackaadharproof(e) {
             this.setState({
-              dbackadharproof: e.target.value
+              file14: e.target.files[0]
             })
           }
           onChangebbankname(e) {
@@ -488,7 +488,7 @@ export default class Adduser extends Component{
           }
           onChangebuploadpassbookproof(e) {
             this.setState({
-              bpassbookphoto: e.target.value
+              file15: e.target.files[0]
             })
           }
 
@@ -499,84 +499,83 @@ export default class Adduser extends Component{
      
           onSubmit(e) {
             e.preventDefault();
-        
-            const trainer = {
-              ofirstname: this.state.ofirstname,
-              omiddlename: this.state.omiddlename,
-              olastname:this.state.olastname,
+            const formData=new FormData();
+            formData.append( 'ofirstname' ,this.state.ofirstname);
+    formData.append('omiddlename', this.state.omiddlename);
+    formData.append( 'olastname',this.state.olastname);
+    formData.append('odateofbirth',this.state.odateofbirth);
+    formData.append('ogender',this.state.ogender);
+    formData.append( 'oemail',this.state.oemail); 
+    formData.append('ophonenumber',this.state.ophonenumber);
+    formData.append( 'opermanentaddress',this.state.opermanentaddress,);
+    formData.append('opcountry',this.state.opcountry,);
+    formData.append( 'opstate',this.state.opstate);
+    formData.append('opcity',this.state.opcity);
+    formData.append('opzipcode',this.state.opzipcode);
+    formData.append('ocurrentaddress',this.state.ocurrentaddress);
+    formData.append('ocstate',this.state.ocstate);
+    formData.append( 'occity',this.state.occity);
+    formData.append('oczipcode',this.state.oczipcode);
+    formData.append('images',this.state.file);
+    formData.append('images',this.state.file1);
+     formData.append('images',this.state.file2);
+    formData.append('vvehiclemodel',this.state.vvehiclemodel);
+    formData.append('vvehicletype',this.state.vvehicletype);
+    formData.append(' vvehiclecapacity',this.state.vvehiclecapacity);
+    formData.append('vregistrationnumber',this.state.vregistrationnumber);
+    formData.append('vchassisnumber',this.state.vchassisnumber);
+    formData.append('venginenumber',this.state.venginenumber);
+    formData.append('vrccardnumber',this.state.vrccardnumber);
+    formData.append('vinsurancenumber',this.state.vinsurancenumber);
+    formData.append('vemmissiontest',this.state.vemmissiontest);
+    formData.append('vrccardrenewaldate',this.state.vrccardrenewaldate);
+    formData.append('vinsurancerenewaldate',this.state.vinsurancerenewaldate);
+    formData.append( 'vemmissiontestrenewaldate',this.state.vemmissiontestrenewaldate);
+    formData.append('vtaxrenewal',this.state.vtaxrenewal);
+    formData.append('vstatepermit',this.state.vstatepermit);
+    formData.append('vnationalpermit',this.state.vnationalpermit);
+    formData.append('images',this.state.file3);
+    formData.append('images',this.state.file4);
+    formData.append( 'images',this.state.file5);
+    formData.append('images',this.state.file6);
+    formData.append('images',this.state.file7);
+    formData.append('images',this.state.file8);
+    formData.append('images',this.state.file9);
+    formData.append('ddriverid',this.state.ddriverid);
+    formData.append('dgender',this.state.dgender);
+    formData.append('dpermanentaddress',this.state.dpermanentaddress);
+    formData.append('ddateofbirth',this.state.ddateofbirth);
+    formData.append('dmobilenumber',this.state.dmobilenumber);
+    formData.append('demergencycontactnumber',this.state.demergencycontactnumber);
+    formData.append('dadharcardnumber',this.state.dadharcardnumber);
+    formData.append('dinsurancenumber',this.state.dinsurancenumber);
+    formData.append(' ddrivinglicence',this.state.ddrivinglicence);
+    formData.append('dlanguagesknown',this.state.dlanguagesknown);
+    formData.append('dpoliceverificationcertificate',this.state.dpoliceverificationcertificate);
+    formData.append('images',this.state.file10,);
+    formData.append('images',this.state.file11);
+    formData.append('images',this.state.file12,);
+    formData.append('images',this.state.file13); 
+    formData.append('images',this.state.file14);
+    formData.append('bbankname',this.state.bbankname);
+    formData.append('baccountnumber',this.state.baccountnumber);
+    formData.append('bbranchcode',this.state.bbranchcode);
+    formData.append('bifsccode',this.state.bifsccode);
+    formData.append('images',this.state.file15);
+    
+    
+    
+    
+    
+    const config={
+      headers:{
+        'content-type':'multipart/form-data'
+      }
+    }
 
-              odateofbirth:this.state.odateofbirth,
-              ogender:this.state.ogender,
-              oemail:this.state.oemail,
-              ophonenumber:this.state.ophonenumber,
-              opermanentaddress:this.state.opermanentaddress,
-              opcountry:this.state.opcountry,
-              opstate:this.state.opstate,
-              opcity:this.state.opcity,
-              opzipcode:this.state.opzipcode,
-              ocurrentaddress:this.state.ocurrentaddress,
-              occountry:this.state.occountry,
-              ocstate:this.state.ocstate,
-              occity:this.state.occity,
-              oczipcode:this.state.oczipcode,
-              oadharproofback:this.state.oadharproofback,
-              oadharprooffront:this.state.oadharprooffront,
-              opanproof:this.state.opanproof,
-              vvehiclemodel:this.state.vvehiclemodel,
-              vvehicletype:this.state.vvehicletype,
-              vvehiclecapacity:this.state.vvehiclecapacity,
-              vregistrationnumber:this.state.vregistrationnumber,
-              vchassisnumber:this.state.vchassisnumber,
-              venginenumber:this.state.venginenumber,
-              vrccardnumber:this.state.vrccardnumber,
-              vinsurancenumber:this.state.vinsurancenumber,
-              vemmissiontest:this.state.vemmissiontest,
-              vrccardrenewaldate:this.state.vrccardrenewaldate,
-              vinsurancerenewaldate:this.state.vinsurancerenewaldate,
-              vemmissiontestrenewaldate:this.state.vemmissiontestrenewaldate,
-              vtaxrenewal:this.state.vtaxrenewal,
-              vstatepermit:this.state.vstatepermit,
-              vnationalpermit:this.state.vnationalpermit,
-              vstatepermitdocument:this.state.vstatepermitdocument,
-              vnationalpermitdocument:this.state.vnationalpermitdocument,
-              vinsurancedocument:this.state.vinsurancedocument,
-              vvehiclepicture:this.state.vvehiclepicture,
-              vemissiontestdocument:this.state.vemmissiontestdocument,
-              vrccardproof:this.state.vrccardproof,
-              vtaxrenewalproof:this.state.vtaxrenewalproof,
-              ddrivername:this.state.ddrivername,
-              ddriverid:this.state.ddriverid,
-              dgender:this.state.dgender,
-              dpermanentaddress:this.state.dpermanentaddress,
-              dpresentaddress:this.state.dpresentaddress,
-              ddateofbirth:this.state.ddateofbirth,
-              dmobilenumber:this.state.dmobilenumber,
-              demergencycontactnumber:this.state.demergencycontactnumber,
-              dadharcardnumber:this.state.dadharcardnumber,
-              dinsurancenumber:this.state.dinsurancenumber,
-              ddrivinglicence:this.state.ddrivinglicence,
-              dlanguagesknown:this.state.dlanguagesknown,
-              dpoliceverificationcertificate:this.state.dpoliceverificationcertificate,
-              ddrivinglicenceproof:this.state.ddrivinglicenceproof,
-              dpoliceverificationproof:this.state.dpoliceverificationproof,
-              dinsuranceproof:this.state.dinsuranceproof,
-              dfrontadharproof:this.state.dfrontadharproof,
-              dbackadharproof:this.state.dbackadharproof,
-              bbankname:this.state.bbankname,
-              baccountnumber:this.state.baccountnumber,
-              bbranchcode:this.state.bbranchcode,
-              bifsccode:this.state.bifsccode,
-              bpassbookphoto:this.state.bpassbookphoto,
-
-
-             
-
+          
         
-            }
-        
-            console.log(trainer);
-        
-            axios.post('https://acabnodejs.herokuapp.com/enrollfleetowner/add', trainer)
+            axios.post('https://acabnodejs.herokuapp.com/enrollfleetowner/add', formData)
             .then(function(response){
         
               if(response.data ==='Enrollfleetowner added!'){
@@ -665,13 +664,13 @@ export default class Adduser extends Component{
               onChange={this.onChangeoemail} />
               </Form.Group>
             </Col>
-            {/* <Col md={3} className="mb-3">
+            <Col md={3} className="mb-3">
               <Form.Group id="phone">
                 <Form.Label>Phone Number</Form.Label>
                 <Form.Control required type="number" placeholder="0123456789" value={this.state.ophonenumber}
               onChange={this.onChangeophonenumber} />
               </Form.Group>
-            </Col> */}
+            </Col>
           </Row>
           <Row>
           <Col md={9} className="mb-3">
@@ -773,18 +772,18 @@ export default class Adduser extends Component{
               </Form.Group>
             </Col>
           </Row>
-          {/* <Row>
+          <Row>
             <Col md={4} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> Upload Front Aadhar Proof</Form.Label>
-                <Form.Control required type="text" placeholder="" value={this.state.oadharprooffront}
+                <Form.Control required type="file" placeholder="" name="images"
               onChange={this.onChangeouploadaadharprooffront}  />
               </Form.Group>
             </Col>
             <Col md={4} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> Upload Back Aadhar Proff</Form.Label>
-                <Form.Control required type="text" placeholder="" value={this.state.oadharproofback}
+                <Form.Control required type="file" placeholder="" name="images"
               onChange={this.onChangeouploadaadharproofback} />
               </Form.Group>
             </Col>
@@ -792,11 +791,11 @@ export default class Adduser extends Component{
             <Col md={4} className="mb-3">
               <Form.Group id="gender">
                 <Form.Label>Upload Pan Card</Form.Label>
-                <Form.Control required type="text" placeholder="" value={this.state.ouploadpancard}
+                <Form.Control required type="file" placeholder="" name="images"
               onChange={this.onChangeouploadpancard} />
               </Form.Group>
             </Col>
-          </Row> */}
+          </Row>
 
 
           <Card border="light" className="bg-white shadow-sm mb-4">
@@ -966,25 +965,25 @@ export default class Adduser extends Component{
     </Form.Group>
   </Col>
 </Row>
-{/* <Row>
+<Row>
 <Col md={4} className="mb-3">
     <Form.Group id="firstName">
       <Form.Label> Upload State Permit Document</Form.Label>
-      <Form.Control required type="number" placeholder="Enter Upload State Permit Document" value={this.state.vstatepermitdocument}
+      <Form.Control required type="file"  name="images"
     onChange={this.onChangevuploadstatepermitdocument}  />
     </Form.Group>
   </Col>
   <Col md={4} className="mb-3">
     <Form.Group id="firstName">
       <Form.Label> Upload National Permit Document</Form.Label>
-      <Form.Control required type="text" placeholder="Enter Upload National Permit Document" value={this.state.vnationalpermitdocument}
+      <Form.Control required type="file" name="images"
     onChange={this.onChangevuploadnationalpermitdocument}  />
     </Form.Group>
   </Col>
   <Col md={4} className="mb-3">
     <Form.Group id="firstName">
       <Form.Label> Upload Insurence Document</Form.Label>
-      <Form.Control required type="text" placeholder="Enter Upload Insurence" value={this.state.vinsurancedocument}
+      <Form.Control required type="file" name="images"
     onChange={this.onChangevuploadinsurencedocument}  />
     </Form.Group>
   </Col>
@@ -993,32 +992,32 @@ export default class Adduser extends Component{
 <Col md={3} className="mb-3">
     <Form.Group id="firstName">
       <Form.Label> Upload Vehicle Picture</Form.Label>
-      <Form.Control required type="number" placeholder="Enter Upload Vehicle Picture" value={this.state.vvehiclepicture}
+      <Form.Control required type="file" name="images"
     onChange={this.onChangevuploadvehiclepicture}  />
     </Form.Group>
   </Col>
   <Col md={3} className="mb-3">
     <Form.Group id="firstName">
       <Form.Label> Upload Emmission Test Document</Form.Label>
-      <Form.Control required type="text" placeholder="Enter Upload Emmission Test Document" value={this.state.vemmissiontestdocument}
+      <Form.Control required type="file"  name="images"
     onChange={this.onChangevuploademmissiontestdocument}  />
     </Form.Group>
   </Col>
   <Col md={3} className="mb-3">
     <Form.Group id="firstName">
       <Form.Label> Upload RC Proof Document</Form.Label>
-      <Form.Control required type="text" placeholder="Enter Upload RC Proof Document" value={this.state.vrccardproof}
+      <Form.Control required type="file" name="images"
     onChange={this.onChangevuploadrccardproof}  />
     </Form.Group>
   </Col>
   <Col md={3} className="mb-3">
     <Form.Group id="firstName">
       <Form.Label> Upload Tax Renewal Document</Form.Label>
-      <Form.Control required type="text" placeholder="Enter Upload Tax Renewal Proof" value={this.state.vtaxrenewalproof}
+      <Form.Control required type="file" name="images"
     onChange={this.onChangevuploadtaxrenewalproof}  />
     </Form.Group>
   </Col>
-</Row> */}
+</Row>
 
 
 
@@ -1091,20 +1090,20 @@ export default class Adduser extends Component{
             />
               </Form.Group>
             </Col>
-            {/* <Col md={4} className="mb-3">
+            <Col md={4} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> Mobile Number</Form.Label>
                 <Form.Control required type="number" max="0-9" placeholder="Enter Mobile Number" value={this.state.dmobilenumber}
               onChange={this.onChangedmobilenumber}  />
               </Form.Group>
-            </Col> */}
-            {/* <Col md={4} className="mb-3">
+            </Col> 
+             <Col md={4} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> Emergency Contact Number</Form.Label>
                 <Form.Control required type="number" maxLength="0-9" placeholder="Enter Emergency Contact Number" value={this.state.demergencycontactnumber}
               onChange={this.onChangedemergencycontactnumber}  />
               </Form.Group>
-            </Col> */}
+            </Col>
             </Row>
             <Row>
             <Col md={4} className="mb-3">
@@ -1144,27 +1143,27 @@ export default class Adduser extends Component{
               onChange={this.onChangedlanguageknown}  />
               </Form.Group>
             </Col>
-            
+             
             </Row>
-            {/* <Row>
+             <Row>
             <Col md={4} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> Upload Driving Licence Proof</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Driving Licence Proof" value={this.state.ddrivinglicenceproof}
+                <Form.Control required type="file" name="images"
               onChange={this.onChangeduploaddrivinglicenceproof}  />
               </Form.Group>
             </Col>
             <Col md={4} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> Upload Police Verification Proof</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Police Verification Proof" value={this.state.dpoliceverificationproof}
+                <Form.Control required type="file" name="images"
               onChange={this.onChangeduploadpoliceverificationproof}  />
               </Form.Group>
             </Col>
             <Col md={4} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> Upload Insurence Proof</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Insurence Proof" value={this.state.dinsuranceproof}
+                <Form.Control required type="file" name="images"
               onChange={this.onChangeduploadinsurenceproof}  />
               </Form.Group>
             </Col>
@@ -1173,19 +1172,19 @@ export default class Adduser extends Component{
             <Col md={6} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> Upload Front Aadhar Proof</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Aadhar Proof" value={this.state.dfrontadharproof}
+                <Form.Control required type="file" name="images"
               onChange={this.onChangeduploadfrontaadharproof}  />
               </Form.Group>
             </Col>
             <Col md={6} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label>  Upload Back Aadhar Proof</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Aadhar Proof" value={this.state.dbackadharproof}
+                <Form.Control required type="file" name="images"
               onChange={this.onChangeduploadbackaadharproof}  />
               </Form.Group>
             </Col>
             
-            </Row> */}
+            </Row> 
 
         </Card.Body>
         </Card>
@@ -1226,7 +1225,7 @@ export default class Adduser extends Component{
             <Col md={4} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> Upload Pass Book</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Pass Book" value={this.state.bpassbookphoto}
+                <Form.Control required type="file" name="images"
               onChange={this.onChangebuploadpassbookproof}  />
               </Form.Group>
             </Col>

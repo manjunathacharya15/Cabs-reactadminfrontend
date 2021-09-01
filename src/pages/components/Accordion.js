@@ -94,8 +94,8 @@ export default class Accordion extends Component{
             formData.append('name',this.state.name);
             formData.append('email',this.state.email);
             formData.append('profilepicture',this.state.file1);
-            formData.append('password',this.state.password);
             formData.append('role',this.state.role);
+            formData.append('password',this.state.password);
             
           
             

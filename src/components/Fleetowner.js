@@ -17,7 +17,7 @@ export default class buttons extends Component {
     this.onChangeoaadhar = this.onChangeoaadhar.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.state = {
-      oaadhar:'',
+      oadhar:'',
       customers: []
     };
   }
@@ -42,7 +42,7 @@ export default class buttons extends Component {
             lastname:e.olastname,
             phonenumber:e.ophonenumber,
             emailid:e.oemail,
-            aadharcard:e.adharnumber,
+            oadhar:e.oadhar,
           
 
           }
@@ -78,14 +78,14 @@ export default class buttons extends Component {
   };
   onChangeoaadhar(e) {
     this.setState({
-      oaadhar: e.target.value
+      oadhar: e.target.value
     })
   }
   onSubmit(e) {
     e.preventDefault();
 
     const customer = {
-      oaadhar: this.state.oaadhar
+      oadhar: this.state.oadhar
     }
     axios.post('https://acabnodejs.herokuapp.com/enrollfleetowner/search', customer)
       .then(res => {
@@ -130,7 +130,7 @@ export default class buttons extends Component {
       <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.lastname}</td>
       <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.phonenumber}</td>
       <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.emailid}</td>
-      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.aadharcard}</td>
+      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.oadhar}</td>
       <td style={{border:"1px double black",textAlign:"center"}}><Link to={"/components/enrolledit/"+currentcustomer.id}><FontAwesomeIcon icon={faEye}/></Link>/<Link to={"/components/editenroll/"+currentcustomer.id}><FontAwesomeIcon icon={faPencilAlt} /></Link>/<Link to={"/components/addvehicle/"+currentcustomer.id}><FontAwesomeIcon icon={faCarAlt} /></Link></td>
       
       
@@ -177,7 +177,7 @@ export default class buttons extends Component {
               <InputGroup.Text>
                 <FontAwesomeIcon icon={faSearch} />
               </InputGroup.Text>
-              <Form.Control type="text" placeholder="Search" value={this.state.oaadhar} onChange={this.onChangeoaadhar} />
+              <Form.Control type="text" placeholder="Search" value={this.state.oadhar} onChange={this.onChangeoaadhar} />
             </InputGroup>
             </Form>
           </Col>

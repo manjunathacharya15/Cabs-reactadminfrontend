@@ -54,7 +54,7 @@ export default class Accordion extends Component{
         this.state = {
           vehiclename:'',
           vehicletype:'',
-          vehicleicon:'',
+          file:null,
           seatingcapacity:'',
           pricinglogic:'',
           initialwaitingtime:'',
@@ -234,42 +234,46 @@ export default class Accordion extends Component{
    
   
 
-            const trainer = {
-              vehiclename: this.state.vehiclename,
-              vehicletype: this.state.vehicletype,
-              vehicleicon:this.state.vehicleicon,
-              seatingcapacity:this.state.seatingcapacity,
-              pricinglogic:this.state.pricinglogic,
-              initialwaitingtime: this.state.initialwaitingtime,
-              additionalwaitingtime: this.state.additionalwaitingtime,
-              baseprice:this.state.baseprice,
-              fareperkm:this.state.fareperkm,
-              ridetimecharge:this.state.ridetimecharge,
-              waitingfare: this.state.waitingfare,
-              onehr15km: this.state.onehr15km,
-              twohr30km:this.state.twohr30km,
-              fourhr40km:this.state.fourhr40km,
-              eighthr80km:this.state.eighthr80km,
-              basepriceperday180: this.state.basepriceperday180,
-              after180km: this.state.after180km,
-              dailyallowance180:this.state.dailyallowance180,
-              bookingfee180:this.state.bookingfee180,
-              taxes180:this.state.taxes180,
-              basepriceperday180: this.state.basepriceperday250,
-              after250km: this.state.after250km,
-              dailyallowance250:this.state.dailyallowance250,
-              bookingfee250:this.state.bookingfee250,
-              taxes250:this.state.taxes250,
-              
-             
-
-        
-            }
-        
+            const formData=new FormData();
+            formData.append('vehiclename', this.state.vehiclename);
+            formData.append(' vehicletype', this.state.vehicletype);
+            formData.append('vehicleicon',this.state.file);
+            formData.append(' seatingcapacity',this.state.seatingcapacity);
+            formData.append('pricinglogic',this.state.pricinglogic);
+            formData.append('initialwaitingtime', this.state.initialwaitingtime);
+            formData.append('additionalwaitingtime', this.state.additionalwaitingtime);
+            formData.append('baseprice',this.state.baseprice);
+            formData.append('fareperkm',this.state.fareperkm);
+            formData.append('ridetimecharge',this.state.ridetimecharge);
+            formData.append('waitingfare', this.state.waitingfare);
+            formData.append('onehr15km',this.state.onehr15km);
+            formData.append('twohr30km',this.state.twohr30km);
+            formData.append('fourhr40km',this.state.fourhr40km);
+            formData.append('eighthr80km',this.state.eighthr80km);
+            formData.append('basepriceperday180', this.state.basepriceperday180);
+            formData.append(' after180km', this.state.after180km);
+            formData.append('dailyallowance180',this.state.dailyallowance180);
+            formData.append(' bookingfee180',this.state.bookingfee180);
+            formData.append('taxes180',this.state.taxes180);
+            formData.append('basepriceperday250', this.state.basepriceperday250);
+            formData.append(' after250km', this.state.after250km);
+            formData.append('dailyallowance250',this.state.dailyallowance250);
+            formData.append(' bookingfee250',this.state.bookingfee250);
+            formData.append('taxes250',this.state.taxes250);
             
-        
-            axios.post('https://acabnodejs.herokuapp.com/vehicle/add', trainer)
-            .then(function(response){
+            
+            
+            const config={
+              headers:{
+                'content-type':'multipart/form-data'
+              }
+            
+              }
+                    
+                        
+                    
+                        axios.post('https://acabnodejs.herokuapp.com/vehicle/add', formData)
+                        .then(function(response){
         
         
               if(response.data ==='Vehicle added!'){
@@ -327,7 +331,7 @@ export default class Accordion extends Component{
             </Col>
             
           </Row>
-          {/* <Row>
+          <Row>
           <Col md={6} className="mb-3">
               <Form.Group id="emal">
                 <Form.Label>Vehicle Icon</Form.Label>
@@ -341,7 +345,7 @@ export default class Accordion extends Component{
               </Col>
          
              
-            </Row> */}
+            </Row>
             <Row>
             <Col md={6} className="mb-3">
               <Form.Group id="phone">
@@ -351,7 +355,7 @@ export default class Accordion extends Component{
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
                                                     <option value="4">4</option>
-                                                    <option value="">6</option>
+                                                    <option value="6">6</option>
                                                     
 
                                                 </select>
@@ -367,7 +371,7 @@ export default class Accordion extends Component{
                 <Form.Label>Pricing Logic</Form.Label>
                
               <select class="form-control" id="calculator" name="pricinglogic" onChange={this.onChangepricinglogic} value={this.state.pricinglogic}>
-              <option value="MIN">Per Minute Pricing</option>
+              <option value="per minute pricing">Per Minute Pricing</option>
                                                     <option value="Per Hour Pricing">Per Hour Pricing</option>
                                                     <option value="Distance Pricing">Distance Pricing</option>
                                                     <option value="Distance and Per Minute Pricing">Distance and Per Minute Pricing</option>

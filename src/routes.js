@@ -88,5 +88,6 @@ export const Routes = {
     Tripreports:{path:"/components/tripreports"},
     Driverview:{path:"/components/driverview"},
     Editdriver:{path:"/components/editdriverscheme/:id"},
+    Updateadmin:{path:"/components/updateprofile/:id"},
 
 };

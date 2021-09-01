@@ -14,6 +14,7 @@ export default class Adduser extends Component{
         super(props);
     
         this.onChangeofirstname = this.onChangeofirstname.bind(this);
+        this.onChangeoadharnumber = this.onChangeoadharnumber.bind(this);
         this.onChangeomiddlename= this.onChangeomiddlename.bind(this);
         this.onChangeolastname = this.onChangeolastname.bind(this);
         this.onChangeodateofbirth= this.onChangeodateofbirth.bind(this);
@@ -84,71 +85,73 @@ export default class Adduser extends Component{
 
         this.onSubmit = this.onSubmit.bind(this);
         this.state = {
-           ofirstname:'',
-           omiddlename:'',
-           olastname:'',
-           odateofbirth:'',
-           ogender:'',
-           oemail:'',
-           ophonenumber:'',
-           opermanentaddress:'',
-           opcountry:'',
-           opstate:'',
-           opcity:'',
-           opzipcode:'',
-           ocurrentaddress:'',
-           occountry:'',
-           ocstate:'',
-           occity:'',
-           oczipcode:'',
-           oadharprooffront:'',
-           oadharproofback:'',
-           opanproof:'',
-           vvehiclemodel:'',
-           vvehicletype:'',
-           vvehiclecapacity:'',
-           vregistrationnumber:'',
-           vchassisnumber:'',
-           venginenumber:'',
-           vrccardnumber:'',
-           vinsurancenumber:'',
-           vemmissiontest:'',
-           vrccardrenewaldate:'',
-           vinsurancerenewaldate:'',
-           vemmissiontestrenewaldate:'',
-           vtaxrenewal:'',
-           vstatepermit:'',
-           vnationalpermit:'',
-           vstatepermitdocument:'',
-           vnationalpermitdocument:'',
-           vinsurancedocument:'',
-           vvehiclepicture:'',
-           vemissiontestdocument:'',
-           vrccardproof:'',
-           vtaxrenewalproof:'',
-           ddrivername:'',
-           ddriverid:'',
-           dgender:'',
-           dpermanentaddress:'',
-           dpresentaddress:'',
-           ddateofbirth:'',
-           dmobilenumber:'',
-           demergencycontactnumber:'',
-           dadharcardnumber:'',
-           dinsurancenumber:'',
-           ddrivinglicence:'',
-           dlanguagesknown:'',
-           dpoliceverificationcertificate:'',
-           ddrivinglicenceproof:'',
-           dpoliceverificationproof:'',
-           dinsuranceproof:'',
-           dfrontadharproof:'',
-           dbackadharproof:'',
-           bbankname:'',
-           baccountnumber:'',
-           bbranchcode:'',
-           bifsccode:'',
-           bpassbookphoto:'',
+          ofirstname:'',
+          omiddlename:'',
+          olastname:'',
+          adharnumber:'',
+          odateofbirth:'',
+          ogender:'',
+          oemail:'',
+          ophonenumber:'',
+          opermanentaddress:'',
+          opcountry:'',
+          opstate:'',
+          opcity:'',
+          opzipcode:'',
+          ocurrentaddress:'',
+          occountry:'',
+          ocstate:'',
+          occity:'',
+          oczipcode:'',
+          file:null,
+          file1:null,
+          file2:null,
+          opanproof:'',
+          vvehiclemodel:'',
+          vvehicletype:'',
+          vvehiclecapacity:'',
+          vregistrationnumber:'',
+          vchassisnumber:'',
+          venginenumber:'',
+          vrccardnumber:'',
+          vinsurancenumber:'',
+          vemmissiontest:'',
+          vrccardrenewaldate:'',
+          vinsurancerenewaldate:'',
+          vemmissiontestrenewaldate:'',
+          vtaxrenewal:'',
+          vstatepermit:'',
+          vnationalpermit:'',
+          file3:null,
+          file4:null,
+         file5:null,
+         file6:null,
+          file7:null,
+          file8:null,
+          file9:null,
+          ddrivername:'',
+          ddriverid:'',
+          dgender:'',
+          dpermanentaddress:'',
+          dpresentaddress:'',
+          ddateofbirth:'',
+          dmobilenumber:'',
+          demergencycontactnumber:'',
+          dadharcardnumber:'',
+          dinsurancenumber:'',
+          ddrivinglicence:'',
+          dlanguagesknown:'',
+          dpoliceverificationcertificate:'',
+          file10:null,
+          file11:null,
+          file12:null,
+          file13:null,
+          file14:null,
+          bbankname:'',
+          baccountnumber:'',
+          bbranchcode:'',
+          bifsccode:'',
+          file15:null,
 
 
          
@@ -161,14 +164,14 @@ export default class Adduser extends Component{
    
             axios.get('https://acabnodejs.herokuapp.com/enrollfleetowner/' + this.props.match.params.id)
           .then(response => {
-            console.log(response.data.ofirstname)
+            
             this.setState({ 
                   id : response.data._id,
                   ofirstname : response.data.ofirstname,
                 
                   omiddlename:response.data.omiddlename,
                   olastname:response.data.olastname,
-                  odateofbirth:response.data.odateofbirth,
+                 adharnumber:response.data.oadhar,
                   ogender:response.data.ogender,
                   oemail:response.data.oemail,
                   ophonenumber:response.data.ophonenumber,
@@ -195,9 +198,7 @@ export default class Adduser extends Component{
                   vrccardnumber:response.data.vehicledetails[0].vrccardnumber,
                   vinsurancenumber:response.data.vehicledetails[0].vinsurancenumber,
                   vemmissiontest:response.data.vehicledetails[0].vemmissiontest,
-                  vrccardrenewaldate:response.data.vehicledetails[0].vrccardrenewaldate,
-                  vinsurancerenewaldate:response.data.vehicledetails[0].vinsurancerenewaldate,
-                  vemmissiontestrenewaldate:response.data.vehicledetails[0].vemmissiontestrenewaldate,
+          
                   vtaxrenewal:response.data.vehicledetails[0].vtaxrenewal,
                   vstatepermit:response.data.vehicledetails[0].vstatepermit,
                   vnationalpermit:response.data.vehicledetails[0].vnationalpermit,
@@ -215,7 +216,7 @@ export default class Adduser extends Component{
                   dgender:response.data.driverdetails[0].dgender,
                   dpermanentaddress:response.data.driverdetails[0].dpermanentaddress,
                   dpresentaddress:response.data.driverdetails[0].dpresentaddress,
-                  ddateofbirth:response.data.driverdetails[0].ddateofbirth,
+              
                   dmobilenumber:response.data.driverdetails[0].dmobilenumber,
                   demergencycontactnumber:response.data.driverdetails[0].demergencycontactnumber,
                   dadharcardnumber:response.data.driverdetails[0].dadharcardnumber,
@@ -250,331 +251,336 @@ export default class Adduser extends Component{
           
         }
         onChangeofirstname(e) {
-            this.setState({
-              ofirstname: e.target.value
-            })
-          }
-          onChangeomiddlename(e) {
-            this.setState({
-              omiddlename: e.target.value
-            })
-          }
-          onChangeolastname(e) {
-            this.setState({
-              olastname: e.target.value
-            })
-          }
-          onChangeodateofbirth(e) {
-            this.setState({
-              odateofbirth: e.target.value
-            })
-          }
-          onChangeogender(e) {
-            this.setState({
-              ogender: e.target.value
-            })
-          }
-          onChangeoemail(e) {
-            this.setState({
-              oemail: e.target.value
-            })
-          }
-          onChangeophonenumber(e) {
-            this.setState({
-              ophonenumber: e.target.value
-            })
-          }
-          onChangeopermanentaddress(e) {
-            this.setState({
-              opermanentaddress: e.target.value
-            })
-          }
-          onChangeopcountry(e) {
-            this.setState({
-              opcountry: e.target.value
-            })
-          }
-          onChangeopstate(e) {
-            this.setState({
-              opstate: e.target.value
-            })
-          }
-          onChangeopcity(e) {
-            this.setState({
-              opcity: e.target.value
-            })
-          }
-          onChangeoppincode(e) {
-            this.setState({
-              opzipcode: e.target.value
-            })
-          }
-          onChangeocurrentaddress(e) {
-            this.setState({
-              ocurrentaddress: e.target.value
-            })
-          }
-          onChangeoccountry(e) {
-            this.setState({
-              occountry: e.target.value
-            })
-          }
-          onChangeocstate(e) {
-            this.setState({
-              ocstate: e.target.value
-            })
-          }
-          onChangeoccity(e) {
-            this.setState({
-              occity: e.target.value
-            })
-          }
-          onChangeocpincode(e) {
-            this.setState({
-              oczipcode: e.target.value
-            })
-          }
-          
-          onChangeouploadaadharprooffront(e) {
-            this.setState({
-              oadharprooffront: e.target.value
-            })
-          }
-          onChangeouploadaadharproofback(e) {
-            this.setState({
-              oadharproofback: e.target.value
-            })
-          }
-          onChangeouploadpancard(e) {
-            this.setState({
-              opanproof: e.target.value
-            })
-          }
-          onChangevvehiclemodal(e) {
-            this.setState({
-              vvehiclemodel: e.target.value
-            })
-          }
-          onChangevvehicletype(e) {
-            this.setState({
-              vvehicletype: e.target.value
-            })
-          }
-          onChangevvehiclecapacity(e) {
-            this.setState({
-              vvehiclecapacity: e.target.value
-            })
-          }
-          onChangevregistrationnumber(e) {
-            this.setState({
-              vregistrationnumber: e.target.value
-            })
-          }
-          onChangevchassisnumber(e) {
-            this.setState({
-              vchassisnumber: e.target.value
-            })
-          }
-          onChangevenginenumber(e) {
-            this.setState({
-              venginenumber: e.target.value
-            })
-          }
-          onChangevrccardnumber(e) {
-            this.setState({
-              vrccardnumber: e.target.value
-            })
-          }
-          onChangevinsurencenumber(e) {
-            this.setState({
-              vinsurancenumber: e.target.value
-            })
-          }
-          onChangevemmissiontest(e) {
-            this.setState({
-              vemmissiontest: e.target.value
-            })
-          }
-          onChangevrccardrenewaldate(e) {
-            this.setState({
-              vrccardrenewaldate: e.target.value
-            })
-          }
-          onChangevinsurencerenewaldate(e) {
-            this.setState({
-              vinsurancerenewaldate: e.target.value
-            })
-          }
-          onChangevemmissiontestrenewaldate(e) {
-            this.setState({
-              vemmissiontestrenewaldate: e.target.value
-            })
-          }
-          onChangevtaxrenewal(e) {
-            this.setState({
-              vtaxrenewal: e.target.value
-            })
-          }
-          onChangevstatepermit(e) {
-            this.setState({
-              vstatepermit: e.target.value
-            })
-          }
-          onChangevnationalpermit(e) {
-            this.setState({
-              vnationalpermit: e.target.value
-            })
-          }
-          onChangevuploadstatepermitdocument(e) {
-            this.setState({
-              vstatepermitdocument: e.target.value
-            })
-          }
-          onChangevuploadnationalpermitdocument(e) {
-            this.setState({
-              vnationalpermitdocument: e.target.value
-            })
-          }
-          onChangevuploadinsurencedocument(e) {
-            this.setState({
-              vinsurancedocument: e.target.value
-            })
-          }
-          onChangevuploadvehiclepicture(e) {
-            this.setState({
-              vvehiclepicture: e.target.value
-            })
-          }
-          onChangevuploademmissiontestdocument(e) {
-            this.setState({
-              vemissiontestdocument: e.target.value
-            })
-          }
-          onChangevuploadrccardproof(e) {
-            this.setState({
-              vrccardproof: e.target.value
-            })
-          }
-          onChangevuploadtaxrenewalproof(e) {
-            this.setState({
-              vtaxrenewalproof: e.target.value
-            })
-          }
-          onChangeddrivername(e) {
-            this.setState({
-              ddrivername: e.target.value
-            })
-          }
-          onChangeddriverid(e) {
-            this.setState({
-             ddriverid : e.target.value
-            })
-          }
-          onChangedgender(e) {
-            this.setState({
-              dgender: e.target.value
-            })
-          }
-          onChangedpermanentaddress(e) {
-            this.setState({
-              dpermanentaddress: e.target.value
-            })
-          }
-          onChangedcurrentaddress(e) {
-            this.setState({
-              dpresentaddress: e.target.value
-            })
-          }
-          onChangeddateofbirth(e) {
-            this.setState({
-              ddateofbirth: e.target.value
-            })
-          }
-          onChangedmobilenumber(e) {
-            this.setState({
-              dmobilenumber: e.target.value
-            })
-          }
-          onChangedemergencycontactnumber(e) {
-            this.setState({
-              demergencycontactnumber: e.target.value
-            })
-          }
-          onChangedaadharcardnumber(e) {
-            this.setState({
-              dadharcardnumber: e.target.value
-            })
-          }
-          onChangedinsurencenumber(e) {
-            this.setState({
-              dinsurancenumber: e.target.value
-            })
-          }
-          onChangeddrivinglicence(e) {
-            this.setState({
-              ddrivinglicence: e.target.value
-            })
-          }
-          onChangedlanguageknown(e) {
-            this.setState({
-              dlanguagesknown: e.target.value
-            })
-          }
-          onChangedpoliceverificationcertificate(e) {
-            this.setState({
-              dpoliceverificationcertificate: e.target.value
-            })
-          }
-          onChangeduploaddrivinglicenceproof(e) {
-            this.setState({
-              ddrivinglicenceproof: e.target.value
-            })
-          }
-          onChangeduploadpoliceverificationproof(e) {
-            this.setState({
-              dpoliceverificationproof: e.target.value
-            })
-          }
-          onChangeduploadinsurenceproof(e) {
-            this.setState({
-              dinsuranceproof: e.target.value
-            })
-          }
-          onChangeduploadfrontaadharproof(e) {
-            this.setState({
-              dfrontadharproof: e.target.value
-            })
-          }
-          onChangeduploadbackaadharproof(e) {
-            this.setState({
-              dbackadharproof: e.target.value
-            })
-          }
-          onChangebbankname(e) {
-            this.setState({
-              bbankname: e.target.value
-            })
-          }
-          onChangebaccountnumber(e) {
-            this.setState({
-              baccountnumber: e.target.value
-            })
-          }
-          onChangebbranchcode(e) {
-            this.setState({
-              bbranchcode: e.target.value
-            })
-          }
-          onChangebifsccode(e) {
-            this.setState({
-              bifsccode: e.target.value
-            })
-          }
-          onChangebuploadpassbookproof(e) {
-            this.setState({
-              bpassbookphoto: e.target.value
-            })
-          }
+          this.setState({
+            ofirstname: e.target.value
+          })
+        }
+        onChangeomiddlename(e) {
+          this.setState({
+            omiddlename: e.target.value
+          })
+        }
+        onChangeolastname(e) {
+          this.setState({
+            olastname: e.target.value
+          })
+        }
+        onChangeoadharnumber(e) {
+          this.setState({
+            adharnumber: e.target.value
+          })
+        }
+        onChangeodateofbirth(date) {
+          this.setState({
+            odateofbirth: date
+          })
+        }
+        onChangeogender(e) {
+          this.setState({
+            ogender: e.target.value
+          })
+        }
+        onChangeoemail(e) {
+          this.setState({
+            oemail: e.target.value
+          })
+        }
+        onChangeophonenumber(e) {
+          this.setState({
+            ophonenumber: e.target.value
+          })
+        }
+        onChangeopermanentaddress(e) {
+          this.setState({
+            opermanentaddress: e.target.value
+          })
+        }
+        onChangeopcountry(e) {
+          this.setState({
+            opcountry: e.target.value
+          })
+        }
+        onChangeopstate(e) {
+          this.setState({
+            opstate: e.target.value
+          })
+        }
+        onChangeopcity(e) {
+          this.setState({
+            opcity: e.target.value
+          })
+        }
+        onChangeoppincode(e) {
+          this.setState({
+            opzipcode: e.target.value
+          })
+        }
+        onChangeocurrentaddress(e) {
+          this.setState({
+            ocurrentaddress: e.target.value
+          })
+        }
+        onChangeoccountry(e) {
+          this.setState({
+            occountry: e.target.value
+          })
+        }
+        onChangeocstate(e) {
+          this.setState({
+            ocstate: e.target.value
+          })
+        }
+        onChangeoccity(e) {
+          this.setState({
+            occity: e.target.value
+          })
+        }
+        onChangeocpincode(e) {
+          this.setState({
+            oczipcode: e.target.value
+          })
+        }
+        onChangeouploadaadharprooffront(e) {
+          this.setState({
+            file: e.target.files[0]
+          })
+        }
+        onChangeouploadaadharproofback(e) {
+          this.setState({
+            file1: e.target.files[0]
+          })
+        }
+        onChangeouploadpancard(e) {
+          this.setState({
+            file2: e.target.files[0]
+          })
+        }
+        onChangevvehiclemodal(e) {
+          this.setState({
+            vvehiclemodel: e.target.value
+          })
+        }
+        onChangevvehicletype(e) {
+          this.setState({
+            vvehicletype: e.target.value
+          })
+        }
+        onChangevvehiclecapacity(e) {
+          this.setState({
+            vvehiclecapacity: e.target.value
+          })
+        }
+        onChangevregistrationnumber(e) {
+          this.setState({
+            vregistrationnumber: e.target.value
+          })
+        }
+        onChangevchassisnumber(e) {
+          this.setState({
+            vchassisnumber: e.target.value
+          })
+        }
+        onChangevenginenumber(e) {
+          this.setState({
+            venginenumber: e.target.value
+          })
+        }
+        onChangevrccardnumber(e) {
+          this.setState({
+            vrccardnumber: e.target.value
+          })
+        }
+        onChangevinsurencenumber(e) {
+          this.setState({
+            vinsurancenumber: e.target.value
+          })
+        }
+        onChangevemmissiontest(e) {
+          this.setState({
+            vemmissiontest: e.target.value
+          })
+        }
+        onChangevrccardrenewaldate(date) {
+          this.setState({
+            vrccardrenewaldate: date
+          })
+        }
+        onChangevinsurencerenewaldate(date) {
+          this.setState({
+            vinsurencerenewaldate: date
+          })
+        }
+        onChangevemmissiontestrenewaldate(date) {
+          this.setState({
+            vemmissiontestrenewaldate: date
+          })
+        }
+        onChangevtaxrenewal(e) {
+          this.setState({
+            vtaxrenewal: e.target.value
+          })
+        }
+        onChangevstatepermit(e) {
+          this.setState({
+            vstatepermit: e.target.value
+          })
+        }
+        onChangevnationalpermit(e) {
+          this.setState({
+            vnationalpermit: e.target.value
+          })
+        }
+        onChangevuploadstatepermitdocument(e) {
+          this.setState({
+            file3: e.target.files[0]
+          })
+        }
+        onChangevuploadnationalpermitdocument(e) {
+          this.setState({
+            file4: e.target.files[0]
+          })
+        }
+        onChangevuploadinsurencedocument(e) {
+          this.setState({
+            file5: e.target.files[0]
+          })
+        }
+        onChangevuploadvehiclepicture(e) {
+          this.setState({
+            file6: e.target.files[0]
+          })
+        }
+        onChangevuploademmissiontestdocument(e) {
+          this.setState({
+            file7: e.target.files[0]
+          })
+        }
+        onChangevuploadrccardproof(e) {
+          this.setState({
+            file8: e.target.files[0]
+          })
+        }
+        onChangevuploadtaxrenewalproof(e) {
+          this.setState({
+            file9: e.target.files[0]
+          })
+        }
+        onChangeddrivername(e) {
+          this.setState({
+            ddrivername: e.target.value
+          })
+        }
+        onChangeddriverid(e) {
+          this.setState({
+           ddriverid : e.target.value
+          })
+        }
+        onChangedgender(e) {
+          this.setState({
+            dgender: e.target.value
+          })
+        }
+        onChangedpermanentaddress(e) {
+          this.setState({
+            dpermanentaddress: e.target.value
+          })
+        }
+        onChangedcurrentaddress(e) {
+          this.setState({
+            dpresentaddress: e.target.value
+          })
+        }
+        onChangeddateofbirth(date) {
+          this.setState({
+            ddateofbirth: date
+          })
+        }
+        onChangedmobilenumber(e) {
+          this.setState({
+            dmobilenumber: e.target.value
+          })
+        }
+        onChangedemergencycontactnumber(e) {
+          this.setState({
+            demergencycontactnumber: e.target.value
+          })
+        }
+        onChangedaadharcardnumber(e) {
+          this.setState({
+            dadharcardnumber: e.target.value
+          })
+        }
+        onChangedinsurencenumber(e) {
+          this.setState({
+            dinsurancenumber: e.target.value
+          })
+        }
+        onChangeddrivinglicence(e) {
+          this.setState({
+            ddrivinglicence: e.target.value
+          })
+        }
+        onChangedlanguageknown(e) {
+          this.setState({
+            dlanguagesknown: e.target.value
+          })
+        }
+        onChangedpoliceverificationcertificate(e) {
+          this.setState({
+            dpoliceverificationcertificate: e.target.value
+          })
+        }
+        onChangeduploaddrivinglicenceproof(e) {
+          this.setState({
+            file10: e.target.files[0]
+          })
+        }
+        onChangeduploadpoliceverificationproof(e) {
+          this.setState({
+            file11: e.target.files[0]
+          })
+        }
+        onChangeduploadinsurenceproof(e) {
+          this.setState({
+            file12: e.target.files[0]
+          })
+        }
+        onChangeduploadfrontaadharproof(e) {
+          this.setState({
+            file13: e.target.files[0]
+          })
+        }
+        onChangeduploadbackaadharproof(e) {
+          this.setState({
+            file14: e.target.files[0]
+          })
+        }
+        onChangebbankname(e) {
+          this.setState({
+            bbankname: e.target.value
+          })
+        }
+        onChangebaccountnumber(e) {
+          this.setState({
+            baccountnumber: e.target.value
+          })
+        }
+        onChangebbranchcode(e) {
+          this.setState({
+            bbranchcode: e.target.value
+          })
+        }
+        onChangebifsccode(e) {
+          this.setState({
+            bifsccode: e.target.value
+          })
+        }
+        onChangebuploadpassbookproof(e) {
+          this.setState({
+            file15: e.target.files[0]
+          })
+        }
+         
 
 
           onback(){
@@ -583,83 +589,82 @@ export default class Adduser extends Component{
      
           onSubmit(e) {
             e.preventDefault();
+            const formData=new FormData();
+            formData.append( 'ofirstname' ,this.state.ofirstname);
+    formData.append('omiddlename', this.state.omiddlename);
+    formData.append( 'olastname',this.state.olastname);
+    formData.append('odateofbirth',this.state.odateofbirth);
+    formData.append('ogender',this.state.ogender);
+    formData.append( 'oemail',this.state.oemail); 
+    formData.append('ophonenumber',this.state.ophonenumber);
+    formData.append( 'opermanentaddress',this.state.opermanentaddress,);
+    formData.append('opcountry',this.state.opcountry,);
+    formData.append( 'opstate',this.state.opstate);
+    formData.append('opcity',this.state.opcity);
+    formData.append('opzipcode',this.state.opzipcode);
+    formData.append('ocurrentaddress',this.state.ocurrentaddress);
+    formData.append('ocstate',this.state.ocstate);
+    formData.append( 'occity',this.state.occity);
+    formData.append('oczipcode',this.state.oczipcode);
+    formData.append('oadhar',this.state.adharnumber);
+    formData.append('images',this.state.file);
+    formData.append('images',this.state.file1);
+     formData.append('images',this.state.file2);
+    formData.append('vvehiclemodel',this.state.vvehiclemodel);
+    formData.append('vvehicletype',this.state.vvehicletype);
+    formData.append(' vvehiclecapacity',this.state.vvehiclecapacity);
+    formData.append('vregistrationnumber',this.state.vregistrationnumber);
+    formData.append('vchassisnumber',this.state.vchassisnumber);
+    formData.append('venginenumber',this.state.venginenumber);
+    formData.append('vrccardnumber',this.state.vrccardnumber);
+    formData.append('vinsurancenumber',this.state.vinsurancenumber);
+    formData.append('vemmissiontest',this.state.vemmissiontest);
+    formData.append('vrccardrenewaldate',this.state.vrccardrenewaldate);
+    formData.append('vinsurancerenewaldate',this.state.vinsurancerenewaldate);
+    formData.append( 'vemmissiontestrenewaldate',this.state.vemmissiontestrenewaldate);
+    formData.append('vtaxrenewal',this.state.vtaxrenewal);
+    formData.append('vstatepermit',this.state.vstatepermit);
+    formData.append('vnationalpermit',this.state.vnationalpermit);
+    formData.append('images',this.state.file3);
+    formData.append('images',this.state.file4);
+    formData.append( 'images',this.state.file5);
+    formData.append('images',this.state.file6);
+    formData.append('images',this.state.file7);
+    formData.append('images',this.state.file8);
+    formData.append('images',this.state.file9);
+    formData.append('ddriverid',this.state.ddriverid);
+    formData.append('dgender',this.state.dgender);
+    formData.append('dpermanentaddress',this.state.dpermanentaddress);
+    formData.append('ddateofbirth',this.state.ddateofbirth);
+    formData.append('dmobilenumber',this.state.dmobilenumber);
+    formData.append('demergencycontactnumber',this.state.demergencycontactnumber);
+    formData.append('dadharcardnumber',this.state.dadharcardnumber);
+    formData.append('dinsurancenumber',this.state.dinsurancenumber);
+    formData.append(' ddrivinglicence',this.state.ddrivinglicence);
+    formData.append('dlanguagesknown',this.state.dlanguagesknown);
+    formData.append('dpoliceverificationcertificate',this.state.dpoliceverificationcertificate);
+    formData.append('images',this.state.file10,);
+    formData.append('images',this.state.file11);
+    formData.append('images',this.state.file12,);
+    formData.append('images',this.state.file13); 
+    formData.append('images',this.state.file14);
+    formData.append('bbankname',this.state.bbankname);
+    formData.append('baccountnumber',this.state.baccountnumber);
+    formData.append('bbranchcode',this.state.bbranchcode);
+    formData.append('bifsccode',this.state.bifsccode);
+    formData.append('images',this.state.file15);
+    
+    
+    
+    
+    
+    const config={
+      headers:{
+        'content-type':'multipart/form-data'
+      }
+    }
         
-            const trainer = {
-              ofirstname: this.state.ofirstname,
-              omiddlename: this.state.omiddlename,
-              olastname:this.state.olastname,
-              odateofbirth:this.state.odateofbirth,
-              ogender:this.state.ogender,
-              oemail:this.state.oemail,
-              ophonenumber:this.state.ophonenumber,
-              opermanentaddress:this.state.opermanentaddress,
-              opcountry:this.state.opcountry,
-              opstate:this.state.opstate,
-              opcity:this.state.opcity,
-              opzipcode:this.state.opzipcode,
-              ocurrentaddress:this.state.ocurrentaddress,
-              occountry:this.state.occountry,
-              ocstate:this.state.ocstate,
-              occity:this.state.occity,
-              oczipcode:this.state.oczipcode,
-              oadharprooffront:this.state.oadharprooffront,
-              oadharproofback:this.state.oadharproofback,
-              opanproof:this.state.opanproof,
-              vvehiclemodel:this.state.vvehiclemodel,
-              vvehicletype:this.state.vvehicletype,
-              vvehiclecapacity:this.state.vvehiclecapacity,
-              vregistrationnumber:this.state.vregistrationnumber,
-              vchassisnumber:this.state.vchassisnumber,
-              venginenumber:this.state.venginenumber,
-              vrccardnumber:this.state.vrccardnumber,
-              vinsurancenumber:this.state.vinsurancenumber,
-              vemmissiontest:this.state.vemmissiontest,
-              vrccardrenewaldate:this.state.vrccardrenewaldate,
-              vinsurancerenewaldate:this.state.vinsurancerenewaldate,
-              vemmissiontestrenewaldate:this.state.vemmissiontestrenewaldate,
-              vtaxrenewal:this.state.vtaxrenewal,
-              vstatepermit:this.state.vstatepermit,
-              vnationalpermit:this.state.vnationalpermit,
-              vstatepermitdocument:this.state.vstatepermitdocument,
-              vnationalpermitdocument:this.state.vnationalpermitdocument,
-              vinsurancedocument:this.state.vinsurancedocument,
-              vvehiclepicture:this.state.vvehiclepicture,
-              vemissiontestdocument:this.state.vemissiontestdocument,
-              vrccardproof:this.state.vrccardproof,
-              vtaxrenewalproof:this.state.vtaxrenewalproof,
-              ddrivername:this.state.ddrivername,
-              ddriverid:this.state.ddriverid,
-              dgender:this.state.dgender,
-              dpermanentaddress:this.state.dpermanentaddress,
-              dpresentaddress:this.state.dpresentaddress,
-              ddateofbirth:this.state.ddateofbirth,
-              dmobilenumber:this.state.dmobilenumber,
-              demergencycontactnumber:this.state.demergencycontactnumber,
-              dadharcardnumber:this.state.dadharcardnumber,
-              dinsurancenumber:this.state.dinsurancenumber,
-              ddrivinglicence:this.state.ddrivinglicence,
-              dlanguagesknown:this.state.dlanguagesknown,
-              dpoliceverificationcertificate:this.state.dpoliceverificationcertificate,
-              ddrivinglicenceproof:this.state.ddrivinglicenceproof,
-              dpoliceverificationproof:this.state.dpoliceverificationproof,
-              dinsuranceproof:this.state.dinsuranceproof,
-              dfrontadharproof:this.state.dfrontadharproof,
-              dbackadharproof:this.state.dbackadharproof,
-              bbankname:this.state.bbankname,
-              baccountnumber:this.state.baccountnumber,
-              bbranchcode:this.state.bbranchcode,
-              bifsccode:this.state.bifsccode,
-              bpassbookphoto:this.state.bpassbookphoto,
-
-
-             
-
-        
-            }
-        
-            console.log(trainer);
-        
-            axios.post('https://acabnodejs.herokuapp.com/enrollfleetowner/update/'+ this.props.match.params.id,trainer )
+            axios.post('https://acabnodejs.herokuapp.com/enrollfleetowner/update/'+ this.props.match.params.id,formData )
             .then(function(response){
         
               if(response.data ==='Enrollfleetowner updated!'){
@@ -677,15 +682,15 @@ export default class Adduser extends Component{
        
        
         <Form onSubmit={this.onSubmit}>
-          <Row>
-            <Col md={4} className="mb-3">
+        <Row>
+            <Col md={3} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> First Name</Form.Label>
                 <Form.Control required type="text" placeholder="Enter your firsttname" value={this.state.ofirstname}
-              onChange={this.onChangeofirstname}   />
+              onChange={this.onChangeofirstname}  />
               </Form.Group>
             </Col>
-            <Col md={4} className="mb-3" >
+            <Col md={3} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> Middle Name</Form.Label>
                 <Form.Control required type="text" placeholder="Enter your  Middlename" value={this.state.omiddlename}
@@ -693,11 +698,18 @@ export default class Adduser extends Component{
               </Form.Group>
             </Col>
             
-            <Col md={4} className="mb-3">
+            <Col md={3} className="mb-3">
               <Form.Group id="gender">
                 <Form.Label>Last Name</Form.Label>
                 <Form.Control required type="text" placeholder="Enter Your Lastname" value={this.state.olastname}
               onChange={this.onChangeolastname} />
+              </Form.Group>
+            </Col>
+            <Col md={3} className="mb-3">
+              <Form.Group id="gender">
+                <Form.Label>Aadhar Card Number</Form.Label>
+                <Form.Control required type="text" placeholder="Enter Your aadharcardnumber" value={this.state.adharnumber}
+              onChange={this.onChangeoadharnumber} />
               </Form.Group>
             </Col>
           </Row>
@@ -708,8 +720,20 @@ export default class Adduser extends Component{
             <Col md={3} className="mb-3">
               <Form.Group id="emal">
                 <Form.Label>Date Of Birth</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Your Lastname" value={this.state.odateofbirth}
-              onChange={this.onChangeodateofbirth} />
+                <Col md={3} className="mb-3">
+            <DatePicker
+            
+             selected={this.state.odateofbirth}
+             onChange={this.onChangeodateofbirth}
+             name="startDate"
+        
+            
+            
+             timeCaption="time"
+             dateFormat="MMMM dd yyyy "
+            />
+        
+            </Col>
             
               </Form.Group>
             </Col>
@@ -842,14 +866,14 @@ export default class Adduser extends Component{
             <Col md={4} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> Upload Front Aadhar Proof</Form.Label>
-                <Form.Control required type="text" placeholder="" value={this.state.oadharprooffront}
+                <Form.Control required type="file" placeholder="" name="images"
               onChange={this.onChangeouploadaadharprooffront}  />
               </Form.Group>
             </Col>
             <Col md={4} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> Upload Back Aadhar Proff</Form.Label>
-                <Form.Control required type="text" placeholder="" value={this.state.oadharproofback}
+                <Form.Control required type="file" placeholder="" name="images"
               onChange={this.onChangeouploadaadharproofback} />
               </Form.Group>
             </Col>
@@ -857,7 +881,7 @@ export default class Adduser extends Component{
             <Col md={4} className="mb-3">
               <Form.Group id="gender">
                 <Form.Label>Upload Pan Card</Form.Label>
-                <Form.Control required type="text" placeholder="" value={this.state.opanproof}
+                <Form.Control required type="file" placeholder="" name="images"
               onChange={this.onChangeouploadpancard} />
               </Form.Group>
             </Col>
@@ -940,7 +964,7 @@ export default class Adduser extends Component{
   <Col md={4} className="mb-3">
     <Form.Group id="firstName">
       <Form.Label> Insurence Number</Form.Label>
-      <Form.Control required type="text" placeholder="Enter Insurence Number" value={this.state.vinsurancenumber}
+      <Form.Control required type="text" placeholder="Enter Insurence Number" value={this.state.vinsurencenumber}
     onChange={this.onChangevinsurencenumber}  />
     </Form.Group>
   </Col>
@@ -956,26 +980,54 @@ export default class Adduser extends Component{
 <Col md={4} className="mb-3">
     <Form.Group id="firstName">
       <Form.Label> RC Card Renewal Date</Form.Label>
-      
-      <Form.Control required type="text" placeholder="Enter Your Lastname" value={this.state.vrccardrenewaldate}
-              onChange={this.onChangevrccardrenewaldate} />
+      <br/>
+      <DatePicker
+            
+             selected={this.state.vrccardrenewaldate}
+             onChange={this.onChangevrccardrenewaldate}
+             name="startDate"
+        
+            
+             
+             timeCaption="time"
+             dateFormat="MMMM dd yyyy "
+            />
       
     </Form.Group>
   </Col>
   <Col md={4} className="mb-3">
     <Form.Group id="firstName">
       <Form.Label> Insurence Renewal Date</Form.Label>
-     
-      <Form.Control required type="text" placeholder="Enter Your Lastname" value={this.state.vinsurancerenewaldate}
-              onChange={this.onChangevinsurencerenewaldate} />
+      <br/>
+      <DatePicker
+            
+             selected={this.state.vinsurencerenewaldate}
+             onChange={this.onChangevinsurencerenewaldate}
+             name="startDate"
+        
+            
+            
+             timeCaption="time"
+             dateFormat="MMMM dd yyyy "
+            />
       
     </Form.Group>
   </Col>
   <Col md={4} className="mb-3">
     <Form.Group id="firstName">
       <Form.Label>Emmission Test Renewal Date</Form.Label>
-      <Form.Control required type="text" placeholder="Enter Your Lastname" value={this.state.vemmissiontestrenewaldate}
-              onChange={this.onChangevemmissiontestrenewaldate} />
+      <br/>
+      <DatePicker
+            
+             selected={this.state.vemmissiontestrenewaldate}
+             onChange={this.onChangevemmissiontestrenewaldate}
+             name="startDate"
+        
+            
+             
+             timeCaption="time"
+             dateFormat="MMMM dd yyyy "
+            />
       
     </Form.Group>
   </Col>
@@ -1007,21 +1059,21 @@ export default class Adduser extends Component{
 <Col md={4} className="mb-3">
     <Form.Group id="firstName">
       <Form.Label> Upload State Permit Document</Form.Label>
-      <Form.Control required type="number" placeholder="Enter Upload State Permit Document" value={this.state.vstatepermitdocument}
+      <Form.Control required type="file"  name="images"
     onChange={this.onChangevuploadstatepermitdocument}  />
     </Form.Group>
   </Col>
   <Col md={4} className="mb-3">
     <Form.Group id="firstName">
       <Form.Label> Upload National Permit Document</Form.Label>
-      <Form.Control required type="text" placeholder="Enter Upload National Permit Document" value={this.state.vnationalpermitdocument}
+      <Form.Control required type="file" name="images"
     onChange={this.onChangevuploadnationalpermitdocument}  />
     </Form.Group>
   </Col>
   <Col md={4} className="mb-3">
     <Form.Group id="firstName">
       <Form.Label> Upload Insurence Document</Form.Label>
-      <Form.Control required type="text" placeholder="Enter Upload Insurence" value={this.state.vinsurancedocument}
+      <Form.Control required type="file" name="images"
     onChange={this.onChangevuploadinsurencedocument}  />
     </Form.Group>
   </Col>
@@ -1030,28 +1082,28 @@ export default class Adduser extends Component{
 <Col md={3} className="mb-3">
     <Form.Group id="firstName">
       <Form.Label> Upload Vehicle Picture</Form.Label>
-      <Form.Control required type="number" placeholder="Enter Upload Vehicle Picture" value={this.state.vvehiclepicture}
+      <Form.Control required type="file" name="images"
     onChange={this.onChangevuploadvehiclepicture}  />
     </Form.Group>
   </Col>
   <Col md={3} className="mb-3">
     <Form.Group id="firstName">
       <Form.Label> Upload Emmission Test Document</Form.Label>
-      <Form.Control required type="text" placeholder="Enter Upload Emmission Test Document" value={this.state.vemissiontestdocument}
+      <Form.Control required type="file"  name="images"
     onChange={this.onChangevuploademmissiontestdocument}  />
     </Form.Group>
   </Col>
   <Col md={3} className="mb-3">
     <Form.Group id="firstName">
       <Form.Label> Upload RC Proof Document</Form.Label>
-      <Form.Control required type="text" placeholder="Enter Upload RC Proof Document" value={this.state.vrccardproof}
+      <Form.Control required type="file" name="images"
     onChange={this.onChangevuploadrccardproof}  />
     </Form.Group>
   </Col>
   <Col md={3} className="mb-3">
     <Form.Group id="firstName">
       <Form.Label> Upload Tax Renewal Document</Form.Label>
-      <Form.Control required type="text" placeholder="Enter Upload Tax Renewal Proof" value={this.state.vtaxrenewalproof}
+      <Form.Control required type="file" name="images"
     onChange={this.onChangevuploadtaxrenewalproof}  />
     </Form.Group>
   </Col>
@@ -1083,9 +1135,11 @@ export default class Adduser extends Component{
             <Col md={4} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> Gender</Form.Label>
-                <select class="form-control" placeholder="select Country" id="calculator" name="calculator" onChange={this.onChangedgender} value={this.state.dgender}>
-                                                    <option value="Male">MALE</option>
-                                                    <option value="Female">FEMALE</option>
+                <select class="form-control" id="calculator" name="calculator" onChange={this.onChangedgender} value={this.state.dgender}>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                    
+                                                    
                                                     
                                                 </select>
               </Form.Group>
@@ -1112,8 +1166,18 @@ export default class Adduser extends Component{
             <Col md={4} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> Date Of Birth</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Your Lastname" value={this.state.ddateofbirth}
-              onChange={this.onChangeddateofbirth} />
+                <br/>
+                <DatePicker
+            
+             selected={this.state.ddateofbirth}
+             onChange={this.onChangeddateofbirth}
+             name="startDate"
+        
+            
+             
+             timeCaption="time"
+             dateFormat="MMMM dd yyyy "
+            />
               </Form.Group>
             </Col>
             <Col md={4} className="mb-3">
@@ -1122,8 +1186,8 @@ export default class Adduser extends Component{
                 <Form.Control required type="number" max="0-9" placeholder="Enter Mobile Number" value={this.state.dmobilenumber}
               onChange={this.onChangedmobilenumber}  />
               </Form.Group>
-            </Col>
-            <Col md={4} className="mb-3">
+            </Col> 
+             <Col md={4} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> Emergency Contact Number</Form.Label>
                 <Form.Control required type="number" maxLength="0-9" placeholder="Enter Emergency Contact Number" value={this.state.demergencycontactnumber}
@@ -1169,27 +1233,27 @@ export default class Adduser extends Component{
               onChange={this.onChangedlanguageknown}  />
               </Form.Group>
             </Col>
-            
+             
             </Row>
-            <Row>
+             <Row>
             <Col md={4} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> Upload Driving Licence Proof</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Driving Licence Proof" value={this.state.ddrivinglicenceproof}
+                <Form.Control required type="file" name="images"
               onChange={this.onChangeduploaddrivinglicenceproof}  />
               </Form.Group>
             </Col>
             <Col md={4} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> Upload Police Verification Proof</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Police Verification Proof" value={this.state.dpoliceverificationproof}
+                <Form.Control required type="file" name="images"
               onChange={this.onChangeduploadpoliceverificationproof}  />
               </Form.Group>
             </Col>
             <Col md={4} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> Upload Insurence Proof</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Insurence Proof" value={this.state.dinsuranceproof}
+                <Form.Control required type="file" name="images"
               onChange={this.onChangeduploadinsurenceproof}  />
               </Form.Group>
             </Col>
@@ -1198,19 +1262,19 @@ export default class Adduser extends Component{
             <Col md={6} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> Upload Front Aadhar Proof</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Aadhar Proof" value={this.state.dfrontadharproof}
+                <Form.Control required type="file" name="images"
               onChange={this.onChangeduploadfrontaadharproof}  />
               </Form.Group>
             </Col>
             <Col md={6} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label>  Upload Back Aadhar Proof</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Aadhar Proof" value={this.state.dbackadharproof}
+                <Form.Control required type="file" name="images"
               onChange={this.onChangeduploadbackaadharproof}  />
               </Form.Group>
             </Col>
             
-            </Row>
+            </Row> 
 
         </Card.Body>
         </Card>
@@ -1251,11 +1315,12 @@ export default class Adduser extends Component{
             <Col md={4} className="mb-3">
               <Form.Group id="firstName">
                 <Form.Label> Upload Pass Book</Form.Label>
-                <Form.Control required type="text" placeholder="Enter Pass Book" value={this.state.bpassbookphoto}
+                <Form.Control required type="file" name="images"
               onChange={this.onChangebuploadpassbookproof}  />
               </Form.Group>
             </Col>
             </Row>
+            
         </Card.Body>
         </Card>
 
