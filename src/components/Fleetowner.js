@@ -173,7 +173,7 @@ export default class buttons extends Component {
         <Row className="justify-content-between align-items-center">
           <Col xs={8} md={6} lg={3} xl={4}>
             <Form onSubmit={this.onSubmit}>
-            <InputGroup style={{marginLeft:"20px"}}>
+            <InputGroup style={{marginLeft:"650px"}}>
               <InputGroup.Text>
                 <FontAwesomeIcon icon={faSearch} />
               </InputGroup.Text>
