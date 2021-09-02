@@ -18,6 +18,10 @@ export default class buttons extends Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.state = {
       oadhar:'',
+      firstname:'',
+      createddate:'',
+      id:'',
+
       customers: []
     };
   }
@@ -89,6 +93,7 @@ export default class buttons extends Component {
     }
     axios.post('https://acabnodejs.herokuapp.com/enrollfleetowner/search', customer)
       .then(res => {
+        console.log(this.customerList)
         this.setState({ customers: res.data })
       })
       .catch((error) => {
@@ -106,11 +111,11 @@ export default class buttons extends Component {
   }
   
   customerList() {
-    // this.state.customers.sort(function(a,b){
-    //   if(a.name.toLowerCase() < b.name.toLowerCase()) return -1;
-    //   if(a.name.toLowerCase() > b.name.toLowerCase()) return 1;
-    //   return 0;
-    //  })
+    this.state.customers.sort(function(a,b){
+      if(a.oadhar.toLowerCase() < b.oadhar.toLowerCase()) return -1;
+      if(a.oadhar.toLowerCase() > b.oadhar.toLowerCase()) return 1;
+      return 0;
+     })
 
     return this.state.customers.map(currentcustomer => (
       <tr>
