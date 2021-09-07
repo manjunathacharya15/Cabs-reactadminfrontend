@@ -162,7 +162,7 @@ export default class Accordion extends Component{
             
           </Row>
           
-            {/* <Row>
+            <Row>
             <Col md={6} className="mb-3">
               <Form.Group id="phone">
                 <Form.Label>Phone Number</Form.Label>
@@ -173,7 +173,7 @@ export default class Accordion extends Component{
             
             
             
-            </Row> */}
+            </Row>
             <Row>
             <Col md={3} className="mb-3">
             <div className="mt-3">
