@@ -15,12 +15,21 @@ export default class buttons extends Component {
 
     this.deleteCustomer = this.deleteCustomer.bind(this)
     this.onChangeoaadhar = this.onChangeoaadhar.bind(this);
+    // this.onChangeofirstname = this.onChangeofirstname.bind(this);
+    // this.onChangeolastname = this.onChangeolastname.bind(this);
+    // this.onChangeocreatedat = this.onChangeocreatedat.bind(this);
+    // this.onChangeophonenumber = this.onChangeophonenumber.bind(this);
+    // this.onChangeoemail = this.onChangeoemail.bind(this);
+
     this.onSubmit = this.onSubmit.bind(this);
     this.state = {
       oadhar:'',
-      firstname:'',
-      createddate:'',
-      id:'',
+      ofirstname:'',
+      createdAt:'',
+      olastname:'',
+      _id:'',
+      ophonenumber:'',
+      oemail:'',
 
       customers: []
     };
@@ -39,13 +48,13 @@ export default class buttons extends Component {
         result.map(e => {
           return{
             select : false,
-            id : e._id,
-            createddate : e.createdAt,
+            _id : e._id,
+            createdAt : e.createdAt,
           
-            firstname:e.ofirstname,
-            lastname:e.olastname,
-            phonenumber:e.ophonenumber,
-            emailid:e.oemail,
+            ofirstname:e.ofirstname,
+            olastname:e.olastname,
+            ophonenumber:e.ophonenumber,
+            oemail:e.oemail,
             oadhar:e.oadhar,
           
 
@@ -85,6 +94,31 @@ export default class buttons extends Component {
       oadhar: e.target.value
     })
   }
+  // onChangeofirstname(e) {
+  //   this.setState({
+  //     ofirstname: e.target.value
+  //   })
+  // }
+  // onChangeolastname(e) {
+  //   this.setState({
+  //     olastname: e.target.value
+  //   })
+  // }
+  // onChangeocreatedat(e) {
+  //   this.setState({
+  //     createdAt: e.target.value
+  //   })
+  // }
+  // onChangeophonenumber(e) {
+  //   this.setState({
+  //     ophonenumber: e.target.value
+  //   })
+  // }
+  // onChangeoemail(e) {
+  //   this.setState({
+  //     oemail: e.target.value
+  //   })
+  // }
   onSubmit(e) {
     e.preventDefault();
 
@@ -93,7 +127,7 @@ export default class buttons extends Component {
     }
     axios.post('https://acabnodejs.herokuapp.com/enrollfleetowner/search', customer)
       .then(res => {
-        console.log(this.customerList)
+        
         this.setState({ customers: res.data })
       })
       .catch((error) => {
@@ -111,11 +145,11 @@ export default class buttons extends Component {
   }
   
   customerList() {
-    this.state.customers.sort(function(a,b){
-      if(a.oadhar.toLowerCase() < b.oadhar.toLowerCase()) return -1;
-      if(a.oadhar.toLowerCase() > b.oadhar.toLowerCase()) return 1;
-      return 0;
-     })
+    // this.state.customers.sort(function(a,b){
+    //   if(a.ofirstname.toLowerCase() < b.ofirstname.toLowerCase()) return -1;
+    //   if(a.ofirstname.toLowerCase() > b.ofirstname.toLowerCase()) return 1;
+    //   return 0;
+    //  })
 
     return this.state.customers.map(currentcustomer => (
       <tr>
@@ -127,16 +161,16 @@ export default class buttons extends Component {
                                 this.setState(this.state);
                             }} />
       </td> */}
-      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.id}</td>
+      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer._id}</td>
       
-      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.createddate}</td>
+      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.createdAt}</td>
       
-      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.firstname}</td>
-      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.lastname}</td>
-      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.phonenumber}</td>
-      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.emailid}</td>
+      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.ofirstname}</td>
+      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.olastname}</td>
+      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.ophonenumber}</td>
+      <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.oemail}</td>
       <td style={{border:"1px double black",textAlign:"center"}}>{currentcustomer.oadhar}</td>
-      <td style={{border:"1px double black",textAlign:"center"}}><Link to={"/components/enrolledit/"+currentcustomer.id}><FontAwesomeIcon icon={faEye}/></Link>/<Link to={"/components/editenroll/"+currentcustomer.id}><FontAwesomeIcon icon={faPencilAlt} /></Link>/<Link to={"/components/addvehicle/"+currentcustomer.id}><FontAwesomeIcon icon={faCarAlt} /></Link></td>
+      <td style={{border:"1px double black",textAlign:"center"}}><Link to={"/components/enrolledit/"+currentcustomer._id}><FontAwesomeIcon icon={faEye}/></Link>/<Link to={"/components/editenroll/"+currentcustomer._id}><FontAwesomeIcon icon={faPencilAlt} /></Link>/<Link to={"/components/addvehicle/"+currentcustomer._id}><FontAwesomeIcon icon={faCarAlt} /></Link></td>
       
       
       
